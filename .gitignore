@@ -1,0 +1,4 @@
+jhipster/
+.DS_Store
+.vagrant
+*.log
