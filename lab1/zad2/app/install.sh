@@ -3,8 +3,18 @@
 apt-get update
 apt-get -y upgrade
 
-apt-get -y install openjdk-11-jdk
+apt-get install -y openjdk-11-jdk
+apt-get install -y git
 
-apt-get install -y xubuntu-desktop virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+cd /vagrant
 
-java -jar *.jar
+JAR=/vagrant/jhipster-sample-app/target/*.jar
+if [ ! $(ls $JAR 2> /dev/null) ]; then
+    git clone https://github.com/jhipster/jhipster-sample-app.git
+    cd jhipster-sample-app
+    ./mvnw -Pprod clean verify
+    cd ..
+fi
+java -jar "${JAR}"
+
+# xdg-open http://localhost:8080
