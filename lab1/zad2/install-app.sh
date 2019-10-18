@@ -15,6 +15,8 @@ if [ ! $(ls $JAR 2> /dev/null) ]; then
     ./mvnw -Pprod clean verify
     cd ..
 fi
-java -jar "${JAR}"
 
-# xdg-open http://localhost:8080
+# create client database
+mysql -u root -proot -h 192.168.33.11 -e "CREATE DATABASE jhipsterSampleApplication;"
+
+java -jar "${JAR}"
