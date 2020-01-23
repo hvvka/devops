@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "pl.edu.pwr.twwo",
+      "nativeLanguage": "pl"
+    },
+    "jhipsterVersion": "6.6.0",
+    "applicationType": "monolith",
+    "baseName": "app",
+    "packageName": "pl.edu.pwr.twwo",
+    "packageFolder": "pl/edu/pwr/twwo",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTk0NWI5ZjMyZjI1ZDk5YzhjZTMwNzdmNjQwOTQ3NjhkYTMwNDQ1ZWE1ZmE1MDFiMDY2MWYwYmY0ODNmNDIxZDBjMjM1NDVkZmRlN2E1MWY3ODA2N2Q2NDg1NzRhZDRjZTYyMGIxMWU0NjVkMDAzM2NmMmZhZmQwODcwZTUwMmI=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "lumen",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1579806401572,
+    "testFrameworks": ["gatling", "protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pl",
+    "languages": ["pl", "en"],
+    "blueprints": []
+  }
+}
