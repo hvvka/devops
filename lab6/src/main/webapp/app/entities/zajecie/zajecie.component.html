@@ -1,0 +1,83 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="appApp.zajecie.home.title">Zajecies</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-zajecie" [routerLink]="['/zajecie/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="appApp.zajecie.home.createLabel">
+            Create a new Zajecie
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="zajecies?.length === 0">
+        <span jhiTranslate="appApp.zajecie.home.notFound">No zajecies found</span>
+    </div>
+    <div class="table-responsive" *ngIf="zajecies?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.forma">Forma</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.eCTS">E CTS</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.zZU">Z ZU</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.cNPS">C NPS</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.modulKsztalcenia">Modul Ksztalcenia</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.poziomJezyka">Poziom Jezyka</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.formaWiodaca">Forma Wiodaca</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.grupaKursow">Grupa Kursow</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.zajecie.przedmiot">Przedmiot</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let zajecie of zajecies ;trackBy: trackId">
+                <td><a [routerLink]="['/zajecie', zajecie.id, 'view' ]">{{zajecie.id}}</a></td>
+                <td jhiTranslate="{{'appApp.FormaPrzedmiotu.' + zajecie.forma}}">{{zajecie.forma}}</td>
+                <td>{{zajecie.eCTS}}</td>
+                <td>{{zajecie.zZU}}</td>
+                <td>{{zajecie.cNPS}}</td>
+                <td jhiTranslate="{{'appApp.ModulKsztalcenia.' + zajecie.modulKsztalcenia}}">{{zajecie.modulKsztalcenia}}</td>
+                <td jhiTranslate="{{'appApp.PoziomJezyka.' + zajecie.poziomJezyka}}">{{zajecie.poziomJezyka}}</td>
+                <td>
+                    <div *ngIf="zajecie.formaWiodaca">
+                        <a [routerLink]="['/zajecie', zajecie.formaWiodaca?.id, 'view' ]" >{{zajecie.formaWiodaca?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="zajecie.grupaKursow">
+                        <a [routerLink]="['/zajecie', zajecie.grupaKursow?.id, 'view' ]" >{{zajecie.grupaKursow?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="zajecie.przedmiot">
+                        <a [routerLink]="['/przedmiot', zajecie.przedmiot?.id, 'view' ]" >{{zajecie.przedmiot?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/zajecie', zajecie.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/zajecie', zajecie.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(zajecie)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

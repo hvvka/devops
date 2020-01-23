@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Encje",
+        "kartaPrzedmiotu": "Karta Przedmiotu",
+        "opiekunPrzedmiotu": "Opiekun Przedmiotu",
+        "przedmiot": "Przedmiot",
+        "zajecie": "Zajecie",
+        "typStudiow": "Typ Studiow",
+        "programStudiow": "Program Studiow",
+        "efektKsztalcenia": "Efekt Ksztalcenia",
+        "dyscyplina": "Dyscyplina",
+        "efektMinisterialny": "Efekt Ministerialny",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity ProgramStudiow.
+    -->
+    <changeSet id="20200123215626-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="typ_studiow_id"
+                                 baseTableName="program_studiow"
+                                 constraintName="fk_program_studiow_typ_studiow_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="typ_studiow"/>
+
+    </changeSet>
+</databaseChangeLog>

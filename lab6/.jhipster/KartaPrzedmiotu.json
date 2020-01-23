@@ -1,0 +1,23 @@
+{
+    "name": "KartaPrzedmiotu",
+    "fields": [
+        {
+            "fieldName": "nazwa",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200123215621",
+    "entityTableName": "karta_przedmiotu",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

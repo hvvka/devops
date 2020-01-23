@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="przedmiot">
+            <h2><span jhiTranslate="appApp.przedmiot.detail.title">Przedmiot</span> {{przedmiot.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.przedmiot.nrSemestru">Nr Semestru</span></dt>
+                <dd>
+                    <span>{{przedmiot.nrSemestru}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.przedmiot.nazwa">Nazwa</span></dt>
+                <dd>
+                    <span>{{przedmiot.nazwa}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.przedmiot.kartaPrzedmiotu">Karta Przedmiotu</span></dt>
+                <dd>
+                    <div *ngIf="przedmiot.kartaPrzedmiotu">
+                        <a [routerLink]="['/karta-przedmiotu', przedmiot.kartaPrzedmiotu?.id, 'view']">{{przedmiot.kartaPrzedmiotu?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="appApp.przedmiot.opiekunPrzedmiotu">Opiekun Przedmiotu</span></dt>
+                <dd>
+                    <div *ngIf="przedmiot.opiekunPrzedmiotu">
+                        <a [routerLink]="['/opiekun-przedmiotu', przedmiot.opiekunPrzedmiotu?.id, 'view']">{{przedmiot.opiekunPrzedmiotu?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="appApp.przedmiot.programStudiow">Program Studiow</span></dt>
+                <dd>
+                    <span *ngFor="let programStudiow of przedmiot.programStudiows; let last = last">
+                        <a [routerLink]="['/program-studiow', programStudiow?.id, 'view' ]">{{programStudiow.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/przedmiot', przedmiot.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Przedmiot.
+    -->
+    <changeSet id="20200123215623-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="karta_przedmiotu_id"
+                                 baseTableName="przedmiot"
+                                 constraintName="fk_przedmiot_karta_przedmiotu_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="karta_przedmiotu"/>
+
+        <addForeignKeyConstraint baseColumnNames="opiekun_przedmiotu_id"
+                                 baseTableName="przedmiot"
+                                 constraintName="fk_przedmiot_opiekun_przedmiotu_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="opiekun_przedmiotu"/>
+
+        <addForeignKeyConstraint baseColumnNames="przedmiot_id"
+                                 baseTableName="przedmiot_program_studiow"
+                                 constraintName="fk_przedmiot_program_studiow_przedmiot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="przedmiot"/>
+
+        <addForeignKeyConstraint baseColumnNames="program_studiow_id"
+                                 baseTableName="przedmiot_program_studiow"
+                                 constraintName="fk_przedmiot_program_studiow_program_studiow_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="program_studiow"/>
+        
+    </changeSet>
+</databaseChangeLog>

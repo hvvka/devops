@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-efekt-ministerialny-heading" jhiTranslate="appApp.efektMinisterialny.home.createOrEditLabel">Create or edit a Efekt Ministerialny</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.efektMinisterialny.poziomEfektu" for="field_poziomEfektu">Poziom Efektu</label>
+                    <input type="number" class="form-control" name="poziomEfektu" id="field_poziomEfektu"
+                           formControlName="poziomEfektu"/>
+                    <div *ngIf="editForm.get('poziomEfektu')!.invalid && (editForm.get('poziomEfektu')!.dirty || editForm.get('poziomEfektu')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('poziomEfektu')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('poziomEfektu')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.efektMinisterialny.typEfektuMinisterialnego" for="field_typEfektuMinisterialnego">Typ Efektu Ministerialnego</label>
+                    <select class="form-control" name="typEfektuMinisterialnego" formControlName="typEfektuMinisterialnego" id="field_typEfektuMinisterialnego">
+                        <option value="OGOLNEGO_KSZTALCENIA">{{'appApp.TypEfektuMinisterialnego.OGOLNEGO_KSZTALCENIA' | translate}}</option>
+                        <option value="INZYNIERSKIEGO">{{'appApp.TypEfektuMinisterialnego.INZYNIERSKIEGO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('typEfektuMinisterialnego')!.invalid && (editForm.get('typEfektuMinisterialnego')!.dirty || editForm.get('typEfektuMinisterialnego')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typEfektuMinisterialnego')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

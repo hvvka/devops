@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="typStudiow">
+            <h2><span jhiTranslate="appApp.typStudiow.detail.title">Typ Studiow</span> {{typStudiow.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.typStudiow.nazwa">Nazwa</span></dt>
+                <dd>
+                    <span>{{typStudiow.nazwa}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.typStudiow.stopienStudiow">Stopien Studiow</span></dt>
+                <dd>
+                    <span>{{typStudiow.stopienStudiow}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/typ-studiow', typStudiow.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

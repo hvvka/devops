@@ -1,0 +1,84 @@
+{
+    "name": "Zajecie",
+    "fields": [
+        {
+            "fieldName": "forma",
+            "fieldType": "FormaPrzedmiotu",
+            "fieldValues": "WYKLAD,SEMINARIUM,LABORATORIUM,PROJEKT,CWICZENIA",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "eCTS",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "zZU",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cNPS",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modulKsztalcenia",
+            "fieldType": "ModulKsztalcenia",
+            "fieldValues": "PROFILOWY,MATEMATYKA,FIZYKA,CHEMIA,NAUKI_SPOLECZNE_I_HUMANISTYCZNE,JEZYKI_OBCE,ZAJECIA_SPORTOWE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "poziomJezyka",
+            "fieldType": "PoziomJezyka",
+            "fieldValues": "NIE_DOTYCZY,A1,A2,B1,B2,C1,C2,B2_PLUS,C1_PLUS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "zajecie",
+            "otherEntityRelationshipName": "zajecie",
+            "relationshipName": "formaWiodaca",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "zajecie",
+            "otherEntityRelationshipName": "zajecie",
+            "relationshipName": "grupaKursow",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "przedmiot",
+            "otherEntityRelationshipName": "zajecie",
+            "relationshipName": "przedmiot",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200123215624",
+    "entityTableName": "zajecie",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,58 @@
+{
+    "name": "Przedmiot",
+    "fields": [
+        {
+            "fieldName": "nrSemestru",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nazwa",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "kartaPrzedmiotu",
+            "otherEntityRelationshipName": "przedmiot",
+            "relationshipName": "kartaPrzedmiotu",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "opiekunPrzedmiotu",
+            "otherEntityRelationshipName": "przedmiot",
+            "relationshipName": "opiekunPrzedmiotu",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "programStudiow",
+            "otherEntityRelationshipName": "przedmiot",
+            "relationshipName": "programStudiow",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "efektKsztalcenia",
+            "otherEntityRelationshipName": "przedmiot",
+            "relationshipName": "efektKsztalcenia",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200123215623",
+    "entityTableName": "przedmiot",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

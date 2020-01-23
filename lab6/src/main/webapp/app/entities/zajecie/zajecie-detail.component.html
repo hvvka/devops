@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="zajecie">
+            <h2><span jhiTranslate="appApp.zajecie.detail.title">Zajecie</span> {{zajecie.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.zajecie.forma">Forma</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'appApp.FormaPrzedmiotu.' + zajecie.forma}}">{{zajecie.forma}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.eCTS">E CTS</span></dt>
+                <dd>
+                    <span>{{zajecie.eCTS}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.zZU">Z ZU</span></dt>
+                <dd>
+                    <span>{{zajecie.zZU}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.cNPS">C NPS</span></dt>
+                <dd>
+                    <span>{{zajecie.cNPS}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.modulKsztalcenia">Modul Ksztalcenia</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'appApp.ModulKsztalcenia.' + zajecie.modulKsztalcenia}}">{{zajecie.modulKsztalcenia}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.poziomJezyka">Poziom Jezyka</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'appApp.PoziomJezyka.' + zajecie.poziomJezyka}}">{{zajecie.poziomJezyka}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.formaWiodaca">Forma Wiodaca</span></dt>
+                <dd>
+                    <div *ngIf="zajecie.formaWiodaca">
+                        <a [routerLink]="['/zajecie', zajecie.formaWiodaca?.id, 'view']">{{zajecie.formaWiodaca?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.grupaKursow">Grupa Kursow</span></dt>
+                <dd>
+                    <div *ngIf="zajecie.grupaKursow">
+                        <a [routerLink]="['/zajecie', zajecie.grupaKursow?.id, 'view']">{{zajecie.grupaKursow?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="appApp.zajecie.przedmiot">Przedmiot</span></dt>
+                <dd>
+                    <div *ngIf="zajecie.przedmiot">
+                        <a [routerLink]="['/przedmiot', zajecie.przedmiot?.id, 'view']">{{zajecie.przedmiot?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/zajecie', zajecie.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

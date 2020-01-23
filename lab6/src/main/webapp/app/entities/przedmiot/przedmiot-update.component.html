@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-przedmiot-heading" jhiTranslate="appApp.przedmiot.home.createOrEditLabel">Create or edit a Przedmiot</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.przedmiot.nrSemestru" for="field_nrSemestru">Nr Semestru</label>
+                    <input type="number" class="form-control" name="nrSemestru" id="field_nrSemestru"
+                           formControlName="nrSemestru"/>
+                    <div *ngIf="editForm.get('nrSemestru')!.invalid && (editForm.get('nrSemestru')!.dirty || editForm.get('nrSemestru')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nrSemestru')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('nrSemestru')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.przedmiot.nazwa" for="field_nazwa">Nazwa</label>
+                    <input type="text" class="form-control" name="nazwa" id="field_nazwa"
+                           formControlName="nazwa"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.przedmiot.kartaPrzedmiotu" for="field_kartaPrzedmiotu">Karta Przedmiotu</label>
+                    <select class="form-control" id="field_kartaPrzedmiotu" name="kartaPrzedmiotu" formControlName="kartaPrzedmiotu">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="kartaPrzedmiotuOption.id === editForm.get('kartaPrzedmiotu')!.value?.id ? editForm.get('kartaPrzedmiotu')!.value : kartaPrzedmiotuOption" *ngFor="let kartaPrzedmiotuOption of kartaprzedmiotus; trackBy: trackById">{{kartaPrzedmiotuOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.przedmiot.opiekunPrzedmiotu" for="field_opiekunPrzedmiotu">Opiekun Przedmiotu</label>
+                    <select class="form-control" id="field_opiekunPrzedmiotu" name="opiekunPrzedmiotu" formControlName="opiekunPrzedmiotu">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="opiekunPrzedmiotuOption.id === editForm.get('opiekunPrzedmiotu')!.value?.id ? editForm.get('opiekunPrzedmiotu')!.value : opiekunPrzedmiotuOption" *ngFor="let opiekunPrzedmiotuOption of opiekunprzedmiotus; trackBy: trackById">{{opiekunPrzedmiotuOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="appApp.przedmiot.programStudiow" for="field_programStudiows">Program Studiow</label>
+                    <select class="form-control" id="field_programStudiows" multiple name="programStudiows" formControlName="programStudiows">
+                        <option [ngValue]="getSelected(editForm.get('programStudiows')!.value, programStudiowOption)" *ngFor="let programStudiowOption of programstudiows; trackBy: trackById">{{programStudiowOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

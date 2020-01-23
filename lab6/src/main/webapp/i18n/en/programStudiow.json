@@ -1,0 +1,31 @@
+{
+  "appApp": {
+    "programStudiow": {
+      "home": {
+        "title": "Program Studiows",
+        "createLabel": "Create a new Program Studiow",
+        "createOrEditLabel": "Create or edit a Program Studiow",
+        "notFound": "No Program Studiows found"
+      },
+      "created": "A new Program Studiow is created with identifier {{ param }}",
+      "updated": "A Program Studiow is updated with identifier {{ param }}",
+      "deleted": "A Program Studiow is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program Studiow {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Studiow"
+      },
+      "profilKsztalcenia": "Profil Ksztalcenia",
+      "formaStudiow": "Forma Studiow",
+      "kierunek": "Kierunek",
+      "wydzial": "Wydzial",
+      "jezykProwadzeniaStudiow": "Jezyk Prowadzenia Studiow",
+      "liczbaSemestrow": "Liczba Semestrow",
+      "cyklKsztalcenia": "Cykl Ksztalcenia",
+      "typStudiow": "Typ Studiow",
+      "przedmiot": "Przedmiot",
+      "dyscyplina": "Dyscyplina"
+    }
+  }
+}

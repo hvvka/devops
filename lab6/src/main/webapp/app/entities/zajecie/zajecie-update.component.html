@@ -1,0 +1,144 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-zajecie-heading" jhiTranslate="appApp.zajecie.home.createOrEditLabel">Create or edit a Zajecie</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.forma" for="field_forma">Forma</label>
+                    <select class="form-control" name="forma" formControlName="forma" id="field_forma">
+                        <option value="WYKLAD">{{'appApp.FormaPrzedmiotu.WYKLAD' | translate}}</option>
+                        <option value="SEMINARIUM">{{'appApp.FormaPrzedmiotu.SEMINARIUM' | translate}}</option>
+                        <option value="LABORATORIUM">{{'appApp.FormaPrzedmiotu.LABORATORIUM' | translate}}</option>
+                        <option value="PROJEKT">{{'appApp.FormaPrzedmiotu.PROJEKT' | translate}}</option>
+                        <option value="CWICZENIA">{{'appApp.FormaPrzedmiotu.CWICZENIA' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('forma')!.invalid && (editForm.get('forma')!.dirty || editForm.get('forma')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('forma')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.eCTS" for="field_eCTS">E CTS</label>
+                    <input type="number" class="form-control" name="eCTS" id="field_eCTS"
+                           formControlName="eCTS"/>
+                    <div *ngIf="editForm.get('eCTS')!.invalid && (editForm.get('eCTS')!.dirty || editForm.get('eCTS')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('eCTS')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('eCTS')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.zZU" for="field_zZU">Z ZU</label>
+                    <input type="number" class="form-control" name="zZU" id="field_zZU"
+                           formControlName="zZU"/>
+                    <div *ngIf="editForm.get('zZU')!.invalid && (editForm.get('zZU')!.dirty || editForm.get('zZU')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('zZU')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('zZU')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.cNPS" for="field_cNPS">C NPS</label>
+                    <input type="number" class="form-control" name="cNPS" id="field_cNPS"
+                           formControlName="cNPS"/>
+                    <div *ngIf="editForm.get('cNPS')!.invalid && (editForm.get('cNPS')!.dirty || editForm.get('cNPS')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cNPS')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('cNPS')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.modulKsztalcenia" for="field_modulKsztalcenia">Modul Ksztalcenia</label>
+                    <select class="form-control" name="modulKsztalcenia" formControlName="modulKsztalcenia" id="field_modulKsztalcenia">
+                        <option value="PROFILOWY">{{'appApp.ModulKsztalcenia.PROFILOWY' | translate}}</option>
+                        <option value="MATEMATYKA">{{'appApp.ModulKsztalcenia.MATEMATYKA' | translate}}</option>
+                        <option value="FIZYKA">{{'appApp.ModulKsztalcenia.FIZYKA' | translate}}</option>
+                        <option value="CHEMIA">{{'appApp.ModulKsztalcenia.CHEMIA' | translate}}</option>
+                        <option value="NAUKI_SPOLECZNE_I_HUMANISTYCZNE">{{'appApp.ModulKsztalcenia.NAUKI_SPOLECZNE_I_HUMANISTYCZNE' | translate}}</option>
+                        <option value="JEZYKI_OBCE">{{'appApp.ModulKsztalcenia.JEZYKI_OBCE' | translate}}</option>
+                        <option value="ZAJECIA_SPORTOWE">{{'appApp.ModulKsztalcenia.ZAJECIA_SPORTOWE' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('modulKsztalcenia')!.invalid && (editForm.get('modulKsztalcenia')!.dirty || editForm.get('modulKsztalcenia')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('modulKsztalcenia')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.poziomJezyka" for="field_poziomJezyka">Poziom Jezyka</label>
+                    <select class="form-control" name="poziomJezyka" formControlName="poziomJezyka" id="field_poziomJezyka">
+                        <option value="NIE_DOTYCZY">{{'appApp.PoziomJezyka.NIE_DOTYCZY' | translate}}</option>
+                        <option value="A1">{{'appApp.PoziomJezyka.A1' | translate}}</option>
+                        <option value="A2">{{'appApp.PoziomJezyka.A2' | translate}}</option>
+                        <option value="B1">{{'appApp.PoziomJezyka.B1' | translate}}</option>
+                        <option value="B2">{{'appApp.PoziomJezyka.B2' | translate}}</option>
+                        <option value="C1">{{'appApp.PoziomJezyka.C1' | translate}}</option>
+                        <option value="C2">{{'appApp.PoziomJezyka.C2' | translate}}</option>
+                        <option value="B2_PLUS">{{'appApp.PoziomJezyka.B2_PLUS' | translate}}</option>
+                        <option value="C1_PLUS">{{'appApp.PoziomJezyka.C1_PLUS' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('poziomJezyka')!.invalid && (editForm.get('poziomJezyka')!.dirty || editForm.get('poziomJezyka')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('poziomJezyka')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.formaWiodaca" for="field_formaWiodaca">Forma Wiodaca</label>
+                    <select class="form-control" id="field_formaWiodaca" name="formaWiodaca" formControlName="formaWiodaca">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="zajecieOption.id === editForm.get('formaWiodaca')!.value?.id ? editForm.get('formaWiodaca')!.value : zajecieOption" *ngFor="let zajecieOption of formawiodacas; trackBy: trackById">{{zajecieOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.grupaKursow" for="field_grupaKursow">Grupa Kursow</label>
+                    <select class="form-control" id="field_grupaKursow" name="grupaKursow" formControlName="grupaKursow">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="zajecieOption.id === editForm.get('grupaKursow')!.value?.id ? editForm.get('grupaKursow')!.value : zajecieOption" *ngFor="let zajecieOption of zajecies; trackBy: trackById">{{zajecieOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.przedmiot" for="field_przedmiot">Przedmiot</label>
+                    <select class="form-control" id="field_przedmiot" name="przedmiot" formControlName="przedmiot">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="przedmiotOption.id === editForm.get('przedmiot')!.value?.id ? editForm.get('przedmiot')!.value : przedmiotOption" *ngFor="let przedmiotOption of przedmiots; trackBy: trackById">{{przedmiotOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

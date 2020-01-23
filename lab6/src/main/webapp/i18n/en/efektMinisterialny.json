@@ -1,0 +1,24 @@
+{
+  "appApp": {
+    "efektMinisterialny": {
+      "home": {
+        "title": "Efekt Ministerialnies",
+        "createLabel": "Create a new Efekt Ministerialny",
+        "createOrEditLabel": "Create or edit a Efekt Ministerialny",
+        "notFound": "No Efekt Ministerialnies found"
+      },
+      "created": "A new Efekt Ministerialny is created with identifier {{ param }}",
+      "updated": "A Efekt Ministerialny is updated with identifier {{ param }}",
+      "deleted": "A Efekt Ministerialny is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Efekt Ministerialny {{ id }}?"
+      },
+      "detail": {
+        "title": "Efekt Ministerialny"
+      },
+      "poziomEfektu": "Poziom Efektu",
+      "typEfektuMinisterialnego": "Typ Efektu Ministerialnego",
+      "efektKsztalcenia": "Efekt Ksztalcenia"
+    }
+  }
+}

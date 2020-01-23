@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="efektKsztalcenia">
+            <h2><span jhiTranslate="appApp.efektKsztalcenia.detail.title">Efekt Ksztalcenia</span> {{efektKsztalcenia.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.efektKsztalcenia.opis">Opis</span></dt>
+                <dd>
+                    <span>{{efektKsztalcenia.opis}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.efektKsztalcenia.programStudiow">Program Studiow</span></dt>
+                <dd>
+                    <div *ngIf="efektKsztalcenia.programStudiow">
+                        <a [routerLink]="['/program-studiow', efektKsztalcenia.programStudiow?.id, 'view']">{{efektKsztalcenia.programStudiow?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="appApp.efektKsztalcenia.przedmiot">Przedmiot</span></dt>
+                <dd>
+                    <span *ngFor="let przedmiot of efektKsztalcenia.przedmiots; let last = last">
+                        <a [routerLink]="['/przedmiot', przedmiot?.id, 'view' ]">{{przedmiot.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="appApp.efektKsztalcenia.efektMinisterialny">Efekt Ministerialny</span></dt>
+                <dd>
+                    <span *ngFor="let efektMinisterialny of efektKsztalcenia.efektMinisterialnies; let last = last">
+                        <a [routerLink]="['/efekt-ministerialny', efektMinisterialny?.id, 'view' ]">{{efektMinisterialny.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/efekt-ksztalcenia', efektKsztalcenia.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

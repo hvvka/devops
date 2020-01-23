@@ -1,0 +1,21 @@
+{
+  "appApp": {
+    "opiekunPrzedmiotu": {
+      "home": {
+        "title": "Opiekun Przedmiotu",
+        "createLabel": "Dodaj Opiekun Przedmiotu",
+        "createOrEditLabel": "Dodaj lub edytuj: Opiekun Przedmiotu",
+        "notFound": "No Opiekun Przedmiotus found"
+      },
+      "created": "Utworzono nowy obiekt typu Opiekun Przedmiotu z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Opiekun Przedmiotu z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Opiekun Przedmiotu z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Opiekun Przedmiotu {{ id }}?"
+      },
+      "detail": {
+        "title": "Opiekun Przedmiotu"
+      }
+    }
+  }
+}

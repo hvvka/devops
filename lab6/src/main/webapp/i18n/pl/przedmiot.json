@@ -1,0 +1,27 @@
+{
+  "appApp": {
+    "przedmiot": {
+      "home": {
+        "title": "Przedmiot",
+        "createLabel": "Dodaj Przedmiot",
+        "createOrEditLabel": "Dodaj lub edytuj: Przedmiot",
+        "notFound": "No Przedmiots found"
+      },
+      "created": "Utworzono nowy obiekt typu Przedmiot z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Przedmiot z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Przedmiot z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Przedmiot {{ id }}?"
+      },
+      "detail": {
+        "title": "Przedmiot"
+      },
+      "nrSemestru": "Nr Semestru",
+      "nazwa": "Nazwa",
+      "kartaPrzedmiotu": "Karta Przedmiotu",
+      "opiekunPrzedmiotu": "Opiekun Przedmiotu",
+      "programStudiow": "Program Studiow",
+      "efektKsztalcenia": "Efekt Ksztalcenia"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "OpiekunPrzedmiotu",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20200123215622",
+    "entityTableName": "opiekun_przedmiotu",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

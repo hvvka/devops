@@ -1,0 +1,23 @@
+{
+  "appApp": {
+    "typStudiow": {
+      "home": {
+        "title": "Typ Studiow",
+        "createLabel": "Dodaj Typ Studiow",
+        "createOrEditLabel": "Dodaj lub edytuj: Typ Studiow",
+        "notFound": "No Typ Studiows found"
+      },
+      "created": "Utworzono nowy obiekt typu Typ Studiow z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Typ Studiow z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Typ Studiow z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Typ Studiow {{ id }}?"
+      },
+      "detail": {
+        "title": "Typ Studiow"
+      },
+      "nazwa": "Nazwa",
+      "stopienStudiow": "Stopien Studiow"
+    }
+  }
+}

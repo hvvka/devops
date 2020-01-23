@@ -1,0 +1,24 @@
+{
+  "appApp": {
+    "dyscyplina": {
+      "home": {
+        "title": "Dyscyplina",
+        "createLabel": "Dodaj Dyscyplina",
+        "createOrEditLabel": "Dodaj lub edytuj: Dyscyplina",
+        "notFound": "No Dyscyplinas found"
+      },
+      "created": "Utworzono nowy obiekt typu Dyscyplina z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Dyscyplina z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Dyscyplina z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Dyscyplina {{ id }}?"
+      },
+      "detail": {
+        "title": "Dyscyplina"
+      },
+      "nazwa": "Nazwa",
+      "czyWiodaca": "Czy Wiodaca",
+      "progamStudiow": "Progam Studiow"
+    }
+  }
+}

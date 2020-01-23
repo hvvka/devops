@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="appApp.dyscyplina.home.title">Dyscyplinas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dyscyplina" [routerLink]="['/dyscyplina/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="appApp.dyscyplina.home.createLabel">
+            Create a new Dyscyplina
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="dyscyplinas?.length === 0">
+        <span jhiTranslate="appApp.dyscyplina.home.notFound">No dyscyplinas found</span>
+    </div>
+    <div class="table-responsive" *ngIf="dyscyplinas?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.dyscyplina.nazwa">Nazwa</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.dyscyplina.czyWiodaca">Czy Wiodaca</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.dyscyplina.progamStudiow">Progam Studiow</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dyscyplina of dyscyplinas ;trackBy: trackId">
+                <td><a [routerLink]="['/dyscyplina', dyscyplina.id, 'view' ]">{{dyscyplina.id}}</a></td>
+                <td>{{dyscyplina.nazwa}}</td>
+                <td>{{dyscyplina.czyWiodaca}}</td>
+                <td>
+                    <span *ngFor="let progamStudiow of dyscyplina.progamStudiows; let last = last">
+                            <a class="form-control-static" [routerLink]="['/program-studiow', progamStudiow?.id, 'view' ]">{{progamStudiow.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dyscyplina', dyscyplina.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dyscyplina', dyscyplina.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(dyscyplina)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity EfektKsztalcenia.
+    -->
+    <changeSet id="20200123215627-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="program_studiow_id"
+                                 baseTableName="efekt_ksztalcenia"
+                                 constraintName="fk_efekt_ksztalcenia_program_studiow_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="program_studiow"/>
+
+        <addForeignKeyConstraint baseColumnNames="efekt_ksztalcenia_id"
+                                 baseTableName="efekt_ksztalcenia_przedmiot"
+                                 constraintName="fk_efekt_ksztalcenia_przedmiot_efekt_ksztalcenia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="efekt_ksztalcenia"/>
+
+        <addForeignKeyConstraint baseColumnNames="przedmiot_id"
+                                 baseTableName="efekt_ksztalcenia_przedmiot"
+                                 constraintName="fk_efekt_ksztalcenia_przedmiot_przedmiot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="przedmiot"/>
+        
+        <addForeignKeyConstraint baseColumnNames="efekt_ksztalcenia_id"
+                                 baseTableName="efekt_ksztalcenia_efekt_ministerialny"
+                                 constraintName="fk_efekt_ksztalcenia_efekt_ministerialny_efekt_ksztalcenia_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="efekt_ksztalcenia"/>
+
+        <addForeignKeyConstraint baseColumnNames="efekt_ministerialny_id"
+                                 baseTableName="efekt_ksztalcenia_efekt_ministerialny"
+                                 constraintName="fk_efekt_ksztalcenia_efekt_ministerialny_efekt_ministerialny_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="efekt_ministerialny"/>
+        
+    </changeSet>
+</databaseChangeLog>

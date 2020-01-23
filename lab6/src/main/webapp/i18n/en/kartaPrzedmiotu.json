@@ -1,0 +1,22 @@
+{
+  "appApp": {
+    "kartaPrzedmiotu": {
+      "home": {
+        "title": "Karta Przedmiotus",
+        "createLabel": "Create a new Karta Przedmiotu",
+        "createOrEditLabel": "Create or edit a Karta Przedmiotu",
+        "notFound": "No Karta Przedmiotus found"
+      },
+      "created": "A new Karta Przedmiotu is created with identifier {{ param }}",
+      "updated": "A Karta Przedmiotu is updated with identifier {{ param }}",
+      "deleted": "A Karta Przedmiotu is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Karta Przedmiotu {{ id }}?"
+      },
+      "detail": {
+        "title": "Karta Przedmiotu"
+      },
+      "nazwa": "Nazwa"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+    "name": "ProgramStudiow",
+    "fields": [
+        {
+            "fieldName": "profilKsztalcenia",
+            "fieldType": "ProfilKsztalcenia",
+            "fieldValues": "OGOLNOAKADEMICKI,PRAKTYCZNY",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "formaStudiow",
+            "fieldType": "FormaStudiow",
+            "fieldValues": "STACJONARNE,NIESTACJONARNE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "kierunek",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "wydzial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "jezykProwadzeniaStudiow",
+            "fieldType": "JezykProwadzeniaStudiow",
+            "fieldValues": "POLSKI,ANGIELSKI"
+        },
+        {
+            "fieldName": "liczbaSemestrow",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cyklKsztalcenia",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "typStudiow",
+            "otherEntityRelationshipName": "programStudiow",
+            "relationshipName": "typStudiow",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "przedmiot",
+            "otherEntityRelationshipName": "programStudiow",
+            "relationshipName": "przedmiot",
+            "otherEntityField": "id",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "dyscyplina",
+            "otherEntityRelationshipName": "progamStudiow",
+            "relationshipName": "dyscyplina",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200123215626",
+    "entityTableName": "program_studiow",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

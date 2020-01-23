@@ -1,0 +1,27 @@
+{
+  "appApp": {
+    "przedmiot": {
+      "home": {
+        "title": "Przedmiots",
+        "createLabel": "Create a new Przedmiot",
+        "createOrEditLabel": "Create or edit a Przedmiot",
+        "notFound": "No Przedmiots found"
+      },
+      "created": "A new Przedmiot is created with identifier {{ param }}",
+      "updated": "A Przedmiot is updated with identifier {{ param }}",
+      "deleted": "A Przedmiot is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Przedmiot {{ id }}?"
+      },
+      "detail": {
+        "title": "Przedmiot"
+      },
+      "nrSemestru": "Nr Semestru",
+      "nazwa": "Nazwa",
+      "kartaPrzedmiotu": "Karta Przedmiotu",
+      "opiekunPrzedmiotu": "Opiekun Przedmiotu",
+      "programStudiow": "Program Studiow",
+      "efektKsztalcenia": "Efekt Ksztalcenia"
+    }
+  }
+}

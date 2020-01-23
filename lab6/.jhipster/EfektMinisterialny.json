@@ -1,0 +1,40 @@
+{
+    "name": "EfektMinisterialny",
+    "fields": [
+        {
+            "fieldName": "poziomEfektu",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "typEfektuMinisterialnego",
+            "fieldType": "TypEfektuMinisterialnego",
+            "fieldValues": "OGOLNEGO_KSZTALCENIA,INZYNIERSKIEGO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "efektKsztalcenia",
+            "otherEntityRelationshipName": "efektMinisterialny",
+            "relationshipName": "efektKsztalcenia",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200123215629",
+    "entityTableName": "efekt_ministerialny",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

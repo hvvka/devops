@@ -1,0 +1,30 @@
+{
+  "appApp": {
+    "zajecie": {
+      "home": {
+        "title": "Zajecie",
+        "createLabel": "Dodaj Zajecie",
+        "createOrEditLabel": "Dodaj lub edytuj: Zajecie",
+        "notFound": "No Zajecies found"
+      },
+      "created": "Utworzono nowy obiekt typu Zajecie z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Zajecie z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Zajecie z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Zajecie {{ id }}?"
+      },
+      "detail": {
+        "title": "Zajecie"
+      },
+      "forma": "Forma",
+      "eCTS": "E CTS",
+      "zZU": "Z ZU",
+      "cNPS": "C NPS",
+      "modulKsztalcenia": "Modul Ksztalcenia",
+      "poziomJezyka": "Poziom Jezyka",
+      "formaWiodaca": "Forma Wiodaca",
+      "grupaKursow": "Grupa Kursow",
+      "przedmiot": "Przedmiot"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+    "name": "EfektKsztalcenia",
+    "fields": [
+        {
+            "fieldName": "opis",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "programStudiow",
+            "otherEntityRelationshipName": "efektKsztalcenia",
+            "relationshipName": "programStudiow",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "przedmiot",
+            "otherEntityRelationshipName": "efektKsztalcenia",
+            "relationshipName": "przedmiot",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "efektMinisterialny",
+            "otherEntityRelationshipName": "efektKsztalcenia",
+            "relationshipName": "efektMinisterialny",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200123215627",
+    "entityTableName": "efekt_ksztalcenia",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

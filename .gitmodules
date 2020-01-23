@@ -1,0 +1,3 @@
+[submodule "lab2"]
+	path = lab2
+	url = git@github.com:pwr-twwo/vagrant-with-ansible-team02.git

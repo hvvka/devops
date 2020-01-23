@@ -1,0 +1,57 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="appApp.typStudiow.home.title">Typ Studiows</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-typ-studiow" [routerLink]="['/typ-studiow/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="appApp.typStudiow.home.createLabel">
+            Create a new Typ Studiow
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="typStudiows?.length === 0">
+        <span jhiTranslate="appApp.typStudiow.home.notFound">No typStudiows found</span>
+    </div>
+    <div class="table-responsive" *ngIf="typStudiows?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.typStudiow.nazwa">Nazwa</span></th>
+            <th scope="col" ><span jhiTranslate="appApp.typStudiow.stopienStudiow">Stopien Studiow</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let typStudiow of typStudiows ;trackBy: trackId">
+                <td><a [routerLink]="['/typ-studiow', typStudiow.id, 'view' ]">{{typStudiow.id}}</a></td>
+                <td>{{typStudiow.nazwa}}</td>
+                <td>{{typStudiow.stopienStudiow}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/typ-studiow', typStudiow.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/typ-studiow', typStudiow.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(typStudiow)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

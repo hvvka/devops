@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Dyscyplina.
+    -->
+    <changeSet id="20200123215628-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dyscyplina_id"
+                                 baseTableName="dyscyplina_progam_studiow"
+                                 constraintName="fk_dyscyplina_progam_studiow_dyscyplina_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dyscyplina"/>
+
+        <addForeignKeyConstraint baseColumnNames="progam_studiow_id"
+                                 baseTableName="dyscyplina_progam_studiow"
+                                 constraintName="fk_dyscyplina_progam_studiow_progam_studiow_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="program_studiow"/>
+        
+    </changeSet>
+</databaseChangeLog>

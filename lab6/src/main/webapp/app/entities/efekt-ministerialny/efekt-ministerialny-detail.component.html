@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="efektMinisterialny">
+            <h2><span jhiTranslate="appApp.efektMinisterialny.detail.title">Efekt Ministerialny</span> {{efektMinisterialny.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.efektMinisterialny.poziomEfektu">Poziom Efektu</span></dt>
+                <dd>
+                    <span>{{efektMinisterialny.poziomEfektu}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.efektMinisterialny.typEfektuMinisterialnego">Typ Efektu Ministerialnego</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'appApp.TypEfektuMinisterialnego.' + efektMinisterialny.typEfektuMinisterialnego}}">{{efektMinisterialny.typEfektuMinisterialnego}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/efekt-ministerialny', efektMinisterialny.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

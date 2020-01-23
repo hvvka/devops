@@ -1,0 +1,139 @@
+entity KartaPrzedmiotu {
+	Nazwa String required
+}
+
+entity OpiekunPrzedmiotu {
+}
+
+entity Przedmiot {
+	NrSemestru Long required,
+    Nazwa String
+}
+
+entity Zajecie {
+	Forma FormaPrzedmiotu required,
+    ECTS Long required,
+    ZZU Long required,
+    CNPS Long required,
+    ModulKsztalcenia ModulKsztalcenia required,
+    PoziomJezyka PoziomJezyka required,
+}
+enum FormaPrzedmiotu {
+	WYKLAD,
+    SEMINARIUM,
+    LABORATORIUM,
+    PROJEKT,
+    CWICZENIA
+}
+enum ModulKsztalcenia {
+	PROFILOWY,
+    MATEMATYKA,
+    FIZYKA,
+    CHEMIA,
+    NAUKI_SPOLECZNE_I_HUMANISTYCZNE,
+    JEZYKI_OBCE,
+    ZAJECIA_SPORTOWE
+}
+enum PoziomJezyka {
+	NIE_DOTYCZY,
+    A1,
+    A2,
+    B1,
+    B2,
+    C1,
+    C2,
+    B2_PLUS,
+    C1_PLUS
+}
+
+entity TypStudiow {
+	Nazwa String required,
+    StopienStudiow String
+}
+
+entity ProgramStudiow {
+    ProfilKsztalcenia ProfilKsztalcenia required,
+    FormaStudiow FormaStudiow required,
+    // TypStudiow TypStudiow required,
+    Kierunek String required,
+    Wydzial String required,
+    JezykProwadzeniaStudiow JezykProwadzeniaStudiow,
+    LiczbaSemestrow Long required,
+    CyklKsztalcenia String required
+}
+enum ProfilKsztalcenia {
+	OGOLNOAKADEMICKI,
+    PRAKTYCZNY
+}
+enum FormaStudiow {
+	STACJONARNE,
+    NIESTACJONARNE
+}
+// enum TypStudiow {
+//	LICENCJACKIE,
+//    INZYNIERSKIE,
+//    MAGISTERSKIE,
+//    MAGISTERSKIE_INZ,
+//    DOKTORANCKIE
+//}
+enum JezykProwadzeniaStudiow {
+	POLSKI,
+    ANGIELSKI
+}
+
+entity EfektKsztalcenia {
+	Opis String required
+}
+
+entity Dyscyplina {
+	Nazwa String,
+    CzyWiodaca Boolean required
+}
+
+entity EfektMinisterialny {
+	PoziomEfektu Long required,
+    TypEfektuMinisterialnego TypEfektuMinisterialnego required
+}
+enum TypEfektuMinisterialnego {
+	OGOLNEGO_KSZTALCENIA,
+    INZYNIERSKIEGO
+}
+
+/* RELATIONSHIPS */
+
+// Zajecie
+relationship OneToOne {
+	Zajecie{FormaWiodaca} to Zajecie
+}
+relationship ManyToOne {
+	Zajecie{GrupaKursow} to Zajecie
+    Zajecie{Przedmiot} to Przedmiot
+}
+
+// Przedmiot
+relationship ManyToOne {
+	Przedmiot{KartaPrzedmiotu} to KartaPrzedmiotu,
+    Przedmiot{OpiekunPrzedmiotu} to OpiekunPrzedmiotu
+}
+relationship ManyToMany {
+	Przedmiot{ProgramStudiow} to ProgramStudiow{Przedmiot}
+}
+
+// ProgramStudiow
+relationship ManyToOne {
+	ProgramStudiow{TypStudiow} to TypStudiow
+}
+
+// EfektKsztalcenia
+relationship ManyToOne {
+	EfektKsztalcenia{ProgramStudiow} to ProgramStudiow
+}
+relationship ManyToMany {
+	EfektKsztalcenia{Przedmiot} to Przedmiot{EfektKsztalcenia},
+    EfektKsztalcenia{EfektMinisterialny} to EfektMinisterialny{EfektKsztalcenia}
+}
+
+// Dyscyplina
+relationship ManyToMany {
+	Dyscyplina{ProgamStudiow} to ProgramStudiow{Dyscyplina}
+}

@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="programStudiow">
+            <h2><span jhiTranslate="appApp.programStudiow.detail.title">Program Studiow</span> {{programStudiow.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.programStudiow.profilKsztalcenia">Profil Ksztalcenia</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'appApp.ProfilKsztalcenia.' + programStudiow.profilKsztalcenia}}">{{programStudiow.profilKsztalcenia}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.programStudiow.formaStudiow">Forma Studiow</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'appApp.FormaStudiow.' + programStudiow.formaStudiow}}">{{programStudiow.formaStudiow}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.programStudiow.kierunek">Kierunek</span></dt>
+                <dd>
+                    <span>{{programStudiow.kierunek}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.programStudiow.wydzial">Wydzial</span></dt>
+                <dd>
+                    <span>{{programStudiow.wydzial}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.programStudiow.jezykProwadzeniaStudiow">Jezyk Prowadzenia Studiow</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'appApp.JezykProwadzeniaStudiow.' + programStudiow.jezykProwadzeniaStudiow}}">{{programStudiow.jezykProwadzeniaStudiow}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.programStudiow.liczbaSemestrow">Liczba Semestrow</span></dt>
+                <dd>
+                    <span>{{programStudiow.liczbaSemestrow}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.programStudiow.cyklKsztalcenia">Cykl Ksztalcenia</span></dt>
+                <dd>
+                    <span>{{programStudiow.cyklKsztalcenia}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.programStudiow.typStudiow">Typ Studiow</span></dt>
+                <dd>
+                    <div *ngIf="programStudiow.typStudiow">
+                        <a [routerLink]="['/typ-studiow', programStudiow.typStudiow?.id, 'view']">{{programStudiow.typStudiow?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/program-studiow', programStudiow.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-jhipster-sample-app/
 .DS_Store
 .vagrant
-*.log
+*.pdf
+jhipster-sample-app

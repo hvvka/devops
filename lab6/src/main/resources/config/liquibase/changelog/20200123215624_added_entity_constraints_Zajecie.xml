@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Zajecie.
+    -->
+    <changeSet id="20200123215624-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="forma_wiodaca_id"
+                                 baseTableName="zajecie"
+                                 constraintName="fk_zajecie_forma_wiodaca_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zajecie"/>
+
+        <addForeignKeyConstraint baseColumnNames="grupa_kursow_id"
+                                 baseTableName="zajecie"
+                                 constraintName="fk_zajecie_grupa_kursow_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zajecie"/>
+
+        <addForeignKeyConstraint baseColumnNames="przedmiot_id"
+                                 baseTableName="zajecie"
+                                 constraintName="fk_zajecie_przedmiot_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="przedmiot"/>
+
+    </changeSet>
+</databaseChangeLog>

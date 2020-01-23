@@ -42,6 +42,23 @@ public class CacheConfiguration {
             createCache(cm, pl.edu.pwr.twwo.domain.User.class.getName());
             createCache(cm, pl.edu.pwr.twwo.domain.Authority.class.getName());
             createCache(cm, pl.edu.pwr.twwo.domain.User.class.getName() + ".authorities");
+            createCache(cm, pl.edu.pwr.twwo.domain.KartaPrzedmiotu.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.OpiekunPrzedmiotu.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.Przedmiot.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.Przedmiot.class.getName() + ".programStudiows");
+            createCache(cm, pl.edu.pwr.twwo.domain.Przedmiot.class.getName() + ".efektKsztalcenias");
+            createCache(cm, pl.edu.pwr.twwo.domain.Zajecie.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.TypStudiow.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.ProgramStudiow.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.ProgramStudiow.class.getName() + ".przedmiots");
+            createCache(cm, pl.edu.pwr.twwo.domain.ProgramStudiow.class.getName() + ".dyscyplinas");
+            createCache(cm, pl.edu.pwr.twwo.domain.EfektKsztalcenia.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.EfektKsztalcenia.class.getName() + ".przedmiots");
+            createCache(cm, pl.edu.pwr.twwo.domain.EfektKsztalcenia.class.getName() + ".efektMinisterialnies");
+            createCache(cm, pl.edu.pwr.twwo.domain.Dyscyplina.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.Dyscyplina.class.getName() + ".progamStudiows");
+            createCache(cm, pl.edu.pwr.twwo.domain.EfektMinisterialny.class.getName());
+            createCache(cm, pl.edu.pwr.twwo.domain.EfektMinisterialny.class.getName() + ".efektKsztalcenias");
             // jhipster-needle-ehcache-add-entry
         };
     }
