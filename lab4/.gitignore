@@ -1,0 +1,6 @@
+jhipster-sample-app/
+application/
+.DS_Store
+*.log
+*.py
+*.pdf

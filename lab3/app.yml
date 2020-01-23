@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  app:
+    image: hvvka/twwo-app
+    build: ./jhipster-sample-app/
+    environment:
+      - JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/jhipstersampleapplication?useUnicode=true&characterEncoding=utf8&useSSL=false
+      - SLEEP=30 # gives time for other services to boot before the application
+    ports:
+      - 8080:8080
+  mysql:
+    extends:
+      file: mysql.yml
+      service: mysql
