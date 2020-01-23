@@ -1,0 +1,51 @@
+---
+- hosts: all 
+  tasks:
+  
+  - name: Update packages 
+    apt:
+      update_cache: yes
+
+  - name: Install required packages
+    apt:
+      name: "{{ item }}"
+      state: present
+    vars:
+      item:
+      - mysql-server 
+      - mysql-client
+      - python-pip
+      - python-mysqldb
+
+  - name: Install the Python MySQLB module
+    pip: 
+      name: MySQL-python
+
+  - name: Allow external connections on MySQL Service
+    block:
+    - name: Comment out bind-address
+      replace:
+        path: /etc/mysql/my.cnf
+        regexp: 'bind-addres'
+        replace: '#bind-address'
+    
+    - name: Comment out skip-external-locking
+      replace:
+        path: /etc/mysql/my.cnf
+        regexp: 'skip-external-locking'
+        replace: '#skip-external-locking'
+
+  - name: Create database root user with password and all database privileges and 'WITH GRANT OPTION'
+    mysql_user:
+      login_user: 'root'
+      login_password: 'root'
+      name: 'root'
+      password: 'root'
+      priv: '*.*:ALL,GRANT'
+      state: present
+      host: '%'
+
+  - name: Restart mysql service
+    service: 
+      name: mysql 
+      state: restarted

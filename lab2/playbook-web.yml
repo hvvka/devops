@@ -1,0 +1,99 @@
+---
+- hosts: all 
+  tasks:
+  
+  - name: Get packages
+    block:
+    - name: Update packages 
+      apt:
+        update_cache: yes
+    - name: Install required packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      vars:
+        item:
+        - openjdk-11-jdk 
+        - git
+        - python-pip
+    - name: Make sure pymysql is present
+      pip:
+        name: pymysql
+        state: present
+
+  - name: Create JAR
+    block:
+    - name: Check wheteher JAR executable exists
+      stat: 
+        path: /vagrant/jhipster-sample-app/target/jhipster-sample-application-0.0.1-SNAPSHOT.jar
+      register: jhipster_jar
+    - debug:
+        msg: "JAR executable already exists"
+      when: jhipster_jar.stat.exists
+      ignore_errors: yes
+    - name: Check wheteher the project repository is cloned
+      stat: 
+        path: /vagrant/jhipster-sample-app
+      register: jhipster_repo
+    - debug:
+        msg: "JHipster project already exists"
+      when: jhipster_repo.stat.exists
+      ignore_errors: yes
+
+    - name: Clone git repo if project isn't defined
+      when: jhipster_repo.stat.exists == false
+      ignore_errors: yes
+      git:
+        repo: 'https://github.com/jhipster/jhipster-sample-app.git'
+        dest: /vagrant/jhipster-sample-app
+
+    - name: Set database host and credentials in properties files
+      when: jhipster_jar.stat.exists == false
+      block:
+      - name: Replace datasource host
+        replace:
+          path: /vagrant/jhipster-sample-app/src/main/resources/config/application-prod.yml
+          regexp: 'localhost:3306'
+          replace: '192.168.33.11:3306'
+      - name: Replace datasource credentials
+        replace:
+          path: /vagrant/jhipster-sample-app/src/main/resources/config/application-prod.yml
+          regexp: 'username: root\npassword:'
+          replace: |
+            username: root
+            password: root
+
+    - name: Compile project if there's no JAR executable
+      when: jhipster_jar.stat.exists == false
+      ignore_errors: yes
+      shell: ./mvnw -Pprod clean verify
+      args:
+        chdir: /vagrant/jhipster-sample-app
+
+  - name: Create a new database with name 'jhipsterSampleApplication'
+    mysql_db:
+      name: jhipsterSampleApplication
+      login_host: 192.168.33.11
+      login_user: root
+      login_password: root
+      state: present
+
+  - name: Register application as a service
+    block:
+    - name: Create a unit file
+      copy:
+        content: |-
+          [Unit]
+          Description=JHipster application
+
+          [Service]
+          ExecStart=java -jar /vagrant/jhipster-sample-app/target/jhipster-sample-application-0.0.1-SNAPSHOT.jar
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: /etc/systemd/system/jhipster.service
+    - name: Enable service startup on boot
+      systemd:
+        name: jhipster
+        enabled: yes
+        state: started

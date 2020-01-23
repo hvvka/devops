@@ -1,0 +1,5 @@
+---
+- hosts: all 
+  tasks:
+  - name: Run JHipster application
+    shell: java -jar /vagrant/jhipster-sample-app/target/jhipster-sample-application-0.0.1-SNAPSHOT.jar &
