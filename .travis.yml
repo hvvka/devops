@@ -45,7 +45,11 @@ script:
   - ./mvnw -ntp checkstyle:check
   - ./mvnw -ntp clean verify
   - ./mvnw -ntp com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test' -Dmaven.repo.local=$MAVEN_USER_HOME
-  - ./mvnw -ntp verify -Pprod -DskipTests
+  # - ./mvnw -ntp verify -Pprod -DskipTests
+  - ./mvnw -ntp -Pprod verify jib:dockerBuild
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker tag app $DOCKER_USERNAME/psi
+  - docker push $DOCKER_USERNAME/psi
 notifications:
   webhooks:
     on_success: change # options: [always|never|change] default: always
