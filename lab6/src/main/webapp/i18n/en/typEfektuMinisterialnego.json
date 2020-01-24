@@ -2,8 +2,8 @@
   "appApp": {
     "TypEfektuMinisterialnego": {
       "null": "",
-      "OGOLNEGO_KSZTALCENIA": "OGOLNEGO_KSZTALCENIA",
-      "INZYNIERSKIEGO": "INZYNIERSKIEGO"
+      "OGOLNEGO_KSZTALCENIA": "general education",
+      "INZYNIERSKIEGO": "engineering"
     }
   }
 }

@@ -2,24 +2,24 @@
   "appApp": {
     "efektKsztalcenia": {
       "home": {
-        "title": "Efekt Ksztalcenias",
-        "createLabel": "Create a new Efekt Ksztalcenia",
-        "createOrEditLabel": "Create or edit a Efekt Ksztalcenia",
-        "notFound": "No Efekt Ksztalcenias found"
+        "title": "Educational Effects",
+        "createLabel": "Create a new Educational Effect",
+        "createOrEditLabel": "Create or edit a Educational Effect",
+        "notFound": "No Educational Effects found"
       },
-      "created": "A new Efekt Ksztalcenia is created with identifier {{ param }}",
-      "updated": "A Efekt Ksztalcenia is updated with identifier {{ param }}",
-      "deleted": "A Efekt Ksztalcenia is deleted with identifier {{ param }}",
+      "created": "A new Educational Effect is created with identifier {{ param }}",
+      "updated": "A Educational Effect is updated with identifier {{ param }}",
+      "deleted": "A Educational Effect is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Efekt Ksztalcenia {{ id }}?"
+        "question": "Are you sure you want to delete Educational Effect {{ id }}?"
       },
       "detail": {
-        "title": "Efekt Ksztalcenia"
+        "title": "Educational Effect"
       },
-      "opis": "Opis",
-      "programStudiow": "Program Studiow",
-      "przedmiot": "Przedmiot",
-      "efektMinisterialny": "Efekt Ministerialny"
+      "opis": "Description",
+      "programStudiow": "Study Programme",
+      "przedmiot": "Subject",
+      "efektMinisterialny": "Ministerial Effect"
     }
   }
 }

@@ -5,7 +5,7 @@
         "title": "Program Studiow",
         "createLabel": "Dodaj Program Studiow",
         "createOrEditLabel": "Dodaj lub edytuj: Program Studiow",
-        "notFound": "No Program Studiows found"
+        "notFound": "Nie znaleziono Programow Studiow"
       },
       "created": "Utworzono nowy obiekt typu Program Studiow z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Program Studiow z identyfikatorem {{ param }}",

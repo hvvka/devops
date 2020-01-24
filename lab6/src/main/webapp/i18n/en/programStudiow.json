@@ -2,30 +2,30 @@
   "appApp": {
     "programStudiow": {
       "home": {
-        "title": "Program Studiows",
-        "createLabel": "Create a new Program Studiow",
-        "createOrEditLabel": "Create or edit a Program Studiow",
-        "notFound": "No Program Studiows found"
+        "title": "Study Programmes",
+        "createLabel": "Create a new Study Programme",
+        "createOrEditLabel": "Create or edit a Study Programme",
+        "notFound": "No Study Programmes found"
       },
-      "created": "A new Program Studiow is created with identifier {{ param }}",
-      "updated": "A Program Studiow is updated with identifier {{ param }}",
-      "deleted": "A Program Studiow is deleted with identifier {{ param }}",
+      "created": "A new Study Programme is created with identifier {{ param }}",
+      "updated": "A Study Programme is updated with identifier {{ param }}",
+      "deleted": "A Study Programme is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Program Studiow {{ id }}?"
+        "question": "Are you sure you want to delete Study Programme {{ id }}?"
       },
       "detail": {
-        "title": "Program Studiow"
+        "title": "Study Programme"
       },
-      "profilKsztalcenia": "Profil Ksztalcenia",
-      "formaStudiow": "Forma Studiow",
-      "kierunek": "Kierunek",
-      "wydzial": "Wydzial",
-      "jezykProwadzeniaStudiow": "Jezyk Prowadzenia Studiow",
-      "liczbaSemestrow": "Liczba Semestrow",
-      "cyklKsztalcenia": "Cykl Ksztalcenia",
-      "typStudiow": "Typ Studiow",
-      "przedmiot": "Przedmiot",
-      "dyscyplina": "Dyscyplina"
+      "profilKsztalcenia": "Educational Profile",
+      "formaStudiow": "Form of Studies",
+      "kierunek": "Faculty",
+      "wydzial": "Department",
+      "jezykProwadzeniaStudiow": "Language of Studies",
+      "liczbaSemestrow": "No. Semesters",
+      "cyklKsztalcenia": "Education Cycle",
+      "typStudiow": "Type of Studies",
+      "przedmiot": "Subject",
+      "dyscyplina": "Area"
     }
   }
 }

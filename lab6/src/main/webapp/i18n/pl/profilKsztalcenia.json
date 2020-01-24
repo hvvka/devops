@@ -2,8 +2,8 @@
   "appApp": {
     "ProfilKsztalcenia": {
       "null": "",
-      "OGOLNOAKADEMICKI": "OGOLNOAKADEMICKI",
-      "PRAKTYCZNY": "PRAKTYCZNY"
+      "OGOLNOAKADEMICKI": "ogolnoakademicki",
+      "PRAKTYCZNY": "praktyczny"
     }
   }
 }

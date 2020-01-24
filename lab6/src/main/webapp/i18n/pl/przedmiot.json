@@ -5,7 +5,7 @@
         "title": "Przedmiot",
         "createLabel": "Dodaj Przedmiot",
         "createOrEditLabel": "Dodaj lub edytuj: Przedmiot",
-        "notFound": "No Przedmiots found"
+        "notFound": "Nie znaleziono Przedmiotow"
       },
       "created": "Utworzono nowy obiekt typu Przedmiot z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Przedmiot z identyfikatorem {{ param }}",

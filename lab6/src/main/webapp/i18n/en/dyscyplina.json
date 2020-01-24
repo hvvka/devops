@@ -2,23 +2,23 @@
   "appApp": {
     "dyscyplina": {
       "home": {
-        "title": "Dyscyplinas",
-        "createLabel": "Create a new Dyscyplina",
-        "createOrEditLabel": "Create or edit a Dyscyplina",
-        "notFound": "No Dyscyplinas found"
+        "title": "Areas",
+        "createLabel": "Create a new Area",
+        "createOrEditLabel": "Create or edit an Area",
+        "notFound": "No Areas found"
       },
-      "created": "A new Dyscyplina is created with identifier {{ param }}",
-      "updated": "A Dyscyplina is updated with identifier {{ param }}",
-      "deleted": "A Dyscyplina is deleted with identifier {{ param }}",
+      "created": "A new Area is created with identifier {{ param }}",
+      "updated": "An Area is updated with identifier {{ param }}",
+      "deleted": "An Area is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Dyscyplina {{ id }}?"
+        "question": "Are you sure you want to delete Area {{ id }}?"
       },
       "detail": {
-        "title": "Dyscyplina"
+        "title": "Area"
       },
-      "nazwa": "Nazwa",
-      "czyWiodaca": "Czy Wiodaca",
-      "progamStudiow": "Progam Studiow"
+      "nazwa": "Name",
+      "czyWiodaca": "Is Leading?",
+      "progamStudiow": "Study Programme"
     }
   }
 }

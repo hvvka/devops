@@ -2,22 +2,22 @@
   "appApp": {
     "typStudiow": {
       "home": {
-        "title": "Typ Studiows",
-        "createLabel": "Create a new Typ Studiow",
-        "createOrEditLabel": "Create or edit a Typ Studiow",
-        "notFound": "No Typ Studiows found"
+        "title": "Type of Studies",
+        "createLabel": "Create a new Type of Studies",
+        "createOrEditLabel": "Create or edit a Type of Studies",
+        "notFound": "No Type of Studies found"
       },
-      "created": "A new Typ Studiow is created with identifier {{ param }}",
-      "updated": "A Typ Studiow is updated with identifier {{ param }}",
-      "deleted": "A Typ Studiow is deleted with identifier {{ param }}",
+      "created": "A new Type of Studies is created with identifier {{ param }}",
+      "updated": "A Type of Studies is updated with identifier {{ param }}",
+      "deleted": "A Type of Studies is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Typ Studiow {{ id }}?"
+        "question": "Are you sure you want to delete Type of Studies {{ id }}?"
       },
       "detail": {
-        "title": "Typ Studiow"
+        "title": "Type of Studies"
       },
-      "nazwa": "Nazwa",
-      "stopienStudiow": "Stopien Studiow"
+      "nazwa": "Name",
+      "stopienStudiow": "Degree of Studies"
     }
   }
 }

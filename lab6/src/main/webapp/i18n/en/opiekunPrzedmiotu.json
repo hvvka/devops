@@ -2,19 +2,19 @@
   "appApp": {
     "opiekunPrzedmiotu": {
       "home": {
-        "title": "Opiekun Przedmiotus",
-        "createLabel": "Create a new Opiekun Przedmiotu",
-        "createOrEditLabel": "Create or edit a Opiekun Przedmiotu",
-        "notFound": "No Opiekun Przedmiotus found"
+        "title": "Subject Guards",
+        "createLabel": "Create a new Subject Guard",
+        "createOrEditLabel": "Create or edit a Subject Guard",
+        "notFound": "No Subject Guards found"
       },
-      "created": "A new Opiekun Przedmiotu is created with identifier {{ param }}",
-      "updated": "A Opiekun Przedmiotu is updated with identifier {{ param }}",
-      "deleted": "A Opiekun Przedmiotu is deleted with identifier {{ param }}",
+      "created": "A new Subject Guard is created with identifier {{ param }}",
+      "updated": "A Subject Guard is updated with identifier {{ param }}",
+      "deleted": "A Subject Guard is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Opiekun Przedmiotu {{ id }}?"
+        "question": "Are you sure you want to delete Subject Guard {{ id }}?"
       },
       "detail": {
-        "title": "Opiekun Przedmiotu"
+        "title": "Subject Guard"
       }
     }
   }

@@ -2,8 +2,8 @@
   "appApp": {
     "FormaStudiow": {
       "null": "",
-      "STACJONARNE": "STACJONARNE",
-      "NIESTACJONARNE": "NIESTACJONARNE"
+      "STACJONARNE": "full-time",
+      "NIESTACJONARNE": "part-time"
     }
   }
 }

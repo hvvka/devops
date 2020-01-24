@@ -5,7 +5,7 @@
         "title": "Zajecie",
         "createLabel": "Dodaj Zajecie",
         "createOrEditLabel": "Dodaj lub edytuj: Zajecie",
-        "notFound": "No Zajecies found"
+        "notFound": "Nie znaleziono Zajec"
       },
       "created": "Utworzono nowy obiekt typu Zajecie z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Zajecie z identyfikatorem {{ param }}",
@@ -17,9 +17,9 @@
         "title": "Zajecie"
       },
       "forma": "Forma",
-      "eCTS": "E CTS",
-      "zZU": "Z ZU",
-      "cNPS": "C NPS",
+      "eCTS": "ECTS",
+      "zZU": "ZZU",
+      "cNPS": "CNPS",
       "modulKsztalcenia": "Modul Ksztalcenia",
       "poziomJezyka": "Poziom Jezyka",
       "formaWiodaca": "Forma Wiodaca",

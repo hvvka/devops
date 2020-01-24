@@ -5,7 +5,7 @@
         "title": "Opiekun Przedmiotu",
         "createLabel": "Dodaj Opiekun Przedmiotu",
         "createOrEditLabel": "Dodaj lub edytuj: Opiekun Przedmiotu",
-        "notFound": "No Opiekun Przedmiotus found"
+        "notFound": "Nie znaleziono Opiekuna Przedmiotu"
       },
       "created": "Utworzono nowy obiekt typu Opiekun Przedmiotu z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Opiekun Przedmiotu z identyfikatorem {{ param }}",

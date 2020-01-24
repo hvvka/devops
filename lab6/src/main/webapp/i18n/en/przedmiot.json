@@ -2,26 +2,26 @@
   "appApp": {
     "przedmiot": {
       "home": {
-        "title": "Przedmiots",
-        "createLabel": "Create a new Przedmiot",
-        "createOrEditLabel": "Create or edit a Przedmiot",
-        "notFound": "No Przedmiots found"
+        "title": "Subjects",
+        "createLabel": "Create a new Subject",
+        "createOrEditLabel": "Create or edit a Subject",
+        "notFound": "No Subjects found"
       },
-      "created": "A new Przedmiot is created with identifier {{ param }}",
-      "updated": "A Przedmiot is updated with identifier {{ param }}",
-      "deleted": "A Przedmiot is deleted with identifier {{ param }}",
+      "created": "A new Subject is created with identifier {{ param }}",
+      "updated": "A Subject is updated with identifier {{ param }}",
+      "deleted": "A Subject is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Przedmiot {{ id }}?"
+        "question": "Are you sure you want to delete Subject {{ id }}?"
       },
       "detail": {
-        "title": "Przedmiot"
+        "title": "Subject"
       },
-      "nrSemestru": "Nr Semestru",
-      "nazwa": "Nazwa",
-      "kartaPrzedmiotu": "Karta Przedmiotu",
-      "opiekunPrzedmiotu": "Opiekun Przedmiotu",
-      "programStudiow": "Program Studiow",
-      "efektKsztalcenia": "Efekt Ksztalcenia"
+      "nrSemestru": "No. Semester",
+      "nazwa": "Name",
+      "kartaPrzedmiotu": "Subject Card",
+      "opiekunPrzedmiotu": "Subject Guard",
+      "programStudiow": "Study Programme",
+      "efektKsztalcenia": "Educational Effect"
     }
   }
 }

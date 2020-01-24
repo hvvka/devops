@@ -2,11 +2,11 @@
   "appApp": {
     "FormaPrzedmiotu": {
       "null": "",
-      "WYKLAD": "WYKLAD",
-      "SEMINARIUM": "SEMINARIUM",
-      "LABORATORIUM": "LABORATORIUM",
-      "PROJEKT": "PROJEKT",
-      "CWICZENIA": "CWICZENIA"
+      "WYKLAD": "lecture",
+      "SEMINARIUM": "seminar",
+      "LABORATORIUM": "laboratory",
+      "PROJEKT": "project",
+      "CWICZENIA": "practice"
     }
   }
 }

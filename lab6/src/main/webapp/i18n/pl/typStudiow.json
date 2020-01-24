@@ -5,7 +5,7 @@
         "title": "Typ Studiow",
         "createLabel": "Dodaj Typ Studiow",
         "createOrEditLabel": "Dodaj lub edytuj: Typ Studiow",
-        "notFound": "No Typ Studiows found"
+        "notFound": "Nie znaleziono Typow Studiow"
       },
       "created": "Utworzono nowy obiekt typu Typ Studiow z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Typ Studiow z identyfikatorem {{ param }}",

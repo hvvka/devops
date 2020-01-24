@@ -5,7 +5,7 @@
         "title": "Karta Przedmiotu",
         "createLabel": "Dodaj Karta Przedmiotu",
         "createOrEditLabel": "Dodaj lub edytuj: Karta Przedmiotu",
-        "notFound": "No Karta Przedmiotus found"
+        "notFound": "Nie znaleziono Kart Przedmiotu"
       },
       "created": "Utworzono nowy obiekt typu Karta Przedmiotu z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Karta Przedmiotu z identyfikatorem {{ param }}",

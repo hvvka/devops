@@ -3,9 +3,9 @@
     "dyscyplina": {
       "home": {
         "title": "Dyscyplina",
-        "createLabel": "Dodaj Dyscyplina",
+        "createLabel": "Dodaj Dyscypline",
         "createOrEditLabel": "Dodaj lub edytuj: Dyscyplina",
-        "notFound": "No Dyscyplinas found"
+        "notFound": "Nie znaleziono Dyscyplin"
       },
       "created": "Utworzono nowy obiekt typu Dyscyplina z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Dyscyplina z identyfikatorem {{ param }}",
@@ -17,7 +17,7 @@
         "title": "Dyscyplina"
       },
       "nazwa": "Nazwa",
-      "czyWiodaca": "Czy Wiodaca",
+      "czyWiodaca": "Czy Wiodaca?",
       "progamStudiow": "Progam Studiow"
     }
   }

@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/functions';
-@import '~bootswatch/dist/lumen/variables';
+@import '~bootswatch/dist/flatly/variables';
 @import '~bootstrap/scss/variables';
 
 /* ==========================================================================
@@ -49,6 +49,6 @@ Logo styles
   width: 45px;
   display: inline-block;
   vertical-align: middle;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+  background: url('../../../content/images/logo.png') no-repeat center center;
   background-size: contain;
 }

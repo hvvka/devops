@@ -2,13 +2,13 @@
   "appApp": {
     "ModulKsztalcenia": {
       "null": "",
-      "PROFILOWY": "PROFILOWY",
-      "MATEMATYKA": "MATEMATYKA",
-      "FIZYKA": "FIZYKA",
-      "CHEMIA": "CHEMIA",
-      "NAUKI_SPOLECZNE_I_HUMANISTYCZNE": "NAUKI_SPOLECZNE_I_HUMANISTYCZNE",
-      "JEZYKI_OBCE": "JEZYKI_OBCE",
-      "ZAJECIA_SPORTOWE": "ZAJECIA_SPORTOWE"
+      "PROFILOWY": "in profile",
+      "MATEMATYKA": "maths",
+      "FIZYKA": "physics",
+      "CHEMIA": "chemistry",
+      "NAUKI_SPOLECZNE_I_HUMANISTYCZNE": "social sciences and humanities",
+      "JEZYKI_OBCE": "foreign languages",
+      "ZAJECIA_SPORTOWE": "sports"
     }
   }
 }
