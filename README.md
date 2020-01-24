@@ -1,5 +1,7 @@
 # devops
 
+[![Build Status](https://travis-ci.com/hvvka/devops.svg?token=AtJu5RATvaNahLGCYye5&branch=master)](https://travis-ci.com/hvvka/devops)
+
 1. [Vagrant with shell](./lab1)
 
 1. [Vagrant with Ansible](./lab2)
