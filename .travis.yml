@@ -19,6 +19,7 @@ env:
     - NG_CLI_ANALYTICS="false"
     - MAVEN_USER_HOME=$HOME/.m2/repository/
 before_install:
+  - cd lab6
   - |
     if [[ $JHI_JDK = '8' ]]; then
       echo '*** Using OpenJDK 8'
