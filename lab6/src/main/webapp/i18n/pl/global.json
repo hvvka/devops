@@ -107,7 +107,8 @@
       "edit": "Edytuj",
       "open": "Otwórz",
       "save": "Zapisz",
-      "view": "Widok"
+      "view": "Widok",
+      "download": "Pobierz"
     },
     "detail": {
       "field": "Pole",
