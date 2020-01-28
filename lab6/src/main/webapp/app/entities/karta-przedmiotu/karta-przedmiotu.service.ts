@@ -12,7 +12,6 @@ type EntityArrayResponseType = HttpResponse<IKartaPrzedmiotu[]>;
 @Injectable({ providedIn: 'root' })
 export class KartaPrzedmiotuService {
   public resourceUrl = SERVER_API_URL + 'api/karta-przedmiotus';
-  public resourceUrlDownload = SERVER_API_URL + 'api/karta-przedmiotu';
 
   constructor(protected http: HttpClient) {}
 
@@ -38,6 +37,6 @@ export class KartaPrzedmiotuService {
   }
 
   downloadPdf(id: number): Observable<Blob> {
-    return this.http.get(`${this.resourceUrlDownload}/downloads/${id}`, { responseType: 'blob' });
+    return this.http.get(`${this.resourceUrl}/downloads/${id}`, { responseType: 'blob' });
   }
 }

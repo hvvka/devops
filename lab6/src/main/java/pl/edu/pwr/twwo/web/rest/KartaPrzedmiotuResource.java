@@ -112,7 +112,7 @@ public class KartaPrzedmiotuResource {
         return ResponseUtil.wrapOrNotFound(kartaPrzedmiotu);
     }
 
-    @GetMapping("/karta-przedmiotu/downloads/{id}")
+    @GetMapping("/karta-przedmiotus/downloads/{id}")
     public ResponseEntity<InputStreamResource> getKartaPrzedmiotuPdf(@PathVariable Long id) {
         log.debug("REST request to get PDF of KartaPrzedmiotu : {}", id);
         try {
