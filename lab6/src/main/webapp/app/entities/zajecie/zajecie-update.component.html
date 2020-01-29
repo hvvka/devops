@@ -103,21 +103,47 @@
                     </select>
                     <div *ngIf="editForm.get('poziomJezyka')!.invalid && (editForm.get('poziomJezyka')!.dirty || editForm.get('poziomJezyka')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('poziomJezyka')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('poziomJezyka')?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_formaZaliczenia"
+                           jhiTranslate="appApp.zajecie.formaZaliczenia">Forma Zaliczenia</label>
+                    <select class="form-control" formControlName="formaZaliczenia" id="field_formaZaliczenia"
+                            name="formaZaliczenia">
+                        <option value="EGZAMIN">{{'appApp.FormaZaliczenia.EGZAMIN' | translate}}</option>
+                        <option value="NA_OCENE">{{'appApp.FormaZaliczenia.NA_OCENE' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('formaZaliczenia')!.invalid && (editForm.get('formaZaliczenia')!.dirty || editForm.get('formaZaliczenia')!.touched)">
+                        <small *ngIf="editForm.get('formaZaliczenia')?.errors?.required"
+                               class="form-text text-danger" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_czyKoncowy" jhiTranslate="appApp.zajecie.czyKoncowy">Czy
+                        Koncowy</label>
+                    <input class="form-control" formControlName="czyKoncowy" id="field_czyKoncowy" name="czyKoncowy"
+                           type="checkbox"/>
+                </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="appApp.zajecie.formaWiodaca" for="field_formaWiodaca">Forma Wiodaca</label>
-                    <select class="form-control" id="field_formaWiodaca" name="formaWiodaca" formControlName="formaWiodaca">
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.formaWiodaca"
+                           for="field_formaWiodaca">Forma Wiodaca</label>
+                    <select class="form-control" id="field_formaWiodaca" name="formaWiodaca"
+                            formControlName="formaWiodaca">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="zajecieOption.id === editForm.get('formaWiodaca')!.value?.id ? editForm.get('formaWiodaca')!.value : zajecieOption" *ngFor="let zajecieOption of formawiodacas; trackBy: trackById">{{zajecieOption.id}}</option>
+                        <option [ngValue]="zajecieOption.id === editForm.get('formaWiodaca')!.value?.id ? editForm.get('formaWiodaca')!.value : zajecieOption"
+                                *ngFor="let zajecieOption of formawiodacas; trackBy: trackById">{{zajecieOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="appApp.zajecie.grupaKursow" for="field_grupaKursow">Grupa Kursow</label>
+                    <label class="form-control-label" jhiTranslate="appApp.zajecie.grupaKursow" for="field_grupaKursow">Grupa
+                        Kursow</label>
                     <select class="form-control" id="field_grupaKursow" name="grupaKursow" formControlName="grupaKursow">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="zajecieOption.id === editForm.get('grupaKursow')!.value?.id ? editForm.get('grupaKursow')!.value : zajecieOption" *ngFor="let zajecieOption of zajecies; trackBy: trackById">{{zajecieOption.id}}</option>

@@ -43,9 +43,11 @@ describe('EfektMinisterialny e2e test', () => {
 
     await efektMinisterialnyComponentsPage.clickOnCreateButton();
     await promise.all([
+      efektMinisterialnyUpdatePage.setKodEfektuInput('kodEfektu'),
       efektMinisterialnyUpdatePage.setPoziomEfektuInput('5'),
       efektMinisterialnyUpdatePage.typEfektuMinisterialnegoSelectLastOption()
     ]);
+    expect(await efektMinisterialnyUpdatePage.getKodEfektuInput()).to.eq('kodEfektu', 'Expected KodEfektu value to be equals to kodEfektu');
     expect(await efektMinisterialnyUpdatePage.getPoziomEfektuInput()).to.eq('5', 'Expected poziomEfektu value to be equals to 5');
     await efektMinisterialnyUpdatePage.save();
     expect(await efektMinisterialnyUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

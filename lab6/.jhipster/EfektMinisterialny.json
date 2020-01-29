@@ -1,17 +1,24 @@
 {
     "name": "EfektMinisterialny",
     "fields": [
-        {
-            "fieldName": "poziomEfektu",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "typEfektuMinisterialnego",
-            "fieldType": "TypEfektuMinisterialnego",
-            "fieldValues": "OGOLNEGO_KSZTALCENIA,INZYNIERSKIEGO",
+      {
+        "fieldName": "kodEfektu",
+        "fieldType": "String",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "poziomEfektu",
+        "fieldType": "Long",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "typEfektuMinisterialnego",
+        "fieldType": "TypEfektuMinisterialnego",
+        "fieldValues": "OGOLNEGO_KSZTALCENIA,INZYNIERSKIEGO",
             "fieldValidateRules": [
                 "required"
             ]

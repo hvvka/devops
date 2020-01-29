@@ -16,6 +16,7 @@
       "detail": {
         "title": "Efekt Ksztalcenia"
       },
+      "kodEfektu": "Kod Efektu",
       "opis": "Opis",
       "programStudiow": "Program Studiow",
       "przedmiot": "Przedmiot",

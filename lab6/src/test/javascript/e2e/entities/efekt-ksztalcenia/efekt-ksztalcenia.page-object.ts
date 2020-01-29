@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class EfektKsztalceniaComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -26,6 +26,7 @@ export class EfektKsztalceniaUpdatePage {
   pageTitle = element(by.id('jhi-efekt-ksztalcenia-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
+  kodEfektuInput = element(by.id('field_kodEfektu'));
   opisInput = element(by.id('field_opis'));
   programStudiowSelect = element(by.id('field_programStudiow'));
   przedmiotSelect = element(by.id('field_przedmiot'));
@@ -33,6 +34,14 @@ export class EfektKsztalceniaUpdatePage {
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setKodEfektuInput(kodEfektu: string): Promise<void> {
+    await this.kodEfektuInput.sendKeys(kodEfektu);
+  }
+
+  async getKodEfektuInput(): Promise<string> {
+    return await this.kodEfektuInput.getAttribute('value');
   }
 
   async setOpisInput(opis: string): Promise<void> {

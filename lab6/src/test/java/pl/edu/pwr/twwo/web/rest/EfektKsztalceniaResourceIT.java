@@ -1,10 +1,5 @@
 package pl.edu.pwr.twwo.web.rest;
 
-import pl.edu.pwr.twwo.AppApp;
-import pl.edu.pwr.twwo.domain.EfektKsztalcenia;
-import pl.edu.pwr.twwo.repository.EfektKsztalceniaRepository;
-import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -12,7 +7,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -20,23 +14,30 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
+import pl.edu.pwr.twwo.AppApp;
+import pl.edu.pwr.twwo.domain.EfektKsztalcenia;
+import pl.edu.pwr.twwo.repository.EfektKsztalceniaRepository;
+import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 
 /**
  * Integration tests for the {@link EfektKsztalceniaResource} REST controller.
  */
 @SpringBootTest(classes = AppApp.class)
 public class EfektKsztalceniaResourceIT {
+
+    private static final String DEFAULT_KOD_EFEKTU = "AAAAAAAAAA";
+    private static final String UPDATED_KOD_EFEKTU = "BBBBBBBBBB";
 
     private static final String DEFAULT_OPIS = "AAAAAAAAAA";
     private static final String UPDATED_OPIS = "BBBBBBBBBB";
@@ -86,6 +87,7 @@ public class EfektKsztalceniaResourceIT {
      */
     public static EfektKsztalcenia createEntity(EntityManager em) {
         EfektKsztalcenia efektKsztalcenia = new EfektKsztalcenia()
+            .kodEfektu(DEFAULT_KOD_EFEKTU)
             .opis(DEFAULT_OPIS);
         return efektKsztalcenia;
     }
@@ -97,6 +99,7 @@ public class EfektKsztalceniaResourceIT {
      */
     public static EfektKsztalcenia createUpdatedEntity(EntityManager em) {
         EfektKsztalcenia efektKsztalcenia = new EfektKsztalcenia()
+            .kodEfektu(UPDATED_KOD_EFEKTU)
             .opis(UPDATED_OPIS);
         return efektKsztalcenia;
     }
@@ -121,6 +124,7 @@ public class EfektKsztalceniaResourceIT {
         List<EfektKsztalcenia> efektKsztalceniaList = efektKsztalceniaRepository.findAll();
         assertThat(efektKsztalceniaList).hasSize(databaseSizeBeforeCreate + 1);
         EfektKsztalcenia testEfektKsztalcenia = efektKsztalceniaList.get(efektKsztalceniaList.size() - 1);
+        assertThat(testEfektKsztalcenia.getKodEfektu()).isEqualTo(DEFAULT_KOD_EFEKTU);
         assertThat(testEfektKsztalcenia.getOpis()).isEqualTo(DEFAULT_OPIS);
     }
 
@@ -143,6 +147,24 @@ public class EfektKsztalceniaResourceIT {
         assertThat(efektKsztalceniaList).hasSize(databaseSizeBeforeCreate);
     }
 
+
+    @Test
+    @Transactional
+    public void checkKodEfektuIsRequired() throws Exception {
+        int databaseSizeBeforeTest = efektKsztalceniaRepository.findAll().size();
+        // set the field null
+        efektKsztalcenia.setKodEfektu(null);
+
+        // Create the EfektKsztalcenia, which fails.
+
+        restEfektKsztalceniaMockMvc.perform(post("/api/efekt-ksztalcenias")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(efektKsztalcenia)))
+            .andExpect(status().isBadRequest());
+
+        List<EfektKsztalcenia> efektKsztalceniaList = efektKsztalceniaRepository.findAll();
+        assertThat(efektKsztalceniaList).hasSize(databaseSizeBeforeTest);
+    }
 
     @Test
     @Transactional
@@ -173,9 +195,10 @@ public class EfektKsztalceniaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(efektKsztalcenia.getId().intValue())))
+            .andExpect(jsonPath("$.[*].kodEfektu").value(hasItem(DEFAULT_KOD_EFEKTU)))
             .andExpect(jsonPath("$.[*].opis").value(hasItem(DEFAULT_OPIS)));
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public void getAllEfektKsztalceniasWithEagerRelationshipsIsEnabled() throws Exception {
         EfektKsztalceniaResource efektKsztalceniaResource = new EfektKsztalceniaResource(efektKsztalceniaRepositoryMock);
@@ -220,6 +243,7 @@ public class EfektKsztalceniaResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(efektKsztalcenia.getId().intValue()))
+            .andExpect(jsonPath("$.kodEfektu").value(DEFAULT_KOD_EFEKTU))
             .andExpect(jsonPath("$.opis").value(DEFAULT_OPIS));
     }
 
@@ -244,6 +268,7 @@ public class EfektKsztalceniaResourceIT {
         // Disconnect from session so that the updates on updatedEfektKsztalcenia are not directly saved in db
         em.detach(updatedEfektKsztalcenia);
         updatedEfektKsztalcenia
+            .kodEfektu(UPDATED_KOD_EFEKTU)
             .opis(UPDATED_OPIS);
 
         restEfektKsztalceniaMockMvc.perform(put("/api/efekt-ksztalcenias")
@@ -255,6 +280,7 @@ public class EfektKsztalceniaResourceIT {
         List<EfektKsztalcenia> efektKsztalceniaList = efektKsztalceniaRepository.findAll();
         assertThat(efektKsztalceniaList).hasSize(databaseSizeBeforeUpdate);
         EfektKsztalcenia testEfektKsztalcenia = efektKsztalceniaList.get(efektKsztalceniaList.size() - 1);
+        assertThat(testEfektKsztalcenia.getKodEfektu()).isEqualTo(UPDATED_KOD_EFEKTU);
         assertThat(testEfektKsztalcenia.getOpis()).isEqualTo(UPDATED_OPIS);
     }
 

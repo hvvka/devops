@@ -9,30 +9,31 @@
                 "required"
             ]
         },
-        {
-            "fieldName": "formaStudiow",
-            "fieldType": "FormaStudiow",
-            "fieldValues": "STACJONARNE,NIESTACJONARNE",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "kierunek",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "wydzial",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "jezykProwadzeniaStudiow",
+      {
+        "fieldName": "formaStudiow",
+        "fieldType": "FormaStudiow",
+        "fieldValues": "STACJONARNE,NIESTACJONARNE",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "kierunek",
+        "fieldType": "String"
+      },
+      {
+        "fieldName": "specjalnosc",
+        "fieldType": "String"
+      },
+      {
+        "fieldName": "wydzial",
+        "fieldType": "String",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "jezykProwadzeniaStudiow",
             "fieldType": "JezykProwadzeniaStudiow",
             "fieldValues": "POLSKI,ANGIELSKI"
         },

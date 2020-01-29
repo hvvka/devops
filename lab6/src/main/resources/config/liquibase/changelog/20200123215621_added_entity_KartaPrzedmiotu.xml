@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity KartaPrzedmiotu.
@@ -16,8 +14,17 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="kod_przedmiotu" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="nazwa" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
+            </column>
+            <column name="nazwa_ang" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rodzaj_przedmiotu" type="varchar(255)">
+                <constraints nullable="false"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -38,11 +45,14 @@
     -->
     <changeSet id="20200123215621-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/karta_przedmiotu.csv"
-                  separator=";"
-                  tableName="karta_przedmiotu">
+            file="config/liquibase/fake-data/karta_przedmiotu.csv"
+            separator=";"
+            tableName="karta_przedmiotu">
             <column name="id" type="numeric"/>
+            <column name="kod_przedmiotu" type="string"/>
             <column name="nazwa" type="string"/>
+            <column name="nazwa_ang" type="string"/>
+            <column name="rodzaj_przedmiotu" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

@@ -1,8 +1,9 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { KartaPrzedmiotuService } from 'app/entities/karta-przedmiotu/karta-przedmiotu.service';
 import { IKartaPrzedmiotu, KartaPrzedmiotu } from 'app/shared/model/karta-przedmiotu.model';
+import { RodzajPrzedmiotu } from 'app/shared/model/enumerations/rodzaj-przedmiotu.model';
 
 describe('Service Tests', () => {
   describe('KartaPrzedmiotu Service', () => {
@@ -20,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(KartaPrzedmiotuService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new KartaPrzedmiotu(0, 'AAAAAAA');
+      elemDefault = new KartaPrzedmiotu(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', RodzajPrzedmiotu.OBOWIAZKOWY);
     });
 
     describe('Service methods', () => {
@@ -56,7 +57,10 @@ describe('Service Tests', () => {
       it('should update a KartaPrzedmiotu', () => {
         const returnedFromService = Object.assign(
           {
-            nazwa: 'BBBBBB'
+            kodPrzedmiotu: 'BBBBBB',
+            nazwa: 'BBBBBB',
+            nazwaAng: 'BBBBBB',
+            rodzajPrzedmiotu: 'BBBBBB'
           },
           elemDefault
         );
@@ -74,7 +78,10 @@ describe('Service Tests', () => {
       it('should return a list of KartaPrzedmiotu', () => {
         const returnedFromService = Object.assign(
           {
-            nazwa: 'BBBBBB'
+            kodPrzedmiotu: 'BBBBBB',
+            nazwa: 'BBBBBB',
+            nazwaAng: 'BBBBBB',
+            rodzajPrzedmiotu: 'BBBBBB'
           },
           elemDefault
         );

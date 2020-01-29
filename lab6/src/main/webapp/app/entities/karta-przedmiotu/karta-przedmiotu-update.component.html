@@ -7,16 +7,63 @@
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
+                           readonly/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_kodPrzedmiotu"
+                           jhiTranslate="appApp.kartaPrzedmiotu.kodPrzedmiotu">Kod Przedmiotu</label>
+                    <input class="form-control" formControlName="kodPrzedmiotu" id="field_kodPrzedmiotu"
+                           name="kodPrzedmiotu"
+                           type="text"/>
+                    <div
+                        *ngIf="editForm.get('kodPrzedmiotu')!.invalid && (editForm.get('kodPrzedmiotu')!.dirty || editForm.get('kodPrzedmiotu')!.touched)">
+                        <small *ngIf="editForm.get('kodPrzedmiotu')?.errors?.required"
+                               class="form-text text-danger" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="appApp.kartaPrzedmiotu.nazwa" for="field_nazwa">Nazwa</label>
                     <input type="text" class="form-control" name="nazwa" id="field_nazwa"
                            formControlName="nazwa"/>
-                    <div *ngIf="editForm.get('nazwa')!.invalid && (editForm.get('nazwa')!.dirty || editForm.get('nazwa')!.touched)">
+                    <div
+                        *ngIf="editForm.get('nazwa')!.invalid && (editForm.get('nazwa')!.dirty || editForm.get('nazwa')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('nazwa')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('nazwa')?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nazwaAng"
+                           jhiTranslate="appApp.kartaPrzedmiotu.nazwaAng">Nazwa Ang</label>
+                    <input class="form-control" formControlName="nazwaAng" id="field_nazwaAng" name="nazwaAng"
+                           type="text"/>
+                    <div
+                        *ngIf="editForm.get('nazwaAng')!.invalid && (editForm.get('nazwaAng')!.dirty || editForm.get('nazwaAng')!.touched)">
+                        <small *ngIf="editForm.get('nazwaAng')?.errors?.required"
+                               class="form-text text-danger" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rodzajPrzedmiotu"
+                           jhiTranslate="appApp.kartaPrzedmiotu.rodzajPrzedmiotu">Rodzaj Przedmiotu</label>
+                    <select class="form-control" formControlName="rodzajPrzedmiotu" id="field_rodzajPrzedmiotu"
+                            name="rodzajPrzedmiotu">
+                        <option value="OBOWIAZKOWY">{{'appApp.RodzajPrzedmiotu.OBOWIAZKOWY' | translate}}</option>
+                        <option value="WYBIERALNY">{{'appApp.RodzajPrzedmiotu.WYBIERALNY' | translate}}</option>
+                        <option
+                            value="OGOLNOUCZELNIANY">{{'appApp.RodzajPrzedmiotu.OGOLNOUCZELNIANY' | translate}}</option>
+                    </select>
+                    <div
+                        *ngIf="editForm.get('rodzajPrzedmiotu')!.invalid && (editForm.get('rodzajPrzedmiotu')!.dirty || editForm.get('rodzajPrzedmiotu')!.touched)">
+                        <small *ngIf="editForm.get('rodzajPrzedmiotu')?.errors?.required"
+                               class="form-text text-danger" jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                     </div>
                 </div>

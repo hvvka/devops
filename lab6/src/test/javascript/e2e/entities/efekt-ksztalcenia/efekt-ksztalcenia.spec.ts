@@ -39,11 +39,13 @@ describe('EfektKsztalcenia e2e test', () => {
 
     await efektKsztalceniaComponentsPage.clickOnCreateButton();
     await promise.all([
+      efektKsztalceniaUpdatePage.setKodEfektuInput('kodEfektu'),
       efektKsztalceniaUpdatePage.setOpisInput('opis'),
       efektKsztalceniaUpdatePage.programStudiowSelectLastOption()
       // efektKsztalceniaUpdatePage.przedmiotSelectLastOption(),
       // efektKsztalceniaUpdatePage.efektMinisterialnySelectLastOption(),
     ]);
+    expect(await efektKsztalceniaUpdatePage.getKodEfektuInput()).to.eq('kodEfektu', 'Expected KodEfektu value to be equals to kodEfektu');
     expect(await efektKsztalceniaUpdatePage.getOpisInput()).to.eq('opis', 'Expected Opis value to be equals to opis');
     await efektKsztalceniaUpdatePage.save();
     expect(await efektKsztalceniaUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
