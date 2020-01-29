@@ -7,13 +7,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.edu.pwr.twwo.domain.*;
+import pl.edu.pwr.twwo.domain.enumeration.FormaPrzedmiotu;
 import pl.edu.pwr.twwo.repository.*;
 
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -48,7 +51,7 @@ public class GenerateKartaPrzedmiotuPdfService {
 
             document.open();
 
-            PdfPTable headerTable = createHeaderTable(programStudiow, kartaPrzedmiotu, typStudiow);
+            PdfPTable headerTable = createHeaderTable(programStudiow, kartaPrzedmiotu, typStudiow, zajeciesSet);
             document.add(headerTable);
 
             PdfPTable formaPrzedmiotuTable = createFormaPrzedmiotuTable(zajeciesSet);
@@ -59,6 +62,7 @@ public class GenerateKartaPrzedmiotuPdfService {
 
             document.close();
         } catch (Exception e) {
+            log.error("Failed creating PDF {}", e.toString());
         }
 
         return file;
@@ -76,7 +80,7 @@ public class GenerateKartaPrzedmiotuPdfService {
         table.addCell(pdfPCell);
     }
 
-    private PdfPTable createHeaderTable(ProgramStudiow programStudiow, KartaPrzedmiotu kartaPrzedmiotu, TypStudiow typStudiow) {
+    private PdfPTable createHeaderTable(ProgramStudiow programStudiow, KartaPrzedmiotu kartaPrzedmiotu, TypStudiow typStudiow, Set<Zajecie> zajeciesSet) {
         PdfPTable headerTable = new PdfPTable(1);
         headerTable.setSpacingAfter(20f);
 
@@ -89,14 +93,13 @@ public class GenerateKartaPrzedmiotuPdfService {
         addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Stopień studiów i forma: %s\n", String.format("%s, %s", typStudiow.getStopienStudiow(), programStudiow.getFormaStudiow())));
         addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Rodzaj przedmiotu: %s\n", kartaPrzedmiotu.getRodzajPrzedmiotu()));
         addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Kod przedmiotu: %s\n", kartaPrzedmiotu.getKodPrzedmiotu()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Grupa kursów: %s\n", "//TODO"));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Grupa kursów: %s\n", zajeciesSet.size() <= 1 ? "NIE" : "TAK"));
 
         headerTable.getRow(0).getCells()[0].enableBorderSide(Rectangle.TOP);
         headerTable.getRow(headerTable.size() - 1).getCells()[0].enableBorderSide(Rectangle.BOTTOM);
         return headerTable;
     }
 
-    //TODO: wypelnic te tabele
     private PdfPTable createFormaPrzedmiotuTable(Set<Zajecie> zajecieSet) {
         PdfPTable formaPrzedmiotuTable = new PdfPTable(6);
         formaPrzedmiotuTable.setSpacingAfter(20f);
@@ -108,34 +111,40 @@ public class GenerateKartaPrzedmiotuPdfService {
         addRow(formaPrzedmiotuTable, font12normal, "Projekt");
         addRow(formaPrzedmiotuTable, font12normal, "Seminarium");
 
+        List<Zajecie> zajecieWyklad = zajecieSet.stream().filter(z -> z.getForma() == FormaPrzedmiotu.WYKLAD).collect(Collectors.toList());
+        List<Zajecie> zajecieCwiczenia = zajecieSet.stream().filter(z -> z.getForma() == FormaPrzedmiotu.CWICZENIA).collect(Collectors.toList());
+        List<Zajecie> zajecieLaboratorium = zajecieSet.stream().filter(z -> z.getForma() == FormaPrzedmiotu.LABORATORIUM).collect(Collectors.toList());
+        List<Zajecie> zajecieProjekt = zajecieSet.stream().filter(z -> z.getForma() == FormaPrzedmiotu.PROJEKT).collect(Collectors.toList());
+        List<Zajecie> zajecieSeminarium = zajecieSet.stream().filter(z -> z.getForma() == FormaPrzedmiotu.SEMINARIUM).collect(Collectors.toList());
+
         addRow(formaPrzedmiotuTable, font12normal, "Liczba godzin zajęć zorganizowanych w Uczelni (ZZU)");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieWyklad.stream().findFirst().isPresent() ? zajecieWyklad.stream().findFirst().get().getzZU().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieCwiczenia.stream().findFirst().isPresent() ? zajecieCwiczenia.stream().findFirst().get().getzZU().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieLaboratorium.stream().findFirst().isPresent() ? zajecieLaboratorium.stream().findFirst().get().getzZU().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieProjekt.stream().findFirst().isPresent() ? zajecieProjekt.stream().findFirst().get().getzZU().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieSeminarium.stream().findFirst().isPresent() ? zajecieSeminarium.stream().findFirst().get().getzZU().toString() : "");
 
 
         addRow(formaPrzedmiotuTable, font12normal, "Liczba godzin całkowitego nakładu pracy studenta (CNPS)");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieWyklad.stream().findFirst().isPresent() ? zajecieWyklad.stream().findFirst().get().getcNPS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieCwiczenia.stream().findFirst().isPresent() ? zajecieCwiczenia.stream().findFirst().get().getcNPS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieLaboratorium.stream().findFirst().isPresent() ? zajecieLaboratorium.stream().findFirst().get().getcNPS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieProjekt.stream().findFirst().isPresent() ? zajecieProjekt.stream().findFirst().get().getcNPS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieSeminarium.stream().findFirst().isPresent() ? zajecieSeminarium.stream().findFirst().get().getcNPS().toString() : "");
 
         addRow(formaPrzedmiotuTable, font12normal, "Forma zaliczenia");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieWyklad.stream().findFirst().isPresent() ? zajecieWyklad.stream().findFirst().get().getFormaZaliczenia().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieCwiczenia.stream().findFirst().isPresent() ? zajecieCwiczenia.stream().findFirst().get().getFormaZaliczenia().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieLaboratorium.stream().findFirst().isPresent() ? zajecieLaboratorium.stream().findFirst().get().getFormaZaliczenia().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieProjekt.stream().findFirst().isPresent() ? zajecieProjekt.stream().findFirst().get().getFormaZaliczenia().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieSeminarium.stream().findFirst().isPresent() ? zajecieSeminarium.stream().findFirst().get().getFormaZaliczenia().toString() : "");
 
         addRow(formaPrzedmiotuTable, font12normal, "Liczba punktów ECTS");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
-        addRow(formaPrzedmiotuTable, font12normal, "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieWyklad.stream().findFirst().isPresent() ? zajecieWyklad.stream().findFirst().get().geteCTS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieCwiczenia.stream().findFirst().isPresent() ? zajecieCwiczenia.stream().findFirst().get().geteCTS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieLaboratorium.stream().findFirst().isPresent() ? zajecieLaboratorium.stream().findFirst().get().geteCTS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieProjekt.stream().findFirst().isPresent() ? zajecieProjekt.stream().findFirst().get().geteCTS().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieSeminarium.stream().findFirst().isPresent() ? zajecieSeminarium.stream().findFirst().get().geteCTS().toString() : "");
 
         return formaPrzedmiotuTable;
     }
@@ -162,5 +171,4 @@ public class GenerateKartaPrzedmiotuPdfService {
             log.error("Failed creating fonts {}", e.toString());
         }
     }
-
 }
