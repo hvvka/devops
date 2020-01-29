@@ -42,8 +42,8 @@ describe('Przedmiot e2e test', () => {
       przedmiotUpdatePage.setNrSemestruInput('5'),
       przedmiotUpdatePage.setNazwaInput('nazwa'),
       przedmiotUpdatePage.kartaPrzedmiotuSelectLastOption(),
-      przedmiotUpdatePage.opiekunPrzedmiotuSelectLastOption()
-      // przedmiotUpdatePage.programStudiowSelectLastOption(),
+      przedmiotUpdatePage.opiekunPrzedmiotuSelectLastOption(),
+      przedmiotUpdatePage.programStudiowSelectLastOption()
     ]);
     expect(await przedmiotUpdatePage.getNrSemestruInput()).to.eq('5', 'Expected nrSemestru value to be equals to 5');
     expect(await przedmiotUpdatePage.getNazwaInput()).to.eq('nazwa', 'Expected Nazwa value to be equals to nazwa');

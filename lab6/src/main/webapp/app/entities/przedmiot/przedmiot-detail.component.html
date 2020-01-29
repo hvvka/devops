@@ -27,9 +27,9 @@
                 </dd>
                 <dt><span jhiTranslate="appApp.przedmiot.programStudiow">Program Studiow</span></dt>
                 <dd>
-                    <span *ngFor="let programStudiow of przedmiot.programStudiows; let last = last">
-                        <a [routerLink]="['/program-studiow', programStudiow?.id, 'view' ]">{{programStudiow.id}}</a>{{last ? '' : ', '}}
-                    </span>
+                    <div *ngIf="przedmiot.programStudiow">
+                        <a [routerLink]="['/program-studiow', przedmiot.programStudiow?.id, 'view']">{{przedmiot.programStudiow?.id}}</a>
+                    </div>
                 </dd>
             </dl>
 

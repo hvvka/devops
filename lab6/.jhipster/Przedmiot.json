@@ -29,12 +29,11 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "programStudiow",
-            "otherEntityRelationshipName": "przedmiot",
-            "relationshipName": "programStudiow",
-            "otherEntityField": "id",
-            "ownerSide": true
+          "relationshipType": "many-to-one",
+          "otherEntityName": "programStudiow",
+          "otherEntityRelationshipName": "przedmiot",
+          "relationshipName": "programStudiow",
+          "otherEntityField": "id"
         },
         {
             "relationshipType": "many-to-many",

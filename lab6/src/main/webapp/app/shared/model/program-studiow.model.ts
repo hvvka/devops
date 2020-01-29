@@ -1,5 +1,4 @@
 import { ITypStudiow } from 'app/shared/model/typ-studiow.model';
-import { IPrzedmiot } from 'app/shared/model/przedmiot.model';
 import { IDyscyplina } from 'app/shared/model/dyscyplina.model';
 import { ProfilKsztalcenia } from 'app/shared/model/enumerations/profil-ksztalcenia.model';
 import { FormaStudiow } from 'app/shared/model/enumerations/forma-studiow.model';
@@ -16,7 +15,6 @@ export interface IProgramStudiow {
   liczbaSemestrow?: number;
   cyklKsztalcenia?: string;
   typStudiow?: ITypStudiow;
-  przedmiots?: IPrzedmiot[];
   dyscyplinas?: IDyscyplina[];
 }
 
@@ -32,7 +30,6 @@ export class ProgramStudiow implements IProgramStudiow {
     public liczbaSemestrow?: number,
     public cyklKsztalcenia?: string,
     public typStudiow?: ITypStudiow,
-    public przedmiots?: IPrzedmiot[],
     public dyscyplinas?: IDyscyplina[]
   ) {}
 }

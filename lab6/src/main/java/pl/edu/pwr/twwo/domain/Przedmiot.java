@@ -1,12 +1,12 @@
 package pl.edu.pwr.twwo.domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -40,12 +40,9 @@ public class Przedmiot implements Serializable {
     @JsonIgnoreProperties("przedmiots")
     private OpiekunPrzedmiotu opiekunPrzedmiotu;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "przedmiot_program_studiow",
-               joinColumns = @JoinColumn(name = "przedmiot_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "program_studiow_id", referencedColumnName = "id"))
-    private Set<ProgramStudiow> programStudiows = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties("przedmiots")
+    private ProgramStudiow programStudiow;
 
     @ManyToMany(mappedBy = "przedmiots")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -113,29 +110,17 @@ public class Przedmiot implements Serializable {
         this.opiekunPrzedmiotu = opiekunPrzedmiotu;
     }
 
-    public Set<ProgramStudiow> getProgramStudiows() {
-        return programStudiows;
+    public ProgramStudiow getProgramStudiow() {
+        return programStudiow;
     }
 
-    public Przedmiot programStudiows(Set<ProgramStudiow> programStudiows) {
-        this.programStudiows = programStudiows;
+    public void setProgramStudiow(ProgramStudiow programStudiow) {
+        this.programStudiow = programStudiow;
+    }
+
+    public Przedmiot programStudiow(ProgramStudiow programStudiow) {
+        this.programStudiow = programStudiow;
         return this;
-    }
-
-    public Przedmiot addProgramStudiow(ProgramStudiow programStudiow) {
-        this.programStudiows.add(programStudiow);
-        programStudiow.getPrzedmiots().add(this);
-        return this;
-    }
-
-    public Przedmiot removeProgramStudiow(ProgramStudiow programStudiow) {
-        this.programStudiows.remove(programStudiow);
-        programStudiow.getPrzedmiots().remove(this);
-        return this;
-    }
-
-    public void setProgramStudiows(Set<ProgramStudiow> programStudiows) {
-        this.programStudiows = programStudiows;
     }
 
     public Set<EfektKsztalcenia> getEfektKsztalcenias() {
