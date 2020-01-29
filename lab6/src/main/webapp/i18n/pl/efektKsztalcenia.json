@@ -16,8 +16,8 @@
       "detail": {
         "title": "Efekt Kształcenia"
       },
-      "kodEfektu": "Kod Efektu",
-      "opis": "Opis",
+      "kodEfektu": "Kod Efektu Kształcenia",
+      "opis": "Opis Efektu Kształcenia",
       "programStudiow": "Program Studiów",
       "przedmiot": "Przedmiot",
       "efektMinisterialny": "Efekt Ministerialny"

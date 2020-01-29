@@ -1,0 +1,10 @@
+{
+  "appApp": {
+    "macierzSladowania": {
+      "home": {
+        "title": "Macierz Śladowania",
+        "notFound": "Nie znaleziono Macierzy Śladowania"
+      }
+    }
+  }
+}

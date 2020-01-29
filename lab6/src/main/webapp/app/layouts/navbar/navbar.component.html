@@ -64,19 +64,29 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" routerLink="efekt-ksztalcenia" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                        <a class="dropdown-item" routerLink="efekt-ksztalcenia" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.efektKsztalcenia">Efekt Ksztalcenia</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" routerLink="dyscyplina" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                        <a (click)="collapseNavbar()" [routerLinkActiveOptions]="{ exact: true }" class="dropdown-item"
+                           routerLink="macierz-sladowania" routerLinkActive="active">
+                            <fa-icon fixedWidth="true" icon="asterisk"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.macierzSladowania">Macierz Sladowania</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="dyscyplina" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.dyscyplina">Dyscyplina</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" routerLink="efekt-ministerialny" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                        <a class="dropdown-item" routerLink="efekt-ministerialny" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.efektMinisterialny">Efekt Ministerialny</span>
                         </a>

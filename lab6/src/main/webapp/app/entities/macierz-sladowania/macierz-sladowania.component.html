@@ -1,0 +1,57 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="appApp.macierzSladowania.home.title">Macierz Śladowania</span>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div *ngIf="efektKsztalcenias?.length === 0" class="alert alert-warning">
+        <span jhiTranslate="appApp.macierzSladowania.home.notFound">Nie znaleziono Macierzy Śladowania</span>
+    </div>
+    <div *ngIf="efektKsztalcenias?.length > 0" class="table-responsive">
+        <table aria-describedby="page-heading" class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+                <th scope="col"><span jhiTranslate="appApp.efektKsztalcenia.kodEfektu">Kod Efektu Kształcenia</span>
+                </th>
+                <th scope="col"><span jhiTranslate="appApp.efektKsztalcenia.opis">Opis Efektu Kształcenia</span></th>
+                <th scope="col"><span
+                    jhiTranslate="appApp.efektMinisterialny.kodEfektu">Kod Efektu Ministerialnego</span></th>
+                <th scope="col"><span jhiTranslate="appApp.efektMinisterialny.poziomEfektu">Poziom Efektu Ministerialnego</span>
+                </th>
+                <th scope="col"><span jhiTranslate="appApp.efektMinisterialny.typEfektuMinisterialnego">Typ Efektu Ministerialnego</span>
+                </th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let efektKsztalcenia of efektKsztalcenias ;trackBy: trackId">
+                <td><a [routerLink]="['/efekt-ksztalcenia', efektKsztalcenia.id, 'view' ]">{{efektKsztalcenia.id}}</a>
+                </td>
+                <td>{{efektKsztalcenia.kodEfektu}}</td>
+                <td>{{efektKsztalcenia.opis}}</td>
+                <td>
+                    <span *ngFor="let efektMinisterialny of efektKsztalcenia.efektMinisterialnies; let last = last">
+                            <a [routerLink]="['/efekt-ministerialny', efektMinisterialny?.id, 'view' ]"
+                               class="form-control-static">{{efektMinisterialny.kodEfektu}}</a><br/>
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let efektMinisterialny of efektKsztalcenia.efektMinisterialnies; let last = last">
+                            <a [routerLink]="['/efekt-ministerialny', efektMinisterialny?.id, 'view' ]"
+                               class="form-control-static">{{efektMinisterialny.poziomEfektu}}</a><br/>
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let efektMinisterialny of efektKsztalcenia.efektMinisterialnies; let last = last">
+                            <a [routerLink]="['/efekt-ministerialny', efektMinisterialny?.id, 'view' ]"
+                               class="form-control-static"
+                               jhiTranslate="{{'appApp.TypEfektuMinisterialnego.' + efektMinisterialny.typEfektuMinisterialnego}}">{{efektMinisterialny.typEfektuMinisterialnego}}</a><br/>
+                        </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

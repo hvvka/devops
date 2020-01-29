@@ -33,6 +33,10 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./efekt-ksztalcenia/efekt-ksztalcenia.module').then(m => m.AppEfektKsztalceniaModule)
       },
       {
+        path: 'macierz-sladowania',
+        loadChildren: () => import('./macierz-sladowania/macierz-sladowania.module').then(m => m.AppMacierzSladowaniaModule)
+      },
+      {
         path: 'dyscyplina',
         loadChildren: () => import('./dyscyplina/dyscyplina.module').then(m => m.AppDyscyplinaModule)
       },

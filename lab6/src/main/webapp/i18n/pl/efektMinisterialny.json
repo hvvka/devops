@@ -5,7 +5,7 @@
         "title": "Efekt Ministerialny",
         "createLabel": "Dodaj Efekt Ministerialny",
         "createOrEditLabel": "Dodaj lub edytuj: Efekt Ministerialny",
-        "notFound": "No Efekt Ministerialnies found"
+        "notFound": "Nie znaleziono Efektu Ministerialnego"
       },
       "created": "Utworzono nowy obiekt typu Efekt Ministerialny z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Efekt Ministerialny z identyfikatorem {{ param }}",
@@ -16,8 +16,8 @@
       "detail": {
         "title": "Efekt Ministerialny"
       },
-      "kodEfektu": "Kod Efektu",
-      "poziomEfektu": "Poziom Efektu",
+      "kodEfektu": "Kod Efektu Ministerialnego",
+      "poziomEfektu": "Poziom Efektu Ministerialnego",
       "typEfektuMinisterialnego": "Typ Efektu Ministerialnego",
       "efektKsztalcenia": "Efekt Kształcenia"
     }
