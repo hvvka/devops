@@ -1,11 +1,12 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { ZajecieService } from 'app/entities/zajecie/zajecie.service';
 import { IZajecie, Zajecie } from 'app/shared/model/zajecie.model';
 import { FormaPrzedmiotu } from 'app/shared/model/enumerations/forma-przedmiotu.model';
 import { ModulKsztalcenia } from 'app/shared/model/enumerations/modul-ksztalcenia.model';
 import { PoziomJezyka } from 'app/shared/model/enumerations/poziom-jezyka.model';
+import { FormaZaliczenia } from 'app/shared/model/enumerations/forma-zaliczenia.model';
 
 describe('Service Tests', () => {
   describe('Zajecie Service', () => {
@@ -23,7 +24,17 @@ describe('Service Tests', () => {
       service = injector.get(ZajecieService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Zajecie(0, FormaPrzedmiotu.WYKLAD, 0, 0, 0, ModulKsztalcenia.PROFILOWY, PoziomJezyka.NIE_DOTYCZY);
+      elemDefault = new Zajecie(
+        0,
+        FormaPrzedmiotu.WYKLAD,
+        0,
+        0,
+        0,
+        ModulKsztalcenia.PROFILOWY,
+        PoziomJezyka.NIE_DOTYCZY,
+        FormaZaliczenia.EGZAMIN,
+        false
+      );
     });
 
     describe('Service methods', () => {
@@ -64,7 +75,9 @@ describe('Service Tests', () => {
             zZU: 1,
             cNPS: 1,
             modulKsztalcenia: 'BBBBBB',
-            poziomJezyka: 'BBBBBB'
+            poziomJezyka: 'BBBBBB',
+            formaZaliczenia: 'BBBBBB',
+            czyKoncowy: true
           },
           elemDefault
         );
@@ -87,7 +100,9 @@ describe('Service Tests', () => {
             zZU: 1,
             cNPS: 1,
             modulKsztalcenia: 'BBBBBB',
-            poziomJezyka: 'BBBBBB'
+            poziomJezyka: 'BBBBBB',
+            formaZaliczenia: 'BBBBBB',
+            czyKoncowy: true
           },
           elemDefault
         );

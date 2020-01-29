@@ -16,7 +16,10 @@
       "detail": {
         "title": "Karta Przedmiotu"
       },
-      "nazwa": "Nazwa"
+      "kodPrzedmiotu": "Kod Przedmiotu",
+      "nazwa": "Nazwa",
+      "nazwaAng": "Nazwa Ang",
+      "rodzajPrzedmiotu": "Rodzaj Przedmiotu"
     }
   }
 }

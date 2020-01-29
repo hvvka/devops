@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IEfektKsztalcenia, EfektKsztalcenia } from 'app/shared/model/efekt-ksztalcenia.model';
+import { EfektKsztalcenia, IEfektKsztalcenia } from 'app/shared/model/efekt-ksztalcenia.model';
 import { EfektKsztalceniaService } from './efekt-ksztalcenia.service';
 import { IProgramStudiow } from 'app/shared/model/program-studiow.model';
 import { ProgramStudiowService } from 'app/entities/program-studiow/program-studiow.service';
@@ -34,6 +34,7 @@ export class EfektKsztalceniaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    kodEfektu: [null, [Validators.required]],
     opis: [null, [Validators.required]],
     programStudiow: [],
     przedmiots: [],
@@ -85,6 +86,7 @@ export class EfektKsztalceniaUpdateComponent implements OnInit {
   updateForm(efektKsztalcenia: IEfektKsztalcenia): void {
     this.editForm.patchValue({
       id: efektKsztalcenia.id,
+      kodEfektu: efektKsztalcenia.kodEfektu,
       opis: efektKsztalcenia.opis,
       programStudiow: efektKsztalcenia.programStudiow,
       przedmiots: efektKsztalcenia.przedmiots,
@@ -110,6 +112,7 @@ export class EfektKsztalceniaUpdateComponent implements OnInit {
     return {
       ...new EfektKsztalcenia(),
       id: this.editForm.get(['id'])!.value,
+      kodEfektu: this.editForm.get(['kodEfektu'])!.value,
       opis: this.editForm.get(['opis'])!.value,
       programStudiow: this.editForm.get(['programStudiow'])!.value,
       przedmiots: this.editForm.get(['przedmiots'])!.value,

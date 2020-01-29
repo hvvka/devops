@@ -5,11 +5,17 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.efektMinisterialny.kodEfektu">Kod Efektu</span></dt>
+                <dd>
+                    <span>{{efektMinisterialny.kodEfektu}}</span>
+                </dd>
                 <dt><span jhiTranslate="appApp.efektMinisterialny.poziomEfektu">Poziom Efektu</span></dt>
                 <dd>
                     <span>{{efektMinisterialny.poziomEfektu}}</span>
                 </dd>
-                <dt><span jhiTranslate="appApp.efektMinisterialny.typEfektuMinisterialnego">Typ Efektu Ministerialnego</span></dt>
+                <dt><span
+                        jhiTranslate="appApp.efektMinisterialny.typEfektuMinisterialnego">Typ Efektu Ministerialnego</span>
+                </dt>
                 <dd>
                     <span jhiTranslate="{{'appApp.TypEfektuMinisterialnego.' + efektMinisterialny.typEfektuMinisterialnego}}">{{efektMinisterialny.typEfektuMinisterialnego}}</span>
                 </dd>

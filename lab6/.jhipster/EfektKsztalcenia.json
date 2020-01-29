@@ -1,13 +1,20 @@
 {
     "name": "EfektKsztalcenia",
     "fields": [
-        {
-            "fieldName": "opis",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        }
+      {
+        "fieldName": "kodEfektu",
+        "fieldType": "String",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "opis",
+        "fieldType": "String",
+        "fieldValidateRules": [
+          "required"
+        ]
+      }
     ],
     "relationships": [
         {

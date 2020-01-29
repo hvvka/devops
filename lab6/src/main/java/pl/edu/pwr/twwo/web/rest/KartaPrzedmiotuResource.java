@@ -1,29 +1,26 @@
 package pl.edu.pwr.twwo.web.rest;
 
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import pl.edu.pwr.twwo.domain.KartaPrzedmiotu;
-import pl.edu.pwr.twwo.repository.KartaPrzedmiotuRepository;
-import pl.edu.pwr.twwo.web.rest.errors.BadRequestAlertException;
-
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.pwr.twwo.domain.KartaPrzedmiotu;
+import pl.edu.pwr.twwo.repository.KartaPrzedmiotuRepository;
+import pl.edu.pwr.twwo.web.rest.errors.BadRequestAlertException;
 
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -122,7 +119,7 @@ public class KartaPrzedmiotuResource {
             respHeaders.setContentDispositionFormData("attachment", "fileNameIwant.pdf");
 
             InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
-            return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+            return new ResponseEntity<>(isr, respHeaders, HttpStatus.OK);
         } catch (Exception ex) {
             log.info("Error writing PDF of KartaPrzedmiotu id '{}' to output stream", id, ex);
             throw new RuntimeException("IOError writing file to output stream");

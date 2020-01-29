@@ -1,21 +1,18 @@
 package pl.edu.pwr.twwo.domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import pl.edu.pwr.twwo.domain.enumeration.FormaStudiow;
+import pl.edu.pwr.twwo.domain.enumeration.JezykProwadzeniaStudiow;
+import pl.edu.pwr.twwo.domain.enumeration.ProfilKsztalcenia;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-import pl.edu.pwr.twwo.domain.enumeration.ProfilKsztalcenia;
-
-import pl.edu.pwr.twwo.domain.enumeration.FormaStudiow;
-
-import pl.edu.pwr.twwo.domain.enumeration.JezykProwadzeniaStudiow;
 
 /**
  * A ProgramStudiow.
@@ -41,9 +38,11 @@ public class ProgramStudiow implements Serializable {
     @Column(name = "forma_studiow", nullable = false)
     private FormaStudiow formaStudiow;
 
-    @NotNull
-    @Column(name = "kierunek", nullable = false)
+    @Column(name = "kierunek")
     private String kierunek;
+
+    @Column(name = "specjalnosc")
+    private String specjalnosc;
 
     @NotNull
     @Column(name = "wydzial", nullable = false)
@@ -121,6 +120,19 @@ public class ProgramStudiow implements Serializable {
 
     public void setKierunek(String kierunek) {
         this.kierunek = kierunek;
+    }
+
+    public String getSpecjalnosc() {
+        return specjalnosc;
+    }
+
+    public void setSpecjalnosc(String specjalnosc) {
+        this.specjalnosc = specjalnosc;
+    }
+
+    public ProgramStudiow specjalnosc(String specjalnosc) {
+        this.specjalnosc = specjalnosc;
+        return this;
     }
 
     public String getWydzial() {
@@ -262,6 +274,7 @@ public class ProgramStudiow implements Serializable {
             ", profilKsztalcenia='" + getProfilKsztalcenia() + "'" +
             ", formaStudiow='" + getFormaStudiow() + "'" +
             ", kierunek='" + getKierunek() + "'" +
+            ", specjalnosc='" + getSpecjalnosc() + "'" +
             ", wydzial='" + getWydzial() + "'" +
             ", jezykProwadzeniaStudiow='" + getJezykProwadzeniaStudiow() + "'" +
             ", liczbaSemestrow=" + getLiczbaSemestrow() +

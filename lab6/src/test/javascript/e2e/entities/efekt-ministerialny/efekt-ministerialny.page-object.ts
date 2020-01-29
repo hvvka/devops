@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class EfektMinisterialnyComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -26,11 +26,20 @@ export class EfektMinisterialnyUpdatePage {
   pageTitle = element(by.id('jhi-efekt-ministerialny-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
+  kodEfektuInput = element(by.id('field_kodEfektu'));
   poziomEfektuInput = element(by.id('field_poziomEfektu'));
   typEfektuMinisterialnegoSelect = element(by.id('field_typEfektuMinisterialnego'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setKodEfektuInput(kodEfektu: string): Promise<void> {
+    await this.kodEfektuInput.sendKeys(kodEfektu);
+  }
+
+  async getKodEfektuInput(): Promise<string> {
+    return await this.kodEfektuInput.getAttribute('value');
   }
 
   async setPoziomEfektuInput(poziomEfektu: string): Promise<void> {

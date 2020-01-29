@@ -1,6 +1,10 @@
 entity KartaPrzedmiotu {
-	Nazwa String required
+    KodPrzedmiotu String required,
+	Nazwa String required,
+	NazwaAng String required,
+	RodzajPrzedmiotu RodzajPrzedmiotu required
 }
+enum RodzajPrzedmiotu { OBOWIAZKOWY, WYBIERALNY, OGOLNOUCZELNIANY }
 
 entity OpiekunPrzedmiotu {
 }
@@ -17,34 +21,14 @@ entity Zajecie {
     CNPS Long required,
     ModulKsztalcenia ModulKsztalcenia required,
     PoziomJezyka PoziomJezyka required,
+    FormaZaliczenia FormaZaliczenia required,
+    czyKoncowy Boolean
 }
-enum FormaPrzedmiotu {
-	WYKLAD,
-    SEMINARIUM,
-    LABORATORIUM,
-    PROJEKT,
-    CWICZENIA
-}
-enum ModulKsztalcenia {
-	PROFILOWY,
-    MATEMATYKA,
-    FIZYKA,
-    CHEMIA,
-    NAUKI_SPOLECZNE_I_HUMANISTYCZNE,
-    JEZYKI_OBCE,
-    ZAJECIA_SPORTOWE
-}
-enum PoziomJezyka {
-	NIE_DOTYCZY,
-    A1,
-    A2,
-    B1,
-    B2,
-    C1,
-    C2,
-    B2_PLUS,
-    C1_PLUS
-}
+enum FormaPrzedmiotu { WYKLAD, SEMINARIUM, LABORATORIUM, PROJEKT, CWICZENIA }
+enum ModulKsztalcenia { PROFILOWY, MATEMATYKA, FIZYKA, CHEMIA,
+                        NAUKI_SPOLECZNE_I_HUMANISTYCZNE, JEZYKI_OBCE, ZAJECIA_SPORTOWE }
+enum PoziomJezyka { NIE_DOTYCZY, A1, A2, B1, B2, C1, C2, B2_PLUS, C1_PLUS }
+enum FormaZaliczenia { EGZAMIN, NA_OCENE }
 
 entity TypStudiow {
 	Nazwa String required,
@@ -54,35 +38,20 @@ entity TypStudiow {
 entity ProgramStudiow {
     ProfilKsztalcenia ProfilKsztalcenia required,
     FormaStudiow FormaStudiow required,
-    // TypStudiow TypStudiow required,
-    Kierunek String required,
+    Kierunek String,
+    Specjalnosc String,
     Wydzial String required,
     JezykProwadzeniaStudiow JezykProwadzeniaStudiow,
     LiczbaSemestrow Long required,
     CyklKsztalcenia String required
 }
-enum ProfilKsztalcenia {
-	OGOLNOAKADEMICKI,
-    PRAKTYCZNY
-}
-enum FormaStudiow {
-	STACJONARNE,
-    NIESTACJONARNE
-}
-// enum TypStudiow {
-//	LICENCJACKIE,
-//    INZYNIERSKIE,
-//    MAGISTERSKIE,
-//    MAGISTERSKIE_INZ,
-//    DOKTORANCKIE
-//}
-enum JezykProwadzeniaStudiow {
-	POLSKI,
-    ANGIELSKI
-}
+enum ProfilKsztalcenia { OGOLNOAKADEMICKI, PRAKTYCZNY }
+enum FormaStudiow { STACJONARNE, NIESTACJONARNE }
+enum JezykProwadzeniaStudiow { POLSKI, ANGIELSKI }
 
 entity EfektKsztalcenia {
-	Opis String required
+	KodEfektu String required,
+    Opis String required
 }
 
 entity Dyscyplina {
@@ -91,13 +60,11 @@ entity Dyscyplina {
 }
 
 entity EfektMinisterialny {
+    KodEfektu String required,
 	PoziomEfektu Long required,
     TypEfektuMinisterialnego TypEfektuMinisterialnego required
 }
-enum TypEfektuMinisterialnego {
-	OGOLNEGO_KSZTALCENIA,
-    INZYNIERSKIEGO
-}
+enum TypEfektuMinisterialnego { OGOLNEGO_KSZTALCENIA, INZYNIERSKIEGO }
 
 /* RELATIONSHIPS */
 

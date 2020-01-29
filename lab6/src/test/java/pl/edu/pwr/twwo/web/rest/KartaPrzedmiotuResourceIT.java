@@ -1,10 +1,5 @@
 package pl.edu.pwr.twwo.web.rest;
 
-import pl.edu.pwr.twwo.AppApp;
-import pl.edu.pwr.twwo.domain.KartaPrzedmiotu;
-import pl.edu.pwr.twwo.repository.KartaPrzedmiotuRepository;
-import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -17,15 +12,20 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
+import pl.edu.pwr.twwo.AppApp;
+import pl.edu.pwr.twwo.domain.KartaPrzedmiotu;
+import pl.edu.pwr.twwo.domain.enumeration.RodzajPrzedmiotu;
+import pl.edu.pwr.twwo.repository.KartaPrzedmiotuRepository;
+import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 
 /**
  * Integration tests for the {@link KartaPrzedmiotuResource} REST controller.
@@ -33,8 +33,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = AppApp.class)
 public class KartaPrzedmiotuResourceIT {
 
+    private static final String DEFAULT_KOD_PRZEDMIOTU = "AAAAAAAAAA";
+    private static final String UPDATED_KOD_PRZEDMIOTU = "BBBBBBBBBB";
+
     private static final String DEFAULT_NAZWA = "AAAAAAAAAA";
     private static final String UPDATED_NAZWA = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NAZWA_ANG = "AAAAAAAAAA";
+    private static final String UPDATED_NAZWA_ANG = "BBBBBBBBBB";
+
+    private static final RodzajPrzedmiotu DEFAULT_RODZAJ_PRZEDMIOTU = RodzajPrzedmiotu.OBOWIAZKOWY;
+    private static final RodzajPrzedmiotu UPDATED_RODZAJ_PRZEDMIOTU = RodzajPrzedmiotu.WYBIERALNY;
 
     @Autowired
     private KartaPrzedmiotuRepository kartaPrzedmiotuRepository;
@@ -78,7 +87,10 @@ public class KartaPrzedmiotuResourceIT {
      */
     public static KartaPrzedmiotu createEntity(EntityManager em) {
         KartaPrzedmiotu kartaPrzedmiotu = new KartaPrzedmiotu()
-            .nazwa(DEFAULT_NAZWA);
+            .kodPrzedmiotu(DEFAULT_KOD_PRZEDMIOTU)
+            .nazwa(DEFAULT_NAZWA)
+            .nazwaAng(DEFAULT_NAZWA_ANG)
+            .rodzajPrzedmiotu(DEFAULT_RODZAJ_PRZEDMIOTU);
         return kartaPrzedmiotu;
     }
     /**
@@ -89,7 +101,10 @@ public class KartaPrzedmiotuResourceIT {
      */
     public static KartaPrzedmiotu createUpdatedEntity(EntityManager em) {
         KartaPrzedmiotu kartaPrzedmiotu = new KartaPrzedmiotu()
-            .nazwa(UPDATED_NAZWA);
+            .kodPrzedmiotu(UPDATED_KOD_PRZEDMIOTU)
+            .nazwa(UPDATED_NAZWA)
+            .nazwaAng(UPDATED_NAZWA_ANG)
+            .rodzajPrzedmiotu(UPDATED_RODZAJ_PRZEDMIOTU);
         return kartaPrzedmiotu;
     }
 
@@ -113,7 +128,10 @@ public class KartaPrzedmiotuResourceIT {
         List<KartaPrzedmiotu> kartaPrzedmiotuList = kartaPrzedmiotuRepository.findAll();
         assertThat(kartaPrzedmiotuList).hasSize(databaseSizeBeforeCreate + 1);
         KartaPrzedmiotu testKartaPrzedmiotu = kartaPrzedmiotuList.get(kartaPrzedmiotuList.size() - 1);
+        assertThat(testKartaPrzedmiotu.getKodPrzedmiotu()).isEqualTo(DEFAULT_KOD_PRZEDMIOTU);
         assertThat(testKartaPrzedmiotu.getNazwa()).isEqualTo(DEFAULT_NAZWA);
+        assertThat(testKartaPrzedmiotu.getNazwaAng()).isEqualTo(DEFAULT_NAZWA_ANG);
+        assertThat(testKartaPrzedmiotu.getRodzajPrzedmiotu()).isEqualTo(DEFAULT_RODZAJ_PRZEDMIOTU);
     }
 
     @Test
@@ -138,10 +156,64 @@ public class KartaPrzedmiotuResourceIT {
 
     @Test
     @Transactional
+    public void checkKodPrzedmiotuIsRequired() throws Exception {
+        int databaseSizeBeforeTest = kartaPrzedmiotuRepository.findAll().size();
+        // set the field null
+        kartaPrzedmiotu.setKodPrzedmiotu(null);
+
+        // Create the KartaPrzedmiotu, which fails.
+
+        restKartaPrzedmiotuMockMvc.perform(post("/api/karta-przedmiotus")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(kartaPrzedmiotu)))
+            .andExpect(status().isBadRequest());
+
+        List<KartaPrzedmiotu> kartaPrzedmiotuList = kartaPrzedmiotuRepository.findAll();
+        assertThat(kartaPrzedmiotuList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void checkNazwaIsRequired() throws Exception {
         int databaseSizeBeforeTest = kartaPrzedmiotuRepository.findAll().size();
         // set the field null
         kartaPrzedmiotu.setNazwa(null);
+
+        // Create the KartaPrzedmiotu, which fails.
+
+        restKartaPrzedmiotuMockMvc.perform(post("/api/karta-przedmiotus")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(kartaPrzedmiotu)))
+            .andExpect(status().isBadRequest());
+
+        List<KartaPrzedmiotu> kartaPrzedmiotuList = kartaPrzedmiotuRepository.findAll();
+        assertThat(kartaPrzedmiotuList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNazwaAngIsRequired() throws Exception {
+        int databaseSizeBeforeTest = kartaPrzedmiotuRepository.findAll().size();
+        // set the field null
+        kartaPrzedmiotu.setNazwaAng(null);
+
+        // Create the KartaPrzedmiotu, which fails.
+
+        restKartaPrzedmiotuMockMvc.perform(post("/api/karta-przedmiotus")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(kartaPrzedmiotu)))
+            .andExpect(status().isBadRequest());
+
+        List<KartaPrzedmiotu> kartaPrzedmiotuList = kartaPrzedmiotuRepository.findAll();
+        assertThat(kartaPrzedmiotuList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkRodzajPrzedmiotuIsRequired() throws Exception {
+        int databaseSizeBeforeTest = kartaPrzedmiotuRepository.findAll().size();
+        // set the field null
+        kartaPrzedmiotu.setRodzajPrzedmiotu(null);
 
         // Create the KartaPrzedmiotu, which fails.
 
@@ -165,9 +237,12 @@ public class KartaPrzedmiotuResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(kartaPrzedmiotu.getId().intValue())))
-            .andExpect(jsonPath("$.[*].nazwa").value(hasItem(DEFAULT_NAZWA)));
+            .andExpect(jsonPath("$.[*].kodPrzedmiotu").value(hasItem(DEFAULT_KOD_PRZEDMIOTU)))
+            .andExpect(jsonPath("$.[*].nazwa").value(hasItem(DEFAULT_NAZWA)))
+            .andExpect(jsonPath("$.[*].nazwaAng").value(hasItem(DEFAULT_NAZWA_ANG)))
+            .andExpect(jsonPath("$.[*].rodzajPrzedmiotu").value(hasItem(DEFAULT_RODZAJ_PRZEDMIOTU.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getKartaPrzedmiotu() throws Exception {
@@ -179,7 +254,10 @@ public class KartaPrzedmiotuResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(kartaPrzedmiotu.getId().intValue()))
-            .andExpect(jsonPath("$.nazwa").value(DEFAULT_NAZWA));
+            .andExpect(jsonPath("$.kodPrzedmiotu").value(DEFAULT_KOD_PRZEDMIOTU))
+            .andExpect(jsonPath("$.nazwa").value(DEFAULT_NAZWA))
+            .andExpect(jsonPath("$.nazwaAng").value(DEFAULT_NAZWA_ANG))
+            .andExpect(jsonPath("$.rodzajPrzedmiotu").value(DEFAULT_RODZAJ_PRZEDMIOTU.toString()));
     }
 
     @Test
@@ -203,7 +281,10 @@ public class KartaPrzedmiotuResourceIT {
         // Disconnect from session so that the updates on updatedKartaPrzedmiotu are not directly saved in db
         em.detach(updatedKartaPrzedmiotu);
         updatedKartaPrzedmiotu
-            .nazwa(UPDATED_NAZWA);
+            .kodPrzedmiotu(UPDATED_KOD_PRZEDMIOTU)
+            .nazwa(UPDATED_NAZWA)
+            .nazwaAng(UPDATED_NAZWA_ANG)
+            .rodzajPrzedmiotu(UPDATED_RODZAJ_PRZEDMIOTU);
 
         restKartaPrzedmiotuMockMvc.perform(put("/api/karta-przedmiotus")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -214,7 +295,10 @@ public class KartaPrzedmiotuResourceIT {
         List<KartaPrzedmiotu> kartaPrzedmiotuList = kartaPrzedmiotuRepository.findAll();
         assertThat(kartaPrzedmiotuList).hasSize(databaseSizeBeforeUpdate);
         KartaPrzedmiotu testKartaPrzedmiotu = kartaPrzedmiotuList.get(kartaPrzedmiotuList.size() - 1);
+        assertThat(testKartaPrzedmiotu.getKodPrzedmiotu()).isEqualTo(UPDATED_KOD_PRZEDMIOTU);
         assertThat(testKartaPrzedmiotu.getNazwa()).isEqualTo(UPDATED_NAZWA);
+        assertThat(testKartaPrzedmiotu.getNazwaAng()).isEqualTo(UPDATED_NAZWA_ANG);
+        assertThat(testKartaPrzedmiotu.getRodzajPrzedmiotu()).isEqualTo(UPDATED_RODZAJ_PRZEDMIOTU);
     }
 
     @Test

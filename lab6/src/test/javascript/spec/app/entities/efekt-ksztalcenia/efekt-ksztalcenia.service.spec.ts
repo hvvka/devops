@@ -1,8 +1,8 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { EfektKsztalceniaService } from 'app/entities/efekt-ksztalcenia/efekt-ksztalcenia.service';
-import { IEfektKsztalcenia, EfektKsztalcenia } from 'app/shared/model/efekt-ksztalcenia.model';
+import { EfektKsztalcenia, IEfektKsztalcenia } from 'app/shared/model/efekt-ksztalcenia.model';
 
 describe('Service Tests', () => {
   describe('EfektKsztalcenia Service', () => {
@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(EfektKsztalceniaService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new EfektKsztalcenia(0, 'AAAAAAA');
+      elemDefault = new EfektKsztalcenia(0, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -56,6 +56,7 @@ describe('Service Tests', () => {
       it('should update a EfektKsztalcenia', () => {
         const returnedFromService = Object.assign(
           {
+            kodEfektu: 'BBBBBB',
             opis: 'BBBBBB'
           },
           elemDefault
@@ -74,6 +75,7 @@ describe('Service Tests', () => {
       it('should return a list of EfektKsztalcenia', () => {
         const returnedFromService = Object.assign(
           {
+            kodEfektu: 'BBBBBB',
             opis: 'BBBBBB'
           },
           elemDefault

@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { IEfektMinisterialny, EfektMinisterialny } from 'app/shared/model/efekt-ministerialny.model';
+import { EfektMinisterialny, IEfektMinisterialny } from 'app/shared/model/efekt-ministerialny.model';
 import { EfektMinisterialnyService } from './efekt-ministerialny.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class EfektMinisterialnyUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    kodEfektu: [null, [Validators.required]],
     poziomEfektu: [null, [Validators.required]],
     typEfektuMinisterialnego: [null, [Validators.required]]
   });
@@ -36,6 +37,7 @@ export class EfektMinisterialnyUpdateComponent implements OnInit {
   updateForm(efektMinisterialny: IEfektMinisterialny): void {
     this.editForm.patchValue({
       id: efektMinisterialny.id,
+      kodEfektu: efektMinisterialny.kodEfektu,
       poziomEfektu: efektMinisterialny.poziomEfektu,
       typEfektuMinisterialnego: efektMinisterialny.typEfektuMinisterialnego
     });
@@ -59,6 +61,7 @@ export class EfektMinisterialnyUpdateComponent implements OnInit {
     return {
       ...new EfektMinisterialny(),
       id: this.editForm.get(['id'])!.value,
+      kodEfektu: this.editForm.get(['kodEfektu'])!.value,
       poziomEfektu: this.editForm.get(['poziomEfektu'])!.value,
       typEfektuMinisterialnego: this.editForm.get(['typEfektuMinisterialnego'])!.value
     };

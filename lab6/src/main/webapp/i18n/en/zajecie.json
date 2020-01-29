@@ -22,6 +22,8 @@
       "cNPS": "CNPS",
       "modulKsztalcenia": "Educational Module",
       "poziomJezyka": "Language Level",
+      "formaZaliczenia": "Completion Form",
+      "czyKoncowy": "Is Final Course?",
       "formaWiodaca": "Leading Form",
       "grupaKursow": "Course Group",
       "przedmiot": "Subject"

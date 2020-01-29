@@ -42,6 +42,7 @@ describe('ProgramStudiow e2e test', () => {
       programStudiowUpdatePage.profilKsztalceniaSelectLastOption(),
       programStudiowUpdatePage.formaStudiowSelectLastOption(),
       programStudiowUpdatePage.setKierunekInput('kierunek'),
+      programStudiowUpdatePage.setSpecjalnoscInput('specjalnosc'),
       programStudiowUpdatePage.setWydzialInput('wydzial'),
       programStudiowUpdatePage.jezykProwadzeniaStudiowSelectLastOption(),
       programStudiowUpdatePage.setLiczbaSemestrowInput('5'),
@@ -49,6 +50,10 @@ describe('ProgramStudiow e2e test', () => {
       programStudiowUpdatePage.typStudiowSelectLastOption()
     ]);
     expect(await programStudiowUpdatePage.getKierunekInput()).to.eq('kierunek', 'Expected Kierunek value to be equals to kierunek');
+    expect(await programStudiowUpdatePage.getSpecjalnoscInput()).to.eq(
+      'specjalnosc',
+      'Expected Specjalnosc value to be equals to specjalnosc'
+    );
     expect(await programStudiowUpdatePage.getWydzialInput()).to.eq('wydzial', 'Expected Wydzial value to be equals to wydzial');
     expect(await programStudiowUpdatePage.getLiczbaSemestrowInput()).to.eq('5', 'Expected liczbaSemestrow value to be equals to 5');
     expect(await programStudiowUpdatePage.getCyklKsztalceniaInput()).to.eq(

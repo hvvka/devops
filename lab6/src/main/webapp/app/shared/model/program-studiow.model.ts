@@ -10,6 +10,7 @@ export interface IProgramStudiow {
   profilKsztalcenia?: ProfilKsztalcenia;
   formaStudiow?: FormaStudiow;
   kierunek?: string;
+  specjalnosc?: string;
   wydzial?: string;
   jezykProwadzeniaStudiow?: JezykProwadzeniaStudiow;
   liczbaSemestrow?: number;
@@ -25,6 +26,7 @@ export class ProgramStudiow implements IProgramStudiow {
     public profilKsztalcenia?: ProfilKsztalcenia,
     public formaStudiow?: FormaStudiow,
     public kierunek?: string,
+    public specjalnosc?: string,
     public wydzial?: string,
     public jezykProwadzeniaStudiow?: JezykProwadzeniaStudiow,
     public liczbaSemestrow?: number,

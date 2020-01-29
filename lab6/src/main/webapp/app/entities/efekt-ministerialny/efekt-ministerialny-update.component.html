@@ -7,19 +7,36 @@
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
+                           readonly/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="appApp.efektMinisterialny.poziomEfektu" for="field_poziomEfektu">Poziom Efektu</label>
+                    <label class="form-control-label" for="field_kodEfektu"
+                           jhiTranslate="appApp.efektMinisterialny.kodEfektu">Kod Efektu</label>
+                    <input class="form-control" formControlName="kodEfektu" id="field_kodEfektu" name="kodEfektu"
+                           type="text"/>
+                    <div
+                        *ngIf="editForm.get('kodEfektu')!.invalid && (editForm.get('kodEfektu')!.dirty || editForm.get('kodEfektu')!.touched)">
+                        <small *ngIf="editForm.get('kodEfektu')?.errors?.required"
+                               class="form-text text-danger" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="appApp.efektMinisterialny.poziomEfektu"
+                           for="field_poziomEfektu">Poziom Efektu</label>
                     <input type="number" class="form-control" name="poziomEfektu" id="field_poziomEfektu"
                            formControlName="poziomEfektu"/>
-                    <div *ngIf="editForm.get('poziomEfektu')!.invalid && (editForm.get('poziomEfektu')!.dirty || editForm.get('poziomEfektu')!.touched)">
+                    <div
+                        *ngIf="editForm.get('poziomEfektu')!.invalid && (editForm.get('poziomEfektu')!.dirty || editForm.get('poziomEfektu')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('poziomEfektu')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('poziomEfektu')?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.get('poziomEfektu')?.errors?.number" jhiTranslate="entity.validation.number">
+                               [hidden]="!editForm.get('poziomEfektu')?.errors?.number"
+                               jhiTranslate="entity.validation.number">
                             This field should be a number.
                         </small>
                     </div>

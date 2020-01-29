@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class KartaPrzedmiotuComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -26,10 +26,21 @@ export class KartaPrzedmiotuUpdatePage {
   pageTitle = element(by.id('jhi-karta-przedmiotu-heading'));
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
+  kodPrzedmiotuInput = element(by.id('field_kodPrzedmiotu'));
   nazwaInput = element(by.id('field_nazwa'));
+  nazwaAngInput = element(by.id('field_nazwaAng'));
+  rodzajPrzedmiotuSelect = element(by.id('field_rodzajPrzedmiotu'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
+  }
+
+  async setKodPrzedmiotuInput(kodPrzedmiotu: string): Promise<void> {
+    await this.kodPrzedmiotuInput.sendKeys(kodPrzedmiotu);
+  }
+
+  async getKodPrzedmiotuInput(): Promise<string> {
+    return await this.kodPrzedmiotuInput.getAttribute('value');
   }
 
   async setNazwaInput(nazwa: string): Promise<void> {
@@ -38,6 +49,29 @@ export class KartaPrzedmiotuUpdatePage {
 
   async getNazwaInput(): Promise<string> {
     return await this.nazwaInput.getAttribute('value');
+  }
+
+  async setNazwaAngInput(nazwaAng: string): Promise<void> {
+    await this.nazwaAngInput.sendKeys(nazwaAng);
+  }
+
+  async getNazwaAngInput(): Promise<string> {
+    return await this.nazwaAngInput.getAttribute('value');
+  }
+
+  async setRodzajPrzedmiotuSelect(rodzajPrzedmiotu: string): Promise<void> {
+    await this.rodzajPrzedmiotuSelect.sendKeys(rodzajPrzedmiotu);
+  }
+
+  async getRodzajPrzedmiotuSelect(): Promise<string> {
+    return await this.rodzajPrzedmiotuSelect.element(by.css('option:checked')).getText();
+  }
+
+  async rodzajPrzedmiotuSelectLastOption(): Promise<void> {
+    await this.rodzajPrzedmiotuSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
   }
 
   async save(): Promise<void> {

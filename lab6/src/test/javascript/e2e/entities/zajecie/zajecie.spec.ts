@@ -45,6 +45,7 @@ describe('Zajecie e2e test', () => {
       zajecieUpdatePage.setCNPSInput('5'),
       zajecieUpdatePage.modulKsztalceniaSelectLastOption(),
       zajecieUpdatePage.poziomJezykaSelectLastOption(),
+      zajecieUpdatePage.formaZaliczeniaSelectLastOption(),
       zajecieUpdatePage.formaWiodacaSelectLastOption(),
       zajecieUpdatePage.grupaKursowSelectLastOption(),
       zajecieUpdatePage.przedmiotSelectLastOption()
@@ -52,6 +53,14 @@ describe('Zajecie e2e test', () => {
     expect(await zajecieUpdatePage.getECTSInput()).to.eq('5', 'Expected eCTS value to be equals to 5');
     expect(await zajecieUpdatePage.getZZUInput()).to.eq('5', 'Expected zZU value to be equals to 5');
     expect(await zajecieUpdatePage.getCNPSInput()).to.eq('5', 'Expected cNPS value to be equals to 5');
+    const selectedCzyKoncowy = zajecieUpdatePage.getCzyKoncowyInput();
+    if (await selectedCzyKoncowy.isSelected()) {
+      await zajecieUpdatePage.getCzyKoncowyInput().click();
+      expect(await zajecieUpdatePage.getCzyKoncowyInput().isSelected(), 'Expected czyKoncowy not to be selected').to.be.false;
+    } else {
+      await zajecieUpdatePage.getCzyKoncowyInput().click();
+      expect(await zajecieUpdatePage.getCzyKoncowyInput().isSelected(), 'Expected czyKoncowy to be selected').to.be.true;
+    }
     await zajecieUpdatePage.save();
     expect(await zajecieUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

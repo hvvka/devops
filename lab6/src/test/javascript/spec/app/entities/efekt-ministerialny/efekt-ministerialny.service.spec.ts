@@ -1,8 +1,8 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { EfektMinisterialnyService } from 'app/entities/efekt-ministerialny/efekt-ministerialny.service';
-import { IEfektMinisterialny, EfektMinisterialny } from 'app/shared/model/efekt-ministerialny.model';
+import { EfektMinisterialny, IEfektMinisterialny } from 'app/shared/model/efekt-ministerialny.model';
 import { TypEfektuMinisterialnego } from 'app/shared/model/enumerations/typ-efektu-ministerialnego.model';
 
 describe('Service Tests', () => {
@@ -21,7 +21,7 @@ describe('Service Tests', () => {
       service = injector.get(EfektMinisterialnyService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new EfektMinisterialny(0, 0, TypEfektuMinisterialnego.OGOLNEGO_KSZTALCENIA);
+      elemDefault = new EfektMinisterialny(0, 'AAAAAAA', 0, TypEfektuMinisterialnego.OGOLNEGO_KSZTALCENIA);
     });
 
     describe('Service methods', () => {
@@ -57,6 +57,7 @@ describe('Service Tests', () => {
       it('should update a EfektMinisterialny', () => {
         const returnedFromService = Object.assign(
           {
+            kodEfektu: 'BBBBBB',
             poziomEfektu: 1,
             typEfektuMinisterialnego: 'BBBBBB'
           },
@@ -76,6 +77,7 @@ describe('Service Tests', () => {
       it('should return a list of EfektMinisterialny', () => {
         const returnedFromService = Object.assign(
           {
+            kodEfektu: 'BBBBBB',
             poziomEfektu: 1,
             typEfektuMinisterialnego: 'BBBBBB'
           },

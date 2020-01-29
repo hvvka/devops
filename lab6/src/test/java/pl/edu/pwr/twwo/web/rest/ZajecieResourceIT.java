@@ -1,10 +1,5 @@
 package pl.edu.pwr.twwo.web.rest;
 
-import pl.edu.pwr.twwo.AppApp;
-import pl.edu.pwr.twwo.domain.Zajecie;
-import pl.edu.pwr.twwo.repository.ZajecieRepository;
-import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -17,19 +12,23 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
+import pl.edu.pwr.twwo.AppApp;
+import pl.edu.pwr.twwo.domain.Zajecie;
+import pl.edu.pwr.twwo.domain.enumeration.FormaPrzedmiotu;
+import pl.edu.pwr.twwo.domain.enumeration.FormaZaliczenia;
+import pl.edu.pwr.twwo.domain.enumeration.ModulKsztalcenia;
+import pl.edu.pwr.twwo.domain.enumeration.PoziomJezyka;
+import pl.edu.pwr.twwo.repository.ZajecieRepository;
+import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import pl.edu.pwr.twwo.domain.enumeration.FormaPrzedmiotu;
-import pl.edu.pwr.twwo.domain.enumeration.ModulKsztalcenia;
-import pl.edu.pwr.twwo.domain.enumeration.PoziomJezyka;
+import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 /**
  * Integration tests for the {@link ZajecieResource} REST controller.
  */
@@ -53,6 +52,12 @@ public class ZajecieResourceIT {
 
     private static final PoziomJezyka DEFAULT_POZIOM_JEZYKA = PoziomJezyka.NIE_DOTYCZY;
     private static final PoziomJezyka UPDATED_POZIOM_JEZYKA = PoziomJezyka.A1;
+
+    private static final FormaZaliczenia DEFAULT_FORMA_ZALICZENIA = FormaZaliczenia.EGZAMIN;
+    private static final FormaZaliczenia UPDATED_FORMA_ZALICZENIA = FormaZaliczenia.NA_OCENE;
+
+    private static final Boolean DEFAULT_CZY_KONCOWY = false;
+    private static final Boolean UPDATED_CZY_KONCOWY = true;
 
     @Autowired
     private ZajecieRepository zajecieRepository;
@@ -101,7 +106,9 @@ public class ZajecieResourceIT {
             .zZU(DEFAULT_Z_ZU)
             .cNPS(DEFAULT_C_NPS)
             .modulKsztalcenia(DEFAULT_MODUL_KSZTALCENIA)
-            .poziomJezyka(DEFAULT_POZIOM_JEZYKA);
+            .poziomJezyka(DEFAULT_POZIOM_JEZYKA)
+            .formaZaliczenia(DEFAULT_FORMA_ZALICZENIA)
+            .czyKoncowy(DEFAULT_CZY_KONCOWY);
         return zajecie;
     }
     /**
@@ -117,7 +124,9 @@ public class ZajecieResourceIT {
             .zZU(UPDATED_Z_ZU)
             .cNPS(UPDATED_C_NPS)
             .modulKsztalcenia(UPDATED_MODUL_KSZTALCENIA)
-            .poziomJezyka(UPDATED_POZIOM_JEZYKA);
+            .poziomJezyka(UPDATED_POZIOM_JEZYKA)
+            .formaZaliczenia(UPDATED_FORMA_ZALICZENIA)
+            .czyKoncowy(UPDATED_CZY_KONCOWY);
         return zajecie;
     }
 
@@ -147,6 +156,8 @@ public class ZajecieResourceIT {
         assertThat(testZajecie.getcNPS()).isEqualTo(DEFAULT_C_NPS);
         assertThat(testZajecie.getModulKsztalcenia()).isEqualTo(DEFAULT_MODUL_KSZTALCENIA);
         assertThat(testZajecie.getPoziomJezyka()).isEqualTo(DEFAULT_POZIOM_JEZYKA);
+        assertThat(testZajecie.getFormaZaliczenia()).isEqualTo(DEFAULT_FORMA_ZALICZENIA);
+        assertThat(testZajecie.isCzyKoncowy()).isEqualTo(DEFAULT_CZY_KONCOWY);
     }
 
     @Test
@@ -279,6 +290,24 @@ public class ZajecieResourceIT {
 
     @Test
     @Transactional
+    public void checkFormaZaliczeniaIsRequired() throws Exception {
+        int databaseSizeBeforeTest = zajecieRepository.findAll().size();
+        // set the field null
+        zajecie.setFormaZaliczenia(null);
+
+        // Create the Zajecie, which fails.
+
+        restZajecieMockMvc.perform(post("/api/zajecies")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(zajecie)))
+            .andExpect(status().isBadRequest());
+
+        List<Zajecie> zajecieList = zajecieRepository.findAll();
+        assertThat(zajecieList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllZajecies() throws Exception {
         // Initialize the database
         zajecieRepository.saveAndFlush(zajecie);
@@ -293,9 +322,11 @@ public class ZajecieResourceIT {
             .andExpect(jsonPath("$.[*].zZU").value(hasItem(DEFAULT_Z_ZU.intValue())))
             .andExpect(jsonPath("$.[*].cNPS").value(hasItem(DEFAULT_C_NPS.intValue())))
             .andExpect(jsonPath("$.[*].modulKsztalcenia").value(hasItem(DEFAULT_MODUL_KSZTALCENIA.toString())))
-            .andExpect(jsonPath("$.[*].poziomJezyka").value(hasItem(DEFAULT_POZIOM_JEZYKA.toString())));
+            .andExpect(jsonPath("$.[*].poziomJezyka").value(hasItem(DEFAULT_POZIOM_JEZYKA.toString())))
+            .andExpect(jsonPath("$.[*].formaZaliczenia").value(hasItem(DEFAULT_FORMA_ZALICZENIA.toString())))
+            .andExpect(jsonPath("$.[*].czyKoncowy").value(hasItem(DEFAULT_CZY_KONCOWY.booleanValue())));
     }
-    
+
     @Test
     @Transactional
     public void getZajecie() throws Exception {
@@ -312,7 +343,9 @@ public class ZajecieResourceIT {
             .andExpect(jsonPath("$.zZU").value(DEFAULT_Z_ZU.intValue()))
             .andExpect(jsonPath("$.cNPS").value(DEFAULT_C_NPS.intValue()))
             .andExpect(jsonPath("$.modulKsztalcenia").value(DEFAULT_MODUL_KSZTALCENIA.toString()))
-            .andExpect(jsonPath("$.poziomJezyka").value(DEFAULT_POZIOM_JEZYKA.toString()));
+            .andExpect(jsonPath("$.poziomJezyka").value(DEFAULT_POZIOM_JEZYKA.toString()))
+            .andExpect(jsonPath("$.formaZaliczenia").value(DEFAULT_FORMA_ZALICZENIA.toString()))
+            .andExpect(jsonPath("$.czyKoncowy").value(DEFAULT_CZY_KONCOWY.booleanValue()));
     }
 
     @Test
@@ -341,7 +374,9 @@ public class ZajecieResourceIT {
             .zZU(UPDATED_Z_ZU)
             .cNPS(UPDATED_C_NPS)
             .modulKsztalcenia(UPDATED_MODUL_KSZTALCENIA)
-            .poziomJezyka(UPDATED_POZIOM_JEZYKA);
+            .poziomJezyka(UPDATED_POZIOM_JEZYKA)
+            .formaZaliczenia(UPDATED_FORMA_ZALICZENIA)
+            .czyKoncowy(UPDATED_CZY_KONCOWY);
 
         restZajecieMockMvc.perform(put("/api/zajecies")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -358,6 +393,8 @@ public class ZajecieResourceIT {
         assertThat(testZajecie.getcNPS()).isEqualTo(UPDATED_C_NPS);
         assertThat(testZajecie.getModulKsztalcenia()).isEqualTo(UPDATED_MODUL_KSZTALCENIA);
         assertThat(testZajecie.getPoziomJezyka()).isEqualTo(UPDATED_POZIOM_JEZYKA);
+        assertThat(testZajecie.getFormaZaliczenia()).isEqualTo(UPDATED_FORMA_ZALICZENIA);
+        assertThat(testZajecie.isCzyKoncowy()).isEqualTo(UPDATED_CZY_KONCOWY);
     }
 
     @Test

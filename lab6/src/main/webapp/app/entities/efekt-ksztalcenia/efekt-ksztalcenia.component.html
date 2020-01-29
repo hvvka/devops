@@ -19,6 +19,7 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col"><span jhiTranslate="appApp.efektKsztalcenia.kodEfektu">Kod Efektu</span></th>
             <th scope="col" ><span jhiTranslate="appApp.efektKsztalcenia.opis">Opis</span></th>
             <th scope="col" ><span jhiTranslate="appApp.efektKsztalcenia.programStudiow">Program Studiow</span></th>
             <th scope="col" ><span jhiTranslate="appApp.efektKsztalcenia.przedmiot">Przedmiot</span></th>
@@ -29,6 +30,7 @@
             <tbody>
             <tr *ngFor="let efektKsztalcenia of efektKsztalcenias ;trackBy: trackId">
                 <td><a [routerLink]="['/efekt-ksztalcenia', efektKsztalcenia.id, 'view' ]">{{efektKsztalcenia.id}}</a></td>
+                <td>{{efektKsztalcenia.kodEfektu}}</td>
                 <td>{{efektKsztalcenia.opis}}</td>
                 <td>
                     <div *ngIf="efektKsztalcenia.programStudiow">

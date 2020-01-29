@@ -1,11 +1,11 @@
 package pl.edu.pwr.twwo.domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +23,10 @@ public class EfektKsztalcenia implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Column(name = "kod_efektu", nullable = false)
+    private String kodEfektu;
 
     @NotNull
     @Column(name = "opis", nullable = false)
@@ -53,6 +57,19 @@ public class EfektKsztalcenia implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getKodEfektu() {
+        return kodEfektu;
+    }
+
+    public void setKodEfektu(String kodEfektu) {
+        this.kodEfektu = kodEfektu;
+    }
+
+    public EfektKsztalcenia kodEfektu(String kodEfektu) {
+        this.kodEfektu = kodEfektu;
+        return this;
     }
 
     public String getOpis() {
@@ -152,6 +169,7 @@ public class EfektKsztalcenia implements Serializable {
     public String toString() {
         return "EfektKsztalcenia{" +
             "id=" + getId() +
+            ", kodEfektu='" + getKodEfektu() + "'" +
             ", opis='" + getOpis() + "'" +
             "}";
     }
