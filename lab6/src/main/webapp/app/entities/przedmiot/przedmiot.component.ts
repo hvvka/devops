@@ -48,4 +48,30 @@ export class PrzedmiotComponent implements OnInit, OnDestroy {
     const modalRef = this.modalService.open(PrzedmiotDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.przedmiot = przedmiot;
   }
+
+  downloadPdf(przedmiot: IPrzedmiot): void {
+    const id: number = przedmiot.id || -1;
+    const nazwa: string = przedmiot.nazwa || 'default';
+
+    this.przedmiotService.downloadPdf(id).subscribe(response => {
+      const newBlob = new Blob([response], { type: 'application/pdf' });
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(newBlob);
+        return;
+      }
+      const data = window.URL.createObjectURL(newBlob);
+
+      const link = document.createElement('a');
+      link.href = data;
+      link.download = `${nazwa}_karta_przedmiotu.pdf`;
+
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+
+      setTimeout(function(): void {
+        window.URL.revokeObjectURL(data);
+        link.remove();
+      }, 100);
+    });
+  }
 }

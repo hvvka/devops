@@ -56,6 +56,12 @@
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
+                                (click)="downloadPdf(przedmiot)"
+                                class="btn btn-light btn-sm">
+                            <fa-icon [icon]="'download'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.download">Download</span>
+                        </button>
+                        <button type="submit"
                                 [routerLink]="['/przedmiot', przedmiot.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
