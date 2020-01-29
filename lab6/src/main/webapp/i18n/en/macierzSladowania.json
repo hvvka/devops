@@ -1,0 +1,10 @@
+{
+  "appApp": {
+    "macierzSladowania": {
+      "home": {
+        "title": "Traceability Matrix",
+        "notFound": "No Traceability Matrix found"
+      }
+    }
+  }
+}

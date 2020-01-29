@@ -1,15 +1,17 @@
 package pl.edu.pwr.twwo.service;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.edu.pwr.twwo.domain.*;
 import pl.edu.pwr.twwo.domain.enumeration.FormaPrzedmiotu;
-import pl.edu.pwr.twwo.repository.*;
-
+import pl.edu.pwr.twwo.repository.ZajecieRepository;
 
 import java.io.File;
 import java.io.FileOutputStream;
