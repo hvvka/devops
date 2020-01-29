@@ -10,6 +10,8 @@ import pl.edu.pwr.twwo.repository.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InvalidObjectException;
 import java.util.Optional;
 import java.util.Set;
 
@@ -42,6 +44,7 @@ public class GenerateKartaPrzedmiotuPdfService {
     public File generateKartaPrzedmiotuPdfForPrzedmiot(Optional<Przedmiot> przedmiot) throws NullPointerException {
         if (!przedmiot.isPresent())
             throw new NullPointerException("Przedmiot for PDF creation is not present.");
+        File file = null;
 
         KartaPrzedmiotu kartaPrzedmiotu = przedmiot.get().getKartaPrzedmiotu();
         Set<Zajecie> zajeciesSet = zajecieRepository.findAllByPrzedmiotId(przedmiot.get().getId());
@@ -51,7 +54,8 @@ public class GenerateKartaPrzedmiotuPdfService {
 
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("sampleKartaPrzedmiotu.pdf"));
+            file = File.createTempFile(przedmiot.get().getNazwa(), ".tmp");
+            PdfWriter.getInstance(document, new FileOutputStream(file));
 
             document.open();
             BaseFont baseTimesRoman = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, false);
@@ -134,7 +138,7 @@ public class GenerateKartaPrzedmiotuPdfService {
         } catch (Exception e) {
         }
 
-        return new File("C:\\Users\\Zofia\\Downloads\\wyklad_01.pdf");
+        return file;
     }
 
     private static void addRow(PdfPTable table, Font font, String text) {
