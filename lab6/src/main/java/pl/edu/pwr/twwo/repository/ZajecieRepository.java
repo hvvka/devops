@@ -4,6 +4,8 @@ import pl.edu.pwr.twwo.domain.Zajecie;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.Set;
+
 
 /**
  * Spring Data  repository for the Zajecie entity.
@@ -11,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ZajecieRepository extends JpaRepository<Zajecie, Long> {
-
+    Set<Zajecie> findAllByPrzedmiotId(Long przedmiotId);
 }
