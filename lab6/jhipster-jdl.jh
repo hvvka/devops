@@ -80,10 +80,8 @@ relationship ManyToOne {
 // Przedmiot
 relationship ManyToOne {
 	Przedmiot{KartaPrzedmiotu} to KartaPrzedmiotu,
-    Przedmiot{OpiekunPrzedmiotu} to OpiekunPrzedmiotu
-}
-relationship ManyToMany {
-	Przedmiot{ProgramStudiow} to ProgramStudiow{Przedmiot}
+    Przedmiot{OpiekunPrzedmiotu} to OpiekunPrzedmiotu,
+    Przedmiot{ProgramStudiow} to ProgramStudiow
 }
 
 // ProgramStudiow
