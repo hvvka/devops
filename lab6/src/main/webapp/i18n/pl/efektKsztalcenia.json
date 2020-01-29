@@ -2,23 +2,23 @@
   "appApp": {
     "efektKsztalcenia": {
       "home": {
-        "title": "Efekt Ksztalcenia",
-        "createLabel": "Dodaj Efekt Ksztalcenia",
-        "createOrEditLabel": "Dodaj lub edytuj: Efekt Ksztalcenia",
-        "notFound": "Nie znaleziono Efektow Ksztalcenia"
+        "title": "Efekt Kształcenia",
+        "createLabel": "Dodaj Efekt Kształcenia",
+        "createOrEditLabel": "Dodaj lub edytuj: Efekt Kształcenia",
+        "notFound": "Nie znaleziono Efektow Kształcenia"
       },
-      "created": "Utworzono nowy obiekt typu Efekt Ksztalcenia z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Efekt Ksztalcenia z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Efekt Ksztalcenia z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Efekt Kształcenia z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Efekt Kształcenia z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Efekt Kształcenia z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Efekt Ksztalcenia {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Efekt Kształcenia {{ id }}?"
       },
       "detail": {
-        "title": "Efekt Ksztalcenia"
+        "title": "Efekt Kształcenia"
       },
       "kodEfektu": "Kod Efektu",
       "opis": "Opis",
-      "programStudiow": "Program Studiow",
+      "programStudiow": "Program Studiów",
       "przedmiot": "Przedmiot",
       "efektMinisterialny": "Efekt Ministerialny"
     }

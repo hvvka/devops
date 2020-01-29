@@ -2,22 +2,22 @@
   "appApp": {
     "typStudiow": {
       "home": {
-        "title": "Typ Studiow",
-        "createLabel": "Dodaj Typ Studiow",
-        "createOrEditLabel": "Dodaj lub edytuj: Typ Studiow",
-        "notFound": "Nie znaleziono Typow Studiow"
+        "title": "Typ Studiów",
+        "createLabel": "Dodaj Typ Studiów",
+        "createOrEditLabel": "Dodaj lub edytuj: Typ Studiów",
+        "notFound": "Nie znaleziono Typow Studiów"
       },
-      "created": "Utworzono nowy obiekt typu Typ Studiow z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Typ Studiow z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Typ Studiow z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Typ Studiów z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Typ Studiów z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Typ Studiów z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Typ Studiow {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Typ Studiów {{ id }}?"
       },
       "detail": {
-        "title": "Typ Studiow"
+        "title": "Typ Studiów"
       },
       "nazwa": "Nazwa",
-      "stopienStudiow": "Stopien Studiow"
+      "stopienStudiow": "Stopień Studiów"
     }
   }
 }
