@@ -1,6 +1,6 @@
-id;nr_semestru;nazwa;karta_przedmiotu_id;opiekun_przedmiotu_id
-1;2;Bezpieczeństwo sieciowe i internetowe;1;2
-2;1;Systemy wspomagania decyzji;2;4
-3;1;Diagnostyka systemów informatycznych;3;6
-4;2;Podstawy biznesu i ochrona własności intelektualnej;4;8
-5;3;Praca dyplomowa II;5;10
+id;nr_semestru;nazwa;karta_przedmiotu_id;opiekun_przedmiotu_id;program_studiow_id
+1;2;Bezpieczeństwo sieciowe i internetowe;1;2;1
+2;1;Systemy wspomagania decyzji;2;4;2
+3;1;Diagnostyka systemów informatycznych;3;6;3
+4;2;Podstawy biznesu i ochrona własności intelektualnej;4;8;3
+5;3;Praca dyplomowa II;5;10;4
