@@ -36,7 +36,7 @@ export class PrzedmiotUpdateComponent implements OnInit {
     nazwa: [],
     kartaPrzedmiotu: [],
     opiekunPrzedmiotu: [],
-    programStudiows: []
+    programStudiow: []
   });
 
   constructor(
@@ -88,7 +88,7 @@ export class PrzedmiotUpdateComponent implements OnInit {
       nazwa: przedmiot.nazwa,
       kartaPrzedmiotu: przedmiot.kartaPrzedmiotu,
       opiekunPrzedmiotu: przedmiot.opiekunPrzedmiotu,
-      programStudiows: przedmiot.programStudiows
+      programStudiow: przedmiot.programStudiow
     });
   }
 
@@ -114,7 +114,7 @@ export class PrzedmiotUpdateComponent implements OnInit {
       nazwa: this.editForm.get(['nazwa'])!.value,
       kartaPrzedmiotu: this.editForm.get(['kartaPrzedmiotu'])!.value,
       opiekunPrzedmiotu: this.editForm.get(['opiekunPrzedmiotu'])!.value,
-      programStudiows: this.editForm.get(['programStudiows'])!.value
+      programStudiow: this.editForm.get(['programStudiow'])!.value
     };
   }
 
@@ -136,16 +136,5 @@ export class PrzedmiotUpdateComponent implements OnInit {
 
   trackById(index: number, item: SelectableEntity): any {
     return item.id;
-  }
-
-  getSelected(selectedVals: IProgramStudiow[], option: IProgramStudiow): IProgramStudiow {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }
