@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity Dyscyplina.
@@ -38,7 +36,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="dyscyplina_id, progam_studiow_id" tableName="dyscyplina_progam_studiow"/>
-        
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
@@ -52,13 +50,22 @@
     -->
     <changeSet id="20200123215628-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/dyscyplina.csv"
-                  separator=";"
-                  tableName="dyscyplina">
+            file="config/liquibase/fake-data/dyscyplina.csv"
+            separator=";"
+            tableName="dyscyplina">
             <column name="id" type="numeric"/>
             <column name="nazwa" type="string"/>
             <column name="czy_wiodaca" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+    <changeSet id="20200123215628-2-data" author="jhipster" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/dyscyplina_progam_studiow.csv"
+            separator=";"
+            tableName="dyscyplina_progam_studiow">
+            <column name="progam_studiow_id" type="numeric"/>
+            <column name="dyscyplina_id" type="numeric"/>
         </loadData>
     </changeSet>
 
