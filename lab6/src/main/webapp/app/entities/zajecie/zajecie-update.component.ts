@@ -34,6 +34,8 @@ export class ZajecieUpdateComponent implements OnInit {
     cNPS: [null, [Validators.required]],
     modulKsztalcenia: [null, [Validators.required]],
     poziomJezyka: [null, [Validators.required]],
+    formaZaliczenia: [null, [Validators.required]],
+    czyKoncowy: [],
     formaWiodaca: [],
     grupaKursow: [],
     przedmiot: []
@@ -103,6 +105,8 @@ export class ZajecieUpdateComponent implements OnInit {
       cNPS: zajecie.cNPS,
       modulKsztalcenia: zajecie.modulKsztalcenia,
       poziomJezyka: zajecie.poziomJezyka,
+      formaZaliczenia: zajecie.formaZaliczenia,
+      czyKoncowy: zajecie.czyKoncowy,
       formaWiodaca: zajecie.formaWiodaca,
       grupaKursow: zajecie.grupaKursow,
       przedmiot: zajecie.przedmiot
@@ -133,6 +137,8 @@ export class ZajecieUpdateComponent implements OnInit {
       cNPS: this.editForm.get(['cNPS'])!.value,
       modulKsztalcenia: this.editForm.get(['modulKsztalcenia'])!.value,
       poziomJezyka: this.editForm.get(['poziomJezyka'])!.value,
+      formaZaliczenia: this.editForm.get(['formaZaliczenia'])!.value,
+      czyKoncowy: this.editForm.get(['czyKoncowy'])!.value,
       formaWiodaca: this.editForm.get(['formaWiodaca'])!.value,
       grupaKursow: this.editForm.get(['grupaKursow'])!.value,
       przedmiot: this.editForm.get(['przedmiot'])!.value

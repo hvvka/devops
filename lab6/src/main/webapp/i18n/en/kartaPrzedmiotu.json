@@ -16,7 +16,10 @@
       "detail": {
         "title": "Subject Card"
       },
-      "nazwa": "Name"
+      "kodPrzedmiotu": "Subject Code",
+      "nazwa": "Name",
+      "nazwaAng": "English Name",
+      "rodzajPrzedmiotu": "Subject Type"
     }
   }
 }

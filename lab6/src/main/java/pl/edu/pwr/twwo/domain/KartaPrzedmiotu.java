@@ -1,10 +1,11 @@
 package pl.edu.pwr.twwo.domain;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import pl.edu.pwr.twwo.domain.enumeration.RodzajPrzedmiotu;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -22,8 +23,21 @@ public class KartaPrzedmiotu implements Serializable {
     private Long id;
 
     @NotNull
+    @Column(name = "kod_przedmiotu", nullable = false)
+    private String kodPrzedmiotu;
+
+    @NotNull
     @Column(name = "nazwa", nullable = false)
     private String nazwa;
+
+    @NotNull
+    @Column(name = "nazwa_ang", nullable = false)
+    private String nazwaAng;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rodzaj_przedmiotu", nullable = false)
+    private RodzajPrzedmiotu rodzajPrzedmiotu;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -32,6 +46,19 @@ public class KartaPrzedmiotu implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getKodPrzedmiotu() {
+        return kodPrzedmiotu;
+    }
+
+    public void setKodPrzedmiotu(String kodPrzedmiotu) {
+        this.kodPrzedmiotu = kodPrzedmiotu;
+    }
+
+    public KartaPrzedmiotu kodPrzedmiotu(String kodPrzedmiotu) {
+        this.kodPrzedmiotu = kodPrzedmiotu;
+        return this;
     }
 
     public String getNazwa() {
@@ -45,6 +72,32 @@ public class KartaPrzedmiotu implements Serializable {
 
     public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
+    }
+
+    public String getNazwaAng() {
+        return nazwaAng;
+    }
+
+    public void setNazwaAng(String nazwaAng) {
+        this.nazwaAng = nazwaAng;
+    }
+
+    public KartaPrzedmiotu nazwaAng(String nazwaAng) {
+        this.nazwaAng = nazwaAng;
+        return this;
+    }
+
+    public RodzajPrzedmiotu getRodzajPrzedmiotu() {
+        return rodzajPrzedmiotu;
+    }
+
+    public void setRodzajPrzedmiotu(RodzajPrzedmiotu rodzajPrzedmiotu) {
+        this.rodzajPrzedmiotu = rodzajPrzedmiotu;
+    }
+
+    public KartaPrzedmiotu rodzajPrzedmiotu(RodzajPrzedmiotu rodzajPrzedmiotu) {
+        this.rodzajPrzedmiotu = rodzajPrzedmiotu;
+        return this;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -68,7 +121,10 @@ public class KartaPrzedmiotu implements Serializable {
     public String toString() {
         return "KartaPrzedmiotu{" +
             "id=" + getId() +
+            ", kodPrzedmiotu='" + getKodPrzedmiotu() + "'" +
             ", nazwa='" + getNazwa() + "'" +
+            ", nazwaAng='" + getNazwaAng() + "'" +
+            ", rodzajPrzedmiotu='" + getRodzajPrzedmiotu() + "'" +
             "}";
     }
 }

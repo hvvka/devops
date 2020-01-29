@@ -1,10 +1,5 @@
 package pl.edu.pwr.twwo.web.rest;
 
-import pl.edu.pwr.twwo.AppApp;
-import pl.edu.pwr.twwo.domain.EfektMinisterialny;
-import pl.edu.pwr.twwo.repository.EfektMinisterialnyRepository;
-import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -17,22 +12,29 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
+import pl.edu.pwr.twwo.AppApp;
+import pl.edu.pwr.twwo.domain.EfektMinisterialny;
+import pl.edu.pwr.twwo.domain.enumeration.TypEfektuMinisterialnego;
+import pl.edu.pwr.twwo.repository.EfektMinisterialnyRepository;
+import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 
-import pl.edu.pwr.twwo.domain.enumeration.TypEfektuMinisterialnego;
 /**
  * Integration tests for the {@link EfektMinisterialnyResource} REST controller.
  */
 @SpringBootTest(classes = AppApp.class)
 public class EfektMinisterialnyResourceIT {
+
+    private static final String DEFAULT_KOD_EFEKTU = "AAAAAAAAAA";
+    private static final String UPDATED_KOD_EFEKTU = "BBBBBBBBBB";
 
     private static final Long DEFAULT_POZIOM_EFEKTU = 1L;
     private static final Long UPDATED_POZIOM_EFEKTU = 2L;
@@ -82,6 +84,7 @@ public class EfektMinisterialnyResourceIT {
      */
     public static EfektMinisterialny createEntity(EntityManager em) {
         EfektMinisterialny efektMinisterialny = new EfektMinisterialny()
+            .kodEfektu(DEFAULT_KOD_EFEKTU)
             .poziomEfektu(DEFAULT_POZIOM_EFEKTU)
             .typEfektuMinisterialnego(DEFAULT_TYP_EFEKTU_MINISTERIALNEGO);
         return efektMinisterialny;
@@ -94,6 +97,7 @@ public class EfektMinisterialnyResourceIT {
      */
     public static EfektMinisterialny createUpdatedEntity(EntityManager em) {
         EfektMinisterialny efektMinisterialny = new EfektMinisterialny()
+            .kodEfektu(UPDATED_KOD_EFEKTU)
             .poziomEfektu(UPDATED_POZIOM_EFEKTU)
             .typEfektuMinisterialnego(UPDATED_TYP_EFEKTU_MINISTERIALNEGO);
         return efektMinisterialny;
@@ -119,6 +123,7 @@ public class EfektMinisterialnyResourceIT {
         List<EfektMinisterialny> efektMinisterialnyList = efektMinisterialnyRepository.findAll();
         assertThat(efektMinisterialnyList).hasSize(databaseSizeBeforeCreate + 1);
         EfektMinisterialny testEfektMinisterialny = efektMinisterialnyList.get(efektMinisterialnyList.size() - 1);
+        assertThat(testEfektMinisterialny.getKodEfektu()).isEqualTo(DEFAULT_KOD_EFEKTU);
         assertThat(testEfektMinisterialny.getPoziomEfektu()).isEqualTo(DEFAULT_POZIOM_EFEKTU);
         assertThat(testEfektMinisterialny.getTypEfektuMinisterialnego()).isEqualTo(DEFAULT_TYP_EFEKTU_MINISTERIALNEGO);
     }
@@ -142,6 +147,24 @@ public class EfektMinisterialnyResourceIT {
         assertThat(efektMinisterialnyList).hasSize(databaseSizeBeforeCreate);
     }
 
+
+    @Test
+    @Transactional
+    public void checkKodEfektuIsRequired() throws Exception {
+        int databaseSizeBeforeTest = efektMinisterialnyRepository.findAll().size();
+        // set the field null
+        efektMinisterialny.setKodEfektu(null);
+
+        // Create the EfektMinisterialny, which fails.
+
+        restEfektMinisterialnyMockMvc.perform(post("/api/efekt-ministerialnies")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(efektMinisterialny)))
+            .andExpect(status().isBadRequest());
+
+        List<EfektMinisterialny> efektMinisterialnyList = efektMinisterialnyRepository.findAll();
+        assertThat(efektMinisterialnyList).hasSize(databaseSizeBeforeTest);
+    }
 
     @Test
     @Transactional
@@ -190,10 +213,11 @@ public class EfektMinisterialnyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(efektMinisterialny.getId().intValue())))
+            .andExpect(jsonPath("$.[*].kodEfektu").value(hasItem(DEFAULT_KOD_EFEKTU)))
             .andExpect(jsonPath("$.[*].poziomEfektu").value(hasItem(DEFAULT_POZIOM_EFEKTU.intValue())))
             .andExpect(jsonPath("$.[*].typEfektuMinisterialnego").value(hasItem(DEFAULT_TYP_EFEKTU_MINISTERIALNEGO.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getEfektMinisterialny() throws Exception {
@@ -205,6 +229,7 @@ public class EfektMinisterialnyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(efektMinisterialny.getId().intValue()))
+            .andExpect(jsonPath("$.kodEfektu").value(DEFAULT_KOD_EFEKTU))
             .andExpect(jsonPath("$.poziomEfektu").value(DEFAULT_POZIOM_EFEKTU.intValue()))
             .andExpect(jsonPath("$.typEfektuMinisterialnego").value(DEFAULT_TYP_EFEKTU_MINISTERIALNEGO.toString()));
     }
@@ -230,6 +255,7 @@ public class EfektMinisterialnyResourceIT {
         // Disconnect from session so that the updates on updatedEfektMinisterialny are not directly saved in db
         em.detach(updatedEfektMinisterialny);
         updatedEfektMinisterialny
+            .kodEfektu(UPDATED_KOD_EFEKTU)
             .poziomEfektu(UPDATED_POZIOM_EFEKTU)
             .typEfektuMinisterialnego(UPDATED_TYP_EFEKTU_MINISTERIALNEGO);
 
@@ -242,6 +268,7 @@ public class EfektMinisterialnyResourceIT {
         List<EfektMinisterialny> efektMinisterialnyList = efektMinisterialnyRepository.findAll();
         assertThat(efektMinisterialnyList).hasSize(databaseSizeBeforeUpdate);
         EfektMinisterialny testEfektMinisterialny = efektMinisterialnyList.get(efektMinisterialnyList.size() - 1);
+        assertThat(testEfektMinisterialny.getKodEfektu()).isEqualTo(UPDATED_KOD_EFEKTU);
         assertThat(testEfektMinisterialny.getPoziomEfektu()).isEqualTo(UPDATED_POZIOM_EFEKTU);
         assertThat(testEfektMinisterialny.getTypEfektuMinisterialnego()).isEqualTo(UPDATED_TYP_EFEKTU_MINISTERIALNEGO);
     }

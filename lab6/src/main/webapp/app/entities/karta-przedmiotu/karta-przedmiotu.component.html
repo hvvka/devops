@@ -18,15 +18,22 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.kartaPrzedmiotu.nazwa">Nazwa</span></th>
-            <th scope="col"></th>
+                <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+                <th scope="col"><span jhiTranslate="appApp.kartaPrzedmiotu.kodPrzedmiotu">Kod Przedmiotu</span></th>
+                <th scope="col"><span jhiTranslate="appApp.kartaPrzedmiotu.nazwa">Nazwa</span></th>
+                <th scope="col"><span jhiTranslate="appApp.kartaPrzedmiotu.nazwaAng">Nazwa Ang</span></th>
+                <th scope="col"><span jhiTranslate="appApp.kartaPrzedmiotu.rodzajPrzedmiotu">Rodzaj Przedmiotu</span>
+                </th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let kartaPrzedmiotu of kartaPrzedmiotus ;trackBy: trackId">
                 <td><a [routerLink]="['/karta-przedmiotu', kartaPrzedmiotu.id, 'view' ]">{{kartaPrzedmiotu.id}}</a></td>
+                <td>{{kartaPrzedmiotu.kodPrzedmiotu}}</td>
                 <td>{{kartaPrzedmiotu.nazwa}}</td>
+                <td>{{kartaPrzedmiotu.nazwaAng}}</td>
+                <td jhiTranslate="{{'appApp.RodzajPrzedmiotu.' + kartaPrzedmiotu.rodzajPrzedmiotu}}">{{kartaPrzedmiotu.rodzajPrzedmiotu}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"
@@ -34,12 +41,6 @@
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                (click)="downloadPdf(kartaPrzedmiotu)"
-                                class="btn btn-light btn-sm">
-                            <fa-icon [icon]="'download'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.download">Download</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/karta-przedmiotu', kartaPrzedmiotu.id, 'edit']"

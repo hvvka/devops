@@ -1,10 +1,5 @@
-import _root_.io.gatling.core.scenario.Simulation
-import ch.qos.logback.classic.{Level, LoggerContext}
-import io.gatling.core.Predef._
-import io.gatling.http.Predef._
+import ch.qos.logback.classic.LoggerContext
 import org.slf4j.LoggerFactory
-
-import scala.concurrent.duration._
 
 /**
  * Performance test for the KartaPrzedmiotu entity.
@@ -70,9 +65,13 @@ class KartaPrzedmiotuGatlingTest extends Simulation {
             .exec(http("Create new kartaPrzedmiotu")
             .post("/api/karta-przedmiotus")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{
+            .body(StringBody(
+                """{
                 "id":null
+                , "kodPrzedmiotu":"SAMPLE_TEXT"
                 , "nazwa":"SAMPLE_TEXT"
+                , "nazwaAng":"SAMPLE_TEXT"
+                , "rodzajPrzedmiotu":"OBOWIAZKOWY"
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_kartaPrzedmiotu_url"))).exitHereIfFailed

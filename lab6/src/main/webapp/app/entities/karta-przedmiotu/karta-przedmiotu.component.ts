@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
@@ -51,31 +51,5 @@ export class KartaPrzedmiotuComponent implements OnInit, OnDestroy {
   delete(kartaPrzedmiotu: IKartaPrzedmiotu): void {
     const modalRef = this.modalService.open(KartaPrzedmiotuDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.kartaPrzedmiotu = kartaPrzedmiotu;
-  }
-
-  downloadPdf(kartaPrzedmiotu: IKartaPrzedmiotu): void {
-    const id: number = kartaPrzedmiotu.id || -1;
-    const nazwa: string = kartaPrzedmiotu.nazwa || 'default';
-
-    this.kartaPrzedmiotuService.downloadPdf(id).subscribe(response => {
-      const newBlob = new Blob([response], { type: 'application/pdf' });
-
-      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-        window.navigator.msSaveOrOpenBlob(newBlob);
-        return;
-      }
-      const data = window.URL.createObjectURL(newBlob);
-
-      const link = document.createElement('a');
-      link.href = data;
-      link.download = `${nazwa}.pdf`;
-
-      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
-
-      setTimeout(function(): void {
-        window.URL.revokeObjectURL(data);
-        link.remove();
-      }, 100);
-    });
   }
 }

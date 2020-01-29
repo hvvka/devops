@@ -1,6 +1,6 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { ProgramStudiowService } from 'app/entities/program-studiow/program-studiow.service';
 import { IProgramStudiow, ProgramStudiow } from 'app/shared/model/program-studiow.model';
 import { ProfilKsztalcenia } from 'app/shared/model/enumerations/profil-ksztalcenia.model';
@@ -27,6 +27,7 @@ describe('Service Tests', () => {
         0,
         ProfilKsztalcenia.OGOLNOAKADEMICKI,
         FormaStudiow.STACJONARNE,
+        'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
         JezykProwadzeniaStudiow.POLSKI,
@@ -71,6 +72,7 @@ describe('Service Tests', () => {
             profilKsztalcenia: 'BBBBBB',
             formaStudiow: 'BBBBBB',
             kierunek: 'BBBBBB',
+            specjalnosc: 'BBBBBB',
             wydzial: 'BBBBBB',
             jezykProwadzeniaStudiow: 'BBBBBB',
             liczbaSemestrow: 1,
@@ -95,6 +97,7 @@ describe('Service Tests', () => {
             profilKsztalcenia: 'BBBBBB',
             formaStudiow: 'BBBBBB',
             kierunek: 'BBBBBB',
+            specjalnosc: 'BBBBBB',
             wydzial: 'BBBBBB',
             jezykProwadzeniaStudiow: 'BBBBBB',
             liczbaSemestrow: 1,

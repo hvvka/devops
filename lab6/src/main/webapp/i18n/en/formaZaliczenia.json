@@ -1,0 +1,9 @@
+{
+  "appApp": {
+    "FormaZaliczenia": {
+      "null": "",
+      "EGZAMIN": "exam",
+      "NA_OCENE": "credit for grade"
+    }
+  }
+}

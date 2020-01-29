@@ -18,17 +18,19 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
             <tr>
-            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.forma">Forma</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.eCTS">E CTS</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.zZU">Z ZU</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.cNPS">C NPS</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.modulKsztalcenia">Modul Ksztalcenia</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.poziomJezyka">Poziom Jezyka</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.formaWiodaca">Forma Wiodaca</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.grupaKursow">Grupa Kursow</span></th>
-            <th scope="col" ><span jhiTranslate="appApp.zajecie.przedmiot">Przedmiot</span></th>
-            <th scope="col"></th>
+                <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.forma">Forma</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.eCTS">E CTS</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.zZU">Z ZU</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.cNPS">C NPS</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.modulKsztalcenia">Modul Ksztalcenia</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.poziomJezyka">Poziom Jezyka</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.formaZaliczenia">Forma Zaliczenia</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.czyKoncowy">Czy Koncowy</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.formaWiodaca">Forma Wiodaca</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.grupaKursow">Grupa Kursow</span></th>
+                <th scope="col"><span jhiTranslate="appApp.zajecie.przedmiot">Przedmiot</span></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -40,14 +42,16 @@
                 <td>{{zajecie.cNPS}}</td>
                 <td jhiTranslate="{{'appApp.ModulKsztalcenia.' + zajecie.modulKsztalcenia}}">{{zajecie.modulKsztalcenia}}</td>
                 <td jhiTranslate="{{'appApp.PoziomJezyka.' + zajecie.poziomJezyka}}">{{zajecie.poziomJezyka}}</td>
+                <td jhiTranslate="{{'appApp.FormaZaliczenia.' + zajecie.formaZaliczenia}}">{{zajecie.formaZaliczenia}}</td>
+                <td>{{zajecie.czyKoncowy}}</td>
                 <td>
                     <div *ngIf="zajecie.formaWiodaca">
-                        <a [routerLink]="['/zajecie', zajecie.formaWiodaca?.id, 'view' ]" >{{zajecie.formaWiodaca?.id}}</a>
+                        <a [routerLink]="['/zajecie', zajecie.formaWiodaca?.id, 'view' ]">{{zajecie.formaWiodaca?.id}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="zajecie.grupaKursow">
-                        <a [routerLink]="['/zajecie', zajecie.grupaKursow?.id, 'view' ]" >{{zajecie.grupaKursow?.id}}</a>
+                        <a [routerLink]="['/zajecie', zajecie.grupaKursow?.id, 'view' ]">{{zajecie.grupaKursow?.id}}</a>
                     </div>
                 </td>
                 <td>

@@ -19,6 +19,7 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col"><span jhiTranslate="appApp.efektMinisterialny.kodEfektu">Kod Efektu</span></th>
             <th scope="col" ><span jhiTranslate="appApp.efektMinisterialny.poziomEfektu">Poziom Efektu</span></th>
             <th scope="col" ><span jhiTranslate="appApp.efektMinisterialny.typEfektuMinisterialnego">Typ Efektu Ministerialnego</span></th>
             <th scope="col"></th>
@@ -27,6 +28,7 @@
             <tbody>
             <tr *ngFor="let efektMinisterialny of efektMinisterialnies ;trackBy: trackId">
                 <td><a [routerLink]="['/efekt-ministerialny', efektMinisterialny.id, 'view' ]">{{efektMinisterialny.id}}</a></td>
+                <td>{{efektMinisterialny.kodEfektu}}</td>
                 <td>{{efektMinisterialny.poziomEfektu}}</td>
                 <td jhiTranslate="{{'appApp.TypEfektuMinisterialnego.' + efektMinisterialny.typEfektuMinisterialnego}}">{{efektMinisterialny.typEfektuMinisterialnego}}</td>
                 <td class="text-right">

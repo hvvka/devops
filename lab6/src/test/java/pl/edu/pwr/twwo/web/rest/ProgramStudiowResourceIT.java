@@ -1,10 +1,5 @@
 package pl.edu.pwr.twwo.web.rest;
 
-import pl.edu.pwr.twwo.AppApp;
-import pl.edu.pwr.twwo.domain.ProgramStudiow;
-import pl.edu.pwr.twwo.repository.ProgramStudiowRepository;
-import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -17,19 +12,22 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
+import pl.edu.pwr.twwo.AppApp;
+import pl.edu.pwr.twwo.domain.ProgramStudiow;
+import pl.edu.pwr.twwo.domain.enumeration.FormaStudiow;
+import pl.edu.pwr.twwo.domain.enumeration.JezykProwadzeniaStudiow;
+import pl.edu.pwr.twwo.domain.enumeration.ProfilKsztalcenia;
+import pl.edu.pwr.twwo.repository.ProgramStudiowRepository;
+import pl.edu.pwr.twwo.web.rest.errors.ExceptionTranslator;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import pl.edu.pwr.twwo.domain.enumeration.ProfilKsztalcenia;
-import pl.edu.pwr.twwo.domain.enumeration.FormaStudiow;
-import pl.edu.pwr.twwo.domain.enumeration.JezykProwadzeniaStudiow;
+import static pl.edu.pwr.twwo.web.rest.TestUtil.createFormattingConversionService;
 /**
  * Integration tests for the {@link ProgramStudiowResource} REST controller.
  */
@@ -44,6 +42,9 @@ public class ProgramStudiowResourceIT {
 
     private static final String DEFAULT_KIERUNEK = "AAAAAAAAAA";
     private static final String UPDATED_KIERUNEK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_SPECJALNOSC = "AAAAAAAAAA";
+    private static final String UPDATED_SPECJALNOSC = "BBBBBBBBBB";
 
     private static final String DEFAULT_WYDZIAL = "AAAAAAAAAA";
     private static final String UPDATED_WYDZIAL = "BBBBBBBBBB";
@@ -102,6 +103,7 @@ public class ProgramStudiowResourceIT {
             .profilKsztalcenia(DEFAULT_PROFIL_KSZTALCENIA)
             .formaStudiow(DEFAULT_FORMA_STUDIOW)
             .kierunek(DEFAULT_KIERUNEK)
+            .specjalnosc(DEFAULT_SPECJALNOSC)
             .wydzial(DEFAULT_WYDZIAL)
             .jezykProwadzeniaStudiow(DEFAULT_JEZYK_PROWADZENIA_STUDIOW)
             .liczbaSemestrow(DEFAULT_LICZBA_SEMESTROW)
@@ -119,6 +121,7 @@ public class ProgramStudiowResourceIT {
             .profilKsztalcenia(UPDATED_PROFIL_KSZTALCENIA)
             .formaStudiow(UPDATED_FORMA_STUDIOW)
             .kierunek(UPDATED_KIERUNEK)
+            .specjalnosc(UPDATED_SPECJALNOSC)
             .wydzial(UPDATED_WYDZIAL)
             .jezykProwadzeniaStudiow(UPDATED_JEZYK_PROWADZENIA_STUDIOW)
             .liczbaSemestrow(UPDATED_LICZBA_SEMESTROW)
@@ -149,6 +152,7 @@ public class ProgramStudiowResourceIT {
         assertThat(testProgramStudiow.getProfilKsztalcenia()).isEqualTo(DEFAULT_PROFIL_KSZTALCENIA);
         assertThat(testProgramStudiow.getFormaStudiow()).isEqualTo(DEFAULT_FORMA_STUDIOW);
         assertThat(testProgramStudiow.getKierunek()).isEqualTo(DEFAULT_KIERUNEK);
+        assertThat(testProgramStudiow.getSpecjalnosc()).isEqualTo(DEFAULT_SPECJALNOSC);
         assertThat(testProgramStudiow.getWydzial()).isEqualTo(DEFAULT_WYDZIAL);
         assertThat(testProgramStudiow.getJezykProwadzeniaStudiow()).isEqualTo(DEFAULT_JEZYK_PROWADZENIA_STUDIOW);
         assertThat(testProgramStudiow.getLiczbaSemestrow()).isEqualTo(DEFAULT_LICZBA_SEMESTROW);
@@ -199,24 +203,6 @@ public class ProgramStudiowResourceIT {
         int databaseSizeBeforeTest = programStudiowRepository.findAll().size();
         // set the field null
         programStudiow.setFormaStudiow(null);
-
-        // Create the ProgramStudiow, which fails.
-
-        restProgramStudiowMockMvc.perform(post("/api/program-studiows")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(programStudiow)))
-            .andExpect(status().isBadRequest());
-
-        List<ProgramStudiow> programStudiowList = programStudiowRepository.findAll();
-        assertThat(programStudiowList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkKierunekIsRequired() throws Exception {
-        int databaseSizeBeforeTest = programStudiowRepository.findAll().size();
-        // set the field null
-        programStudiow.setKierunek(null);
 
         // Create the ProgramStudiow, which fails.
 
@@ -297,12 +283,13 @@ public class ProgramStudiowResourceIT {
             .andExpect(jsonPath("$.[*].profilKsztalcenia").value(hasItem(DEFAULT_PROFIL_KSZTALCENIA.toString())))
             .andExpect(jsonPath("$.[*].formaStudiow").value(hasItem(DEFAULT_FORMA_STUDIOW.toString())))
             .andExpect(jsonPath("$.[*].kierunek").value(hasItem(DEFAULT_KIERUNEK)))
+            .andExpect(jsonPath("$.[*].specjalnosc").value(hasItem(DEFAULT_SPECJALNOSC)))
             .andExpect(jsonPath("$.[*].wydzial").value(hasItem(DEFAULT_WYDZIAL)))
             .andExpect(jsonPath("$.[*].jezykProwadzeniaStudiow").value(hasItem(DEFAULT_JEZYK_PROWADZENIA_STUDIOW.toString())))
             .andExpect(jsonPath("$.[*].liczbaSemestrow").value(hasItem(DEFAULT_LICZBA_SEMESTROW.intValue())))
             .andExpect(jsonPath("$.[*].cyklKsztalcenia").value(hasItem(DEFAULT_CYKL_KSZTALCENIA)));
     }
-    
+
     @Test
     @Transactional
     public void getProgramStudiow() throws Exception {
@@ -317,6 +304,7 @@ public class ProgramStudiowResourceIT {
             .andExpect(jsonPath("$.profilKsztalcenia").value(DEFAULT_PROFIL_KSZTALCENIA.toString()))
             .andExpect(jsonPath("$.formaStudiow").value(DEFAULT_FORMA_STUDIOW.toString()))
             .andExpect(jsonPath("$.kierunek").value(DEFAULT_KIERUNEK))
+            .andExpect(jsonPath("$.specjalnosc").value(DEFAULT_SPECJALNOSC))
             .andExpect(jsonPath("$.wydzial").value(DEFAULT_WYDZIAL))
             .andExpect(jsonPath("$.jezykProwadzeniaStudiow").value(DEFAULT_JEZYK_PROWADZENIA_STUDIOW.toString()))
             .andExpect(jsonPath("$.liczbaSemestrow").value(DEFAULT_LICZBA_SEMESTROW.intValue()))
@@ -347,6 +335,7 @@ public class ProgramStudiowResourceIT {
             .profilKsztalcenia(UPDATED_PROFIL_KSZTALCENIA)
             .formaStudiow(UPDATED_FORMA_STUDIOW)
             .kierunek(UPDATED_KIERUNEK)
+            .specjalnosc(UPDATED_SPECJALNOSC)
             .wydzial(UPDATED_WYDZIAL)
             .jezykProwadzeniaStudiow(UPDATED_JEZYK_PROWADZENIA_STUDIOW)
             .liczbaSemestrow(UPDATED_LICZBA_SEMESTROW)
@@ -364,6 +353,7 @@ public class ProgramStudiowResourceIT {
         assertThat(testProgramStudiow.getProfilKsztalcenia()).isEqualTo(UPDATED_PROFIL_KSZTALCENIA);
         assertThat(testProgramStudiow.getFormaStudiow()).isEqualTo(UPDATED_FORMA_STUDIOW);
         assertThat(testProgramStudiow.getKierunek()).isEqualTo(UPDATED_KIERUNEK);
+        assertThat(testProgramStudiow.getSpecjalnosc()).isEqualTo(UPDATED_SPECJALNOSC);
         assertThat(testProgramStudiow.getWydzial()).isEqualTo(UPDATED_WYDZIAL);
         assertThat(testProgramStudiow.getJezykProwadzeniaStudiow()).isEqualTo(UPDATED_JEZYK_PROWADZENIA_STUDIOW);
         assertThat(testProgramStudiow.getLiczbaSemestrow()).isEqualTo(UPDATED_LICZBA_SEMESTROW);

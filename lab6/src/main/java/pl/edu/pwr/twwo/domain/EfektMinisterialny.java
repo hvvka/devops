@@ -1,16 +1,15 @@
 package pl.edu.pwr.twwo.domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import pl.edu.pwr.twwo.domain.enumeration.TypEfektuMinisterialnego;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-import pl.edu.pwr.twwo.domain.enumeration.TypEfektuMinisterialnego;
 
 /**
  * A EfektMinisterialny.
@@ -25,6 +24,10 @@ public class EfektMinisterialny implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Column(name = "kod_efektu", nullable = false)
+    private String kodEfektu;
 
     @NotNull
     @Column(name = "poziom_efektu", nullable = false)
@@ -47,6 +50,19 @@ public class EfektMinisterialny implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getKodEfektu() {
+        return kodEfektu;
+    }
+
+    public void setKodEfektu(String kodEfektu) {
+        this.kodEfektu = kodEfektu;
+    }
+
+    public EfektMinisterialny kodEfektu(String kodEfektu) {
+        this.kodEfektu = kodEfektu;
+        return this;
     }
 
     public Long getPoziomEfektu() {
@@ -121,6 +137,7 @@ public class EfektMinisterialny implements Serializable {
     public String toString() {
         return "EfektMinisterialny{" +
             "id=" + getId() +
+            ", kodEfektu='" + getKodEfektu() + "'" +
             ", poziomEfektu=" + getPoziomEfektu() +
             ", typEfektuMinisterialnego='" + getTypEfektuMinisterialnego() + "'" +
             "}";

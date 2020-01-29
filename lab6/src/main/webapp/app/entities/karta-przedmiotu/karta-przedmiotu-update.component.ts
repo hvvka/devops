@@ -17,7 +17,10 @@ export class KartaPrzedmiotuUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    nazwa: [null, [Validators.required]]
+    kodPrzedmiotu: [null, [Validators.required]],
+    nazwa: [null, [Validators.required]],
+    nazwaAng: [null, [Validators.required]],
+    rodzajPrzedmiotu: [null, [Validators.required]]
   });
 
   constructor(
@@ -35,7 +38,10 @@ export class KartaPrzedmiotuUpdateComponent implements OnInit {
   updateForm(kartaPrzedmiotu: IKartaPrzedmiotu): void {
     this.editForm.patchValue({
       id: kartaPrzedmiotu.id,
-      nazwa: kartaPrzedmiotu.nazwa
+      kodPrzedmiotu: kartaPrzedmiotu.kodPrzedmiotu,
+      nazwa: kartaPrzedmiotu.nazwa,
+      nazwaAng: kartaPrzedmiotu.nazwaAng,
+      rodzajPrzedmiotu: kartaPrzedmiotu.rodzajPrzedmiotu
     });
   }
 
@@ -57,7 +63,10 @@ export class KartaPrzedmiotuUpdateComponent implements OnInit {
     return {
       ...new KartaPrzedmiotu(),
       id: this.editForm.get(['id'])!.value,
-      nazwa: this.editForm.get(['nazwa'])!.value
+      kodPrzedmiotu: this.editForm.get(['kodPrzedmiotu'])!.value,
+      nazwa: this.editForm.get(['nazwa'])!.value,
+      nazwaAng: this.editForm.get(['nazwaAng'])!.value,
+      rodzajPrzedmiotu: this.editForm.get(['rodzajPrzedmiotu'])!.value
     };
   }
 

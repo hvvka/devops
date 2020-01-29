@@ -38,8 +38,18 @@ describe('KartaPrzedmiotu e2e test', () => {
     const nbButtonsBeforeCreate = await kartaPrzedmiotuComponentsPage.countDeleteButtons();
 
     await kartaPrzedmiotuComponentsPage.clickOnCreateButton();
-    await promise.all([kartaPrzedmiotuUpdatePage.setNazwaInput('nazwa')]);
+    await promise.all([
+      kartaPrzedmiotuUpdatePage.setKodPrzedmiotuInput('kodPrzedmiotu'),
+      kartaPrzedmiotuUpdatePage.setNazwaInput('nazwa'),
+      kartaPrzedmiotuUpdatePage.setNazwaAngInput('nazwaAng'),
+      kartaPrzedmiotuUpdatePage.rodzajPrzedmiotuSelectLastOption()
+    ]);
+    expect(await kartaPrzedmiotuUpdatePage.getKodPrzedmiotuInput()).to.eq(
+      'kodPrzedmiotu',
+      'Expected KodPrzedmiotu value to be equals to kodPrzedmiotu'
+    );
     expect(await kartaPrzedmiotuUpdatePage.getNazwaInput()).to.eq('nazwa', 'Expected Nazwa value to be equals to nazwa');
+    expect(await kartaPrzedmiotuUpdatePage.getNazwaAngInput()).to.eq('nazwaAng', 'Expected NazwaAng value to be equals to nazwaAng');
     await kartaPrzedmiotuUpdatePage.save();
     expect(await kartaPrzedmiotuUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

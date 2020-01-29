@@ -30,21 +30,23 @@
                     </select>
                     <div *ngIf="editForm.get('formaStudiow')!.invalid && (editForm.get('formaStudiow')!.dirty || editForm.get('formaStudiow')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('formaStudiow')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('formaStudiow')?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="appApp.programStudiow.kierunek" for="field_kierunek">Kierunek</label>
+                    <label class="form-control-label" jhiTranslate="appApp.programStudiow.kierunek"
+                           for="field_kierunek">Kierunek</label>
                     <input type="text" class="form-control" name="kierunek" id="field_kierunek"
                            formControlName="kierunek"/>
-                    <div *ngIf="editForm.get('kierunek')!.invalid && (editForm.get('kierunek')!.dirty || editForm.get('kierunek')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('kierunek')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_specjalnosc"
+                           jhiTranslate="appApp.programStudiow.specjalnosc">Specjalnosc</label>
+                    <input class="form-control" formControlName="specjalnosc" id="field_specjalnosc" name="specjalnosc"
+                           type="text"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="appApp.programStudiow.wydzial" for="field_wydzial">Wydzial</label>
@@ -52,8 +54,9 @@
                            formControlName="wydzial"/>
                     <div *ngIf="editForm.get('wydzial')!.invalid && (editForm.get('wydzial')!.dirty || editForm.get('wydzial')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('wydzial')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('wydzial')?.errors?.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                     </div>
                 </div>

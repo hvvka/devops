@@ -1,10 +1,5 @@
-import _root_.io.gatling.core.scenario.Simulation
-import ch.qos.logback.classic.{Level, LoggerContext}
-import io.gatling.core.Predef._
-import io.gatling.http.Predef._
+import ch.qos.logback.classic.LoggerContext
 import org.slf4j.LoggerFactory
-
-import scala.concurrent.duration._
 
 /**
  * Performance test for the ProgramStudiow entity.
@@ -70,11 +65,13 @@ class ProgramStudiowGatlingTest extends Simulation {
             .exec(http("Create new programStudiow")
             .post("/api/program-studiows")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{
+            .body(StringBody(
+                """{
                 "id":null
                 , "profilKsztalcenia":"OGOLNOAKADEMICKI"
                 , "formaStudiow":"STACJONARNE"
                 , "kierunek":"SAMPLE_TEXT"
+                , "specjalnosc":"SAMPLE_TEXT"
                 , "wydzial":"SAMPLE_TEXT"
                 , "jezykProwadzeniaStudiow":"POLSKI"
                 , "liczbaSemestrow":null

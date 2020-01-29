@@ -22,6 +22,8 @@
       "cNPS": "CNPS",
       "modulKsztalcenia": "Modul Ksztalcenia",
       "poziomJezyka": "Poziom Jezyka",
+      "formaZaliczenia": "Forma Zaliczenia",
+      "czyKoncowy": "Czy Koncowy?",
       "formaWiodaca": "Forma Wiodaca",
       "grupaKursow": "Grupa Kursow",
       "przedmiot": "Przedmiot"

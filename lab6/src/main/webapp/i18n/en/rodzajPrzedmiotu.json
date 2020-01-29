@@ -1,0 +1,10 @@
+{
+  "appApp": {
+    "RodzajPrzedmiotu": {
+      "null": "",
+      "OBOWIAZKOWY": "obligatory",
+      "WYBIERALNY": "eligible",
+      "OGOLNOUCZELNIANY": "university-wide"
+    }
+  }
+}

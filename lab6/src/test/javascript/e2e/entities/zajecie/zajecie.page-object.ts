@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class ZajecieComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -32,6 +32,8 @@ export class ZajecieUpdatePage {
   cNPSInput = element(by.id('field_cNPS'));
   modulKsztalceniaSelect = element(by.id('field_modulKsztalcenia'));
   poziomJezykaSelect = element(by.id('field_poziomJezyka'));
+  formaZaliczeniaSelect = element(by.id('field_formaZaliczenia'));
+  czyKoncowyInput = element(by.id('field_czyKoncowy'));
   formaWiodacaSelect = element(by.id('field_formaWiodaca'));
   grupaKursowSelect = element(by.id('field_grupaKursow'));
   przedmiotSelect = element(by.id('field_przedmiot'));
@@ -107,6 +109,25 @@ export class ZajecieUpdatePage {
       .all(by.tagName('option'))
       .last()
       .click();
+  }
+
+  async setFormaZaliczeniaSelect(formaZaliczenia: string): Promise<void> {
+    await this.formaZaliczeniaSelect.sendKeys(formaZaliczenia);
+  }
+
+  async getFormaZaliczeniaSelect(): Promise<string> {
+    return await this.formaZaliczeniaSelect.element(by.css('option:checked')).getText();
+  }
+
+  async formaZaliczeniaSelectLastOption(): Promise<void> {
+    await this.formaZaliczeniaSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  getCzyKoncowyInput(): ElementFinder {
+    return this.czyKoncowyInput;
   }
 
   async formaWiodacaSelectLastOption(): Promise<void> {

@@ -35,8 +35,4 @@ export class KartaPrzedmiotuService {
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
-
-  downloadPdf(id: number): Observable<Blob> {
-    return this.http.get(`${this.resourceUrl}/downloads/${id}`, { responseType: 'blob' });
-  }
 }

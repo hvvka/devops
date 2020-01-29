@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class ProgramStudiowComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -29,6 +29,7 @@ export class ProgramStudiowUpdatePage {
   profilKsztalceniaSelect = element(by.id('field_profilKsztalcenia'));
   formaStudiowSelect = element(by.id('field_formaStudiow'));
   kierunekInput = element(by.id('field_kierunek'));
+  specjalnoscInput = element(by.id('field_specjalnosc'));
   wydzialInput = element(by.id('field_wydzial'));
   jezykProwadzeniaStudiowSelect = element(by.id('field_jezykProwadzeniaStudiow'));
   liczbaSemestrowInput = element(by.id('field_liczbaSemestrow'));
@@ -75,6 +76,14 @@ export class ProgramStudiowUpdatePage {
 
   async getKierunekInput(): Promise<string> {
     return await this.kierunekInput.getAttribute('value');
+  }
+
+  async setSpecjalnoscInput(specjalnosc: string): Promise<void> {
+    await this.specjalnoscInput.sendKeys(specjalnosc);
+  }
+
+  async getSpecjalnoscInput(): Promise<string> {
+    return await this.specjalnoscInput.getAttribute('value');
   }
 
   async setWydzialInput(wydzial: string): Promise<void> {

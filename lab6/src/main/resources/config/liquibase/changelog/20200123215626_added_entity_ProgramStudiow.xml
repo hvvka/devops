@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity ProgramStudiow.
@@ -17,22 +15,25 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="profil_ksztalcenia" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="forma_studiow" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="kierunek" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true"/>
+            </column>
+            <column name="specjalnosc" type="varchar(255)">
+                <constraints nullable="true"/>
             </column>
             <column name="wydzial" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="jezyk_prowadzenia_studiow" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="liczba_semestrow" type="bigint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="cykl_ksztalcenia" type="varchar(255)">
                 <constraints nullable="false" />
@@ -66,6 +67,7 @@
             <column name="profil_ksztalcenia" type="string"/>
             <column name="forma_studiow" type="string"/>
             <column name="kierunek" type="string"/>
+            <column name="specjalnosc" type="string"/>
             <column name="wydzial" type="string"/>
             <column name="jezyk_prowadzenia_studiow" type="string"/>
             <column name="liczba_semestrow" type="numeric"/>

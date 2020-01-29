@@ -1,13 +1,35 @@
 {
     "name": "KartaPrzedmiotu",
     "fields": [
-        {
-            "fieldName": "nazwa",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        }
+      {
+        "fieldName": "kodPrzedmiotu",
+        "fieldType": "String",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "nazwa",
+        "fieldType": "String",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "nazwaAng",
+        "fieldType": "String",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
+      {
+        "fieldName": "rodzajPrzedmiotu",
+        "fieldType": "RodzajPrzedmiotu",
+        "fieldValues": "OBOWIAZKOWY,WYBIERALNY,OGOLNOUCZELNIANY",
+        "fieldValidateRules": [
+          "required"
+        ]
+      }
     ],
     "relationships": [],
     "changelogDate": "20200123215621",

@@ -1,0 +1,9 @@
+{
+  "appApp": {
+    "FormaZaliczenia": {
+      "null": "",
+      "EGZAMIN": "egzamin",
+      "NA_OCENE": "zaliczenie na ocene"
+    }
+  }
+}

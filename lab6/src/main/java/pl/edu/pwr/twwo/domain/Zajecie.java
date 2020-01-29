@@ -1,18 +1,16 @@
 package pl.edu.pwr.twwo.domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import pl.edu.pwr.twwo.domain.enumeration.FormaPrzedmiotu;
+import pl.edu.pwr.twwo.domain.enumeration.FormaZaliczenia;
+import pl.edu.pwr.twwo.domain.enumeration.ModulKsztalcenia;
+import pl.edu.pwr.twwo.domain.enumeration.PoziomJezyka;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-
-import pl.edu.pwr.twwo.domain.enumeration.FormaPrzedmiotu;
-
-import pl.edu.pwr.twwo.domain.enumeration.ModulKsztalcenia;
-
-import pl.edu.pwr.twwo.domain.enumeration.PoziomJezyka;
 
 /**
  * A Zajecie.
@@ -54,6 +52,14 @@ public class Zajecie implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "poziom_jezyka", nullable = false)
     private PoziomJezyka poziomJezyka;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "forma_zaliczenia", nullable = false)
+    private FormaZaliczenia formaZaliczenia;
+
+    @Column(name = "czy_koncowy")
+    private Boolean czyKoncowy;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -154,6 +160,32 @@ public class Zajecie implements Serializable {
         this.poziomJezyka = poziomJezyka;
     }
 
+    public FormaZaliczenia getFormaZaliczenia() {
+        return formaZaliczenia;
+    }
+
+    public void setFormaZaliczenia(FormaZaliczenia formaZaliczenia) {
+        this.formaZaliczenia = formaZaliczenia;
+    }
+
+    public Zajecie formaZaliczenia(FormaZaliczenia formaZaliczenia) {
+        this.formaZaliczenia = formaZaliczenia;
+        return this;
+    }
+
+    public Boolean isCzyKoncowy() {
+        return czyKoncowy;
+    }
+
+    public Zajecie czyKoncowy(Boolean czyKoncowy) {
+        this.czyKoncowy = czyKoncowy;
+        return this;
+    }
+
+    public void setCzyKoncowy(Boolean czyKoncowy) {
+        this.czyKoncowy = czyKoncowy;
+    }
+
     public Zajecie getFormaWiodaca() {
         return formaWiodaca;
     }
@@ -220,6 +252,8 @@ public class Zajecie implements Serializable {
             ", cNPS=" + getcNPS() +
             ", modulKsztalcenia='" + getModulKsztalcenia() + "'" +
             ", poziomJezyka='" + getPoziomJezyka() + "'" +
+            ", formaZaliczenia='" + getFormaZaliczenia() + "'" +
+            ", czyKoncowy='" + isCzyKoncowy() + "'" +
             "}";
     }
 }

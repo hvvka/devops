@@ -1,10 +1,5 @@
-import _root_.io.gatling.core.scenario.Simulation
-import ch.qos.logback.classic.{Level, LoggerContext}
-import io.gatling.core.Predef._
-import io.gatling.http.Predef._
+import ch.qos.logback.classic.LoggerContext
 import org.slf4j.LoggerFactory
-
-import scala.concurrent.duration._
 
 /**
  * Performance test for the EfektMinisterialny entity.
@@ -70,8 +65,10 @@ class EfektMinisterialnyGatlingTest extends Simulation {
             .exec(http("Create new efektMinisterialny")
             .post("/api/efekt-ministerialnies")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{
+            .body(StringBody(
+              """{
                 "id":null
+                , "kodEfektu":"SAMPLE_TEXT"
                 , "poziomEfektu":null
                 , "typEfektuMinisterialnego":"OGOLNEGO_KSZTALCENIA"
                 }""")).asJson

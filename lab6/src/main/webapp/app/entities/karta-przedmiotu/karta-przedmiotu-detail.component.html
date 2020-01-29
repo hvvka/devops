@@ -5,9 +5,22 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appApp.kartaPrzedmiotu.kodPrzedmiotu">Kod Przedmiotu</span></dt>
+                <dd>
+                    <span>{{kartaPrzedmiotu.kodPrzedmiotu}}</span>
+                </dd>
                 <dt><span jhiTranslate="appApp.kartaPrzedmiotu.nazwa">Nazwa</span></dt>
                 <dd>
                     <span>{{kartaPrzedmiotu.nazwa}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.kartaPrzedmiotu.nazwaAng">Nazwa Ang</span></dt>
+                <dd>
+                    <span>{{kartaPrzedmiotu.nazwaAng}}</span>
+                </dd>
+                <dt><span jhiTranslate="appApp.kartaPrzedmiotu.rodzajPrzedmiotu">Rodzaj Przedmiotu</span></dt>
+                <dd>
+                    <span
+                        jhiTranslate="{{'appApp.RodzajPrzedmiotu.' + kartaPrzedmiotu.rodzajPrzedmiotu}}">{{kartaPrzedmiotu.rodzajPrzedmiotu}}</span>
                 </dd>
             </dl>
 
