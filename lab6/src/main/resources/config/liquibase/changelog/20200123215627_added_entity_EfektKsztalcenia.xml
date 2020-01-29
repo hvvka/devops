@@ -64,13 +64,31 @@
     -->
     <changeSet id="20200123215627-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/efekt_ksztalcenia.csv"
-                  separator=";"
-                  tableName="efekt_ksztalcenia">
+            file="config/liquibase/fake-data/efekt_ksztalcenia.csv"
+            separator=";"
+            tableName="efekt_ksztalcenia">
             <column name="id" type="numeric"/>
             <column name="kod_efektu" type="string"/>
             <column name="opis" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
+        </loadData>
+    </changeSet>
+    <changeSet id="20200123215627-2-data" author="jhipster" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/efekt_ksztalcenia_przedmiot.csv"
+            separator=";"
+            tableName="efekt_ksztalcenia_przedmiot">
+            <column name="przedmiot_id" type="numeric"/>
+            <column name="efekt_ksztalcenia_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+    <changeSet id="20200123215627-3-data" author="jhipster" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/efekt_ksztalcenia_efekt_ministerialny.csv"
+            separator=";"
+            tableName="efekt_ksztalcenia_efekt_ministerialny">
+            <column name="efekt_ministerialny_id" type="numeric"/>
+            <column name="efekt_ksztalcenia_id" type="numeric"/>
         </loadData>
     </changeSet>
 
