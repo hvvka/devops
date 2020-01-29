@@ -2,9 +2,9 @@
   "appApp": {
     "RodzajPrzedmiotu": {
       "null": "",
-      "OBOWIAZKOWY": "obowiazkowy",
+      "OBOWIAZKOWY": "obowiązkowy",
       "WYBIERALNY": "wybieralny",
-      "OGOLNOUCZELNIANY": "ogolnouczelniany"
+      "OGOLNOUCZELNIANY": "ogólnouczelniany"
     }
   }
 }

@@ -2,29 +2,29 @@
   "appApp": {
     "programStudiow": {
       "home": {
-        "title": "Program Studiow",
-        "createLabel": "Dodaj Program Studiow",
-        "createOrEditLabel": "Dodaj lub edytuj: Program Studiow",
-        "notFound": "Nie znaleziono Programow Studiow"
+        "title": "Program Studiów",
+        "createLabel": "Dodaj Program Studiów",
+        "createOrEditLabel": "Dodaj lub edytuj: Program Studiów",
+        "notFound": "Nie znaleziono Programow Studiów"
       },
-      "created": "Utworzono nowy obiekt typu Program Studiow z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Program Studiow z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Program Studiow z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Program Studiów z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Program Studiów z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Program Studiów z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Program Studiow {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Program Studiów {{ id }}?"
       },
       "detail": {
-        "title": "Program Studiow"
+        "title": "Program Studiów"
       },
-      "profilKsztalcenia": "Profil Ksztalcenia",
-      "formaStudiow": "Forma Studiow",
+      "profilKsztalcenia": "Profil Kształcenia",
+      "formaStudiow": "Forma Studiów",
       "kierunek": "Kierunek",
-      "specjalnosc": "Specjalnosc",
-      "wydzial": "Wydzial",
-      "jezykProwadzeniaStudiow": "Jezyk Prowadzenia Studiow",
-      "liczbaSemestrow": "Liczba Semestrow",
-      "cyklKsztalcenia": "Cykl Ksztalcenia",
-      "typStudiow": "Typ Studiow",
+      "specjalnosc": "Specjalność",
+      "wydzial": "Wydział",
+      "jezykProwadzeniaStudiow": "Język Prowadzenia Studiów",
+      "liczbaSemestrow": "Liczba Semestrów",
+      "cyklKsztalcenia": "Cykl Kształcenia",
+      "typStudiow": "Typ Studiów",
       "przedmiot": "Przedmiot",
       "dyscyplina": "Dyscyplina"
     }

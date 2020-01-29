@@ -2,30 +2,30 @@
   "appApp": {
     "zajecie": {
       "home": {
-        "title": "Zajecie",
-        "createLabel": "Dodaj Zajecie",
-        "createOrEditLabel": "Dodaj lub edytuj: Zajecie",
-        "notFound": "Nie znaleziono Zajec"
+        "title": "Zajęcie",
+        "createLabel": "Dodaj Zajęcie",
+        "createOrEditLabel": "Dodaj lub edytuj: Zajęcie",
+        "notFound": "Nie znaleziono Zajęć"
       },
-      "created": "Utworzono nowy obiekt typu Zajecie z identyfikatorem {{ param }}",
-      "updated": "Uaktualniono obiekt typu Zajecie z identyfikatorem {{ param }}",
-      "deleted": "Usunięto obiekt typu Zajecie z identyfikatorem {{ param }}",
+      "created": "Utworzono nowy obiekt typu Zajęcie z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Zajęcie z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Zajęcie z identyfikatorem {{ param }}",
       "delete": {
-        "question": "Czy na pewno chcesz usunąć Zajecie {{ id }}?"
+        "question": "Czy na pewno chcesz usunąć Zajęcie {{ id }}?"
       },
       "detail": {
-        "title": "Zajecie"
+        "title": "Zajęcie"
       },
       "forma": "Forma",
       "eCTS": "ECTS",
       "zZU": "ZZU",
       "cNPS": "CNPS",
-      "modulKsztalcenia": "Modul Ksztalcenia",
-      "poziomJezyka": "Poziom Jezyka",
+      "modulKsztalcenia": "Moduł Kształcenia",
+      "poziomJezyka": "Poziom Języka",
       "formaZaliczenia": "Forma Zaliczenia",
-      "czyKoncowy": "Czy Koncowy?",
-      "formaWiodaca": "Forma Wiodaca",
-      "grupaKursow": "Grupa Kursow",
+      "czyKoncowy": "Czy Końcowy?",
+      "formaWiodaca": "Forma Wiodąca",
+      "grupaKursow": "Grupa Kursów",
       "przedmiot": "Przedmiot"
     }
   }
