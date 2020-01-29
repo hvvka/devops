@@ -136,11 +136,9 @@ public class PrzedmiotResource {
         Optional<Przedmiot> przedmiot = przedmiotRepository.findById(id);
         try {
             File file = generateKartaPrzedmiotuPdfService.generateKartaPrzedmiotuPdfForPrzedmiot(przedmiot);
-//            File file = new File("C:\\Users\\Zofia\\Downloads\\wyklad_01.pdf");
             HttpHeaders respHeaders = new HttpHeaders();
             respHeaders.setContentType(MediaType.APPLICATION_PDF);
-            respHeaders.setContentDispositionFormData("attachment", "fileNameIwant.pdf");
-
+            respHeaders.setContentDispositionFormData("attachment", null);
             InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
             return new ResponseEntity<>(isr, respHeaders, HttpStatus.OK);
         } catch (Exception ex) {
