@@ -3,7 +3,7 @@
     "kartaPrzedmiotu": {
       "home": {
         "title": "Karta Przedmiotu",
-        "createLabel": "Dodaj Karta Przedmiotu",
+        "createLabel": "Dodaj Kartę Przedmiotu",
         "createOrEditLabel": "Dodaj lub edytuj: Karta Przedmiotu",
         "notFound": "Nie znaleziono Kart Przedmiotu"
       },
@@ -17,8 +17,8 @@
         "title": "Karta Przedmiotu"
       },
       "kodPrzedmiotu": "Kod Przedmiotu",
-      "nazwa": "Nazwa",
-      "nazwaAng": "Nazwa Ang",
+      "nazwa": "Nazwa w języku polskim",
+      "nazwaAng": "Nazwa w języku angielskim",
       "rodzajPrzedmiotu": "Rodzaj Przedmiotu"
     }
   }

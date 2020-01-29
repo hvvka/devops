@@ -3,7 +3,7 @@
     "dyscyplina": {
       "home": {
         "title": "Dyscyplina",
-        "createLabel": "Dodaj Dyscypline",
+        "createLabel": "Dodaj Dyscyplinę",
         "createOrEditLabel": "Dodaj lub edytuj: Dyscyplina",
         "notFound": "Nie znaleziono Dyscyplin"
       },
@@ -17,8 +17,8 @@
         "title": "Dyscyplina"
       },
       "nazwa": "Nazwa",
-      "czyWiodaca": "Czy Wiodaca?",
-      "progamStudiow": "Progam Studiow"
+      "czyWiodaca": "Czy Wiodąca?",
+      "progamStudiow": "Progam Studiów"
     }
   }
 }

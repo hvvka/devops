@@ -1,11 +1,6 @@
 id;nazwa;czy_wiodaca
-1;upward-trending frame e-enable;true
-2;mobile;false
-3;Books hack;false
-4;New York;true
-5;Delaware Generic;true
-6;revolutionize;false
-7;turquoise;true
-8;reboot;false
-9;Branding;true
-10;Fresh;true
+1;Informatyka;true
+2;Informatyka techniczna i telekomunikacja;true
+3;Automatyka, elektronika i elektrotechnika;false
+4;Nauki o zarządzaniu i jakości;true
+5;Informatyka techniczna i telekomunikacja;false
