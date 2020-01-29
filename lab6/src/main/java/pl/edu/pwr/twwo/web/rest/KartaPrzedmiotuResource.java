@@ -109,23 +109,6 @@ public class KartaPrzedmiotuResource {
         return ResponseUtil.wrapOrNotFound(kartaPrzedmiotu);
     }
 
-    @GetMapping("/karta-przedmiotus/downloads/{id}")
-    public ResponseEntity<InputStreamResource> getKartaPrzedmiotuPdf(@PathVariable Long id) {
-        log.debug("REST request to get PDF of KartaPrzedmiotu : {}", id);
-        try {
-            File file = new File("C:\\Users\\Zofia\\Downloads\\wyklad_01.pdf");
-            HttpHeaders respHeaders = new HttpHeaders();
-            respHeaders.setContentType(MediaType.APPLICATION_PDF);
-            respHeaders.setContentDispositionFormData("attachment", "fileNameIwant.pdf");
-
-            InputStreamResource isr = new InputStreamResource(new FileInputStream(file));
-            return new ResponseEntity<>(isr, respHeaders, HttpStatus.OK);
-        } catch (Exception ex) {
-            log.info("Error writing PDF of KartaPrzedmiotu id '{}' to output stream", id, ex);
-            throw new RuntimeException("IOError writing file to output stream");
-        }
-    }
-
     /**
      * {@code DELETE  /karta-przedmiotus/:id} : delete the "id" kartaPrzedmiotu.
      *
