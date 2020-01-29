@@ -168,7 +168,7 @@ public class GenerateKartaPrzedmiotuPdfService {
             font12normal = new Font(baseTimesRoman, 12, Font.NORMAL, BaseColor.BLACK);
             font12bold = new Font(baseTimesRoman, 12, Font.BOLD, BaseColor.BLACK);
         } catch (Exception e) {
-            log.error("Failed creating fonts {}", e.toString());
+            log.error("Failed creating fonts", e);
         }
     }
 }
