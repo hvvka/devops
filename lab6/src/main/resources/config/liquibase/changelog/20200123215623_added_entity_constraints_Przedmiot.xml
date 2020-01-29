@@ -20,17 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="opiekun_przedmiotu"/>
 
-        <addForeignKeyConstraint baseColumnNames="przedmiot_id"
-                                 baseTableName="przedmiot_program_studiow"
-                                 constraintName="fk_przedmiot_program_studiow_przedmiot_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="przedmiot"/>
-
         <addForeignKeyConstraint baseColumnNames="program_studiow_id"
-                                 baseTableName="przedmiot_program_studiow"
-                                 constraintName="fk_przedmiot_program_studiow_program_studiow_id"
+                                 baseTableName="przedmiot"
+                                 constraintName="fk_przedmiot_program_studiow_id"
                                  referencedColumnNames="id"
                                  referencedTableName="program_studiow"/>
-        
+
     </changeSet>
 </databaseChangeLog>

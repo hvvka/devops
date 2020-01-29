@@ -63,10 +63,10 @@ class ProgramStudiowGatlingTest extends Simulation {
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
             .exec(http("Create new programStudiow")
-            .post("/api/program-studiows")
-            .headers(headers_http_authenticated)
-            .body(StringBody(
-                """{
+                .post("/api/program-studiows")
+                .headers(headers_http_authenticated)
+                .body(StringBody(
+                    """{
                 "id":null
                 , "profilKsztalcenia":"OGOLNOAKADEMICKI"
                 , "formaStudiow":"STACJONARNE"

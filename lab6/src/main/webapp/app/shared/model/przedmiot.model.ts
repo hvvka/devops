@@ -9,7 +9,7 @@ export interface IPrzedmiot {
   nazwa?: string;
   kartaPrzedmiotu?: IKartaPrzedmiotu;
   opiekunPrzedmiotu?: IOpiekunPrzedmiotu;
-  programStudiows?: IProgramStudiow[];
+  programStudiow?: IProgramStudiow;
   efektKsztalcenias?: IEfektKsztalcenia[];
 }
 
@@ -20,7 +20,7 @@ export class Przedmiot implements IPrzedmiot {
     public nazwa?: string,
     public kartaPrzedmiotu?: IKartaPrzedmiotu,
     public opiekunPrzedmiotu?: IOpiekunPrzedmiotu,
-    public programStudiows?: IProgramStudiow[],
+    public programStudiow?: IProgramStudiow,
     public efektKsztalcenias?: IEfektKsztalcenia[]
   ) {}
 }

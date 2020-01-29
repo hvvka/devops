@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <property name="autoIncrement" value="true"/>
+        <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity Przedmiot.
@@ -18,30 +18,22 @@
                 <constraints nullable="false" />
             </column>
             <column name="nazwa" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="karta_przedmiotu_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="opiekun_przedmiotu_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
+            </column>
+            <column name="program_studiow_id" type="bigint">
+                <constraints nullable="true"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
     </changeSet>
 
     <changeSet id="20200123215623-1-relations" author="jhipster">
-
-        <createTable tableName="przedmiot_program_studiow">
-            <column name="program_studiow_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="przedmiot_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="przedmiot_id, program_studiow_id" tableName="przedmiot_program_studiow"/>
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

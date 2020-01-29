@@ -64,11 +64,6 @@ public class ProgramStudiow implements Serializable {
     @JsonIgnoreProperties("programStudiows")
     private TypStudiow typStudiow;
 
-    @ManyToMany(mappedBy = "programStudiows")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JsonIgnore
-    private Set<Przedmiot> przedmiots = new HashSet<>();
-
     @ManyToMany(mappedBy = "progamStudiows")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JsonIgnore
@@ -126,13 +121,13 @@ public class ProgramStudiow implements Serializable {
         return specjalnosc;
     }
 
-    public void setSpecjalnosc(String specjalnosc) {
-        this.specjalnosc = specjalnosc;
-    }
-
     public ProgramStudiow specjalnosc(String specjalnosc) {
         this.specjalnosc = specjalnosc;
         return this;
+    }
+
+    public void setSpecjalnosc(String specjalnosc) {
+        this.specjalnosc = specjalnosc;
     }
 
     public String getWydzial() {
@@ -198,31 +193,6 @@ public class ProgramStudiow implements Serializable {
 
     public void setTypStudiow(TypStudiow typStudiow) {
         this.typStudiow = typStudiow;
-    }
-
-    public Set<Przedmiot> getPrzedmiots() {
-        return przedmiots;
-    }
-
-    public ProgramStudiow przedmiots(Set<Przedmiot> przedmiots) {
-        this.przedmiots = przedmiots;
-        return this;
-    }
-
-    public ProgramStudiow addPrzedmiot(Przedmiot przedmiot) {
-        this.przedmiots.add(przedmiot);
-        przedmiot.getProgramStudiows().add(this);
-        return this;
-    }
-
-    public ProgramStudiow removePrzedmiot(Przedmiot przedmiot) {
-        this.przedmiots.remove(przedmiot);
-        przedmiot.getProgramStudiows().remove(this);
-        return this;
-    }
-
-    public void setPrzedmiots(Set<Przedmiot> przedmiots) {
-        this.przedmiots = przedmiots;
     }
 
     public Set<Dyscyplina> getDyscyplinas() {

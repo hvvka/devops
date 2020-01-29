@@ -1,14 +1,14 @@
 {
     "name": "ProgramStudiow",
     "fields": [
-        {
-            "fieldName": "profilKsztalcenia",
-            "fieldType": "ProfilKsztalcenia",
-            "fieldValues": "OGOLNOAKADEMICKI,PRAKTYCZNY",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
+      {
+        "fieldName": "profilKsztalcenia",
+        "fieldType": "ProfilKsztalcenia",
+        "fieldValues": "OGOLNOAKADEMICKI,PRAKTYCZNY",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
       {
         "fieldName": "formaStudiow",
         "fieldType": "FormaStudiow",
@@ -34,16 +34,16 @@
       },
       {
         "fieldName": "jezykProwadzeniaStudiow",
-            "fieldType": "JezykProwadzeniaStudiow",
-            "fieldValues": "POLSKI,ANGIELSKI"
-        },
-        {
-            "fieldName": "liczbaSemestrow",
-            "fieldType": "Long",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
+        "fieldType": "JezykProwadzeniaStudiow",
+        "fieldValues": "POLSKI,ANGIELSKI"
+      },
+      {
+        "fieldName": "liczbaSemestrow",
+        "fieldType": "Long",
+        "fieldValidateRules": [
+          "required"
+        ]
+      },
         {
             "fieldName": "cyklKsztalcenia",
             "fieldType": "String",
@@ -59,14 +59,6 @@
             "otherEntityRelationshipName": "programStudiow",
             "relationshipName": "typStudiow",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityName": "przedmiot",
-            "otherEntityRelationshipName": "programStudiow",
-            "relationshipName": "przedmiot",
-            "otherEntityField": "id",
-            "ownerSide": false
         },
         {
             "relationshipType": "many-to-many",

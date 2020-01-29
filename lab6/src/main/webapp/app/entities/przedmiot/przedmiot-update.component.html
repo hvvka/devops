@@ -45,9 +45,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label jhiTranslate="appApp.przedmiot.programStudiow" for="field_programStudiows">Program Studiow</label>
-                    <select class="form-control" id="field_programStudiows" multiple name="programStudiows" formControlName="programStudiows">
-                        <option [ngValue]="getSelected(editForm.get('programStudiows')!.value, programStudiowOption)" *ngFor="let programStudiowOption of programstudiows; trackBy: trackById">{{programStudiowOption.id}}</option>
+                    <label class="form-control-label" for="field_programStudiow"
+                           jhiTranslate="appApp.przedmiot.programStudiow">Program Studiow</label>
+                    <select class="form-control" formControlName="programStudiow" id="field_programStudiow"
+                            name="programStudiow">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let programStudiowOption of programstudiows; trackBy: trackById"
+                                [ngValue]="programStudiowOption.id === editForm.get('programStudiow')!.value?.id ? editForm.get('programStudiow')!.value : programStudiowOption">{{programStudiowOption.id}}</option>
                     </select>
                 </div>
             </div>
