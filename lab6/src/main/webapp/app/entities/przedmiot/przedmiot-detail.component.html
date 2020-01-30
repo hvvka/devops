@@ -16,7 +16,7 @@
                 <dt><span jhiTranslate="appApp.przedmiot.kartaPrzedmiotu">Karta Przedmiotu</span></dt>
                 <dd>
                     <div *ngIf="przedmiot.kartaPrzedmiotu">
-                        <a [routerLink]="['/karta-przedmiotu', przedmiot.kartaPrzedmiotu?.id, 'view']">{{przedmiot.kartaPrzedmiotu?.id}}</a>
+                        <a [routerLink]="['/karta-przedmiotu', przedmiot.kartaPrzedmiotu?.id, 'view']">{{przedmiot.kartaPrzedmiotu?.kodPrzedmiotu}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="appApp.przedmiot.opiekunPrzedmiotu">Opiekun Przedmiotu</span></dt>
@@ -28,7 +28,8 @@
                 <dt><span jhiTranslate="appApp.przedmiot.programStudiow">Program Studiow</span></dt>
                 <dd>
                     <div *ngIf="przedmiot.programStudiow">
-                        <a [routerLink]="['/program-studiow', przedmiot.programStudiow?.id, 'view']">{{przedmiot.programStudiow?.id}}</a>
+                        <a [routerLink]="['/program-studiow', przedmiot.programStudiow?.id, 'view']">{{przedmiot.programStudiow?.kierunek}}
+                            (W. {{przedmiot.programStudiow?.wydzial}})</a>
                     </div>
                 </dd>
             </dl>

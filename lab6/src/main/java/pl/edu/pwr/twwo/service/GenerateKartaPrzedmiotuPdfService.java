@@ -82,20 +82,23 @@ public class GenerateKartaPrzedmiotuPdfService {
         table.addCell(pdfPCell);
     }
 
-    private PdfPTable createHeaderTable(ProgramStudiow programStudiow, KartaPrzedmiotu kartaPrzedmiotu, TypStudiow typStudiow, Set<Zajecie> zajeciesSet) {
+    private PdfPTable createHeaderTable(ProgramStudiow programStudiow,
+                                        KartaPrzedmiotu kartaPrzedmiotu,
+                                        TypStudiow typStudiow,
+                                        Set<Zajecie> zajeciesSet) {
         PdfPTable headerTable = new PdfPTable(1);
         headerTable.setSpacingAfter(20f);
 
-        addRowTransparentHorizontalBorder(headerTable, font12normal, String.format("WYDZIAŁ %s\n", programStudiow.getWydzial()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("KARTA PRZEDMIOTU %s\n", ""));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Nazwa w jezyku polskim: %s\n", kartaPrzedmiotu.getNazwa()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Nazwa w jezyku angielskim: %s\n", kartaPrzedmiotu.getNazwaAng()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Kierunek studiów (jeśli dotyczy): %s\n", programStudiow.getKierunek()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Specjalność (jeśli dotyczy): %s\n", programStudiow.getSpecjalnosc()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Stopień studiów i forma: %s\n", String.format("%s, %s", typStudiow.getStopienStudiow(), programStudiow.getFormaStudiow())));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Rodzaj przedmiotu: %s\n", kartaPrzedmiotu.getRodzajPrzedmiotu()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Kod przedmiotu: %s\n", kartaPrzedmiotu.getKodPrzedmiotu()));
-        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Grupa kursów: %s\n", zajeciesSet.size() <= 1 ? "NIE" : "TAK"));
+        addRowTransparentHorizontalBorder(headerTable, font12normal, String.format("WYDZIAŁ %s%n", programStudiow.getWydzial()));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("KARTA PRZEDMIOTU %s%n", ""));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Nazwa w jezyku polskim: %s%n", kartaPrzedmiotu.getNazwa()));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Nazwa w jezyku angielskim: %s%n", kartaPrzedmiotu.getNazwaAng()));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Kierunek studiów (jeśli dotyczy): %s%n", programStudiow.getKierunek()));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Specjalność (jeśli dotyczy): %s%n", programStudiow.getSpecjalnosc()));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Stopień studiów i forma: %s%n", String.format("%s, %s", typStudiow.getStopienStudiow(), programStudiow.getFormaStudiow().getValue())));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Rodzaj przedmiotu: %s%n", kartaPrzedmiotu.getRodzajPrzedmiotu().getValue()));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Kod przedmiotu: %s%n", kartaPrzedmiotu.getKodPrzedmiotu()));
+        addRowTransparentHorizontalBorder(headerTable, font12bold, String.format("Grupa kursów: %s%n", zajeciesSet.size() <= 1 ? "NIE" : "TAK"));
 
         headerTable.getRow(0).getCells()[0].enableBorderSide(Rectangle.TOP);
         headerTable.getRow(headerTable.size() - 1).getCells()[0].enableBorderSide(Rectangle.BOTTOM);
@@ -135,11 +138,11 @@ public class GenerateKartaPrzedmiotuPdfService {
         addRow(formaPrzedmiotuTable, font12normal, zajecieSeminarium.stream().findFirst().isPresent() ? zajecieSeminarium.stream().findFirst().get().getcNPS().toString() : "");
 
         addRow(formaPrzedmiotuTable, font12normal, "Forma zaliczenia");
-        addRow(formaPrzedmiotuTable, font12normal, zajecieWyklad.stream().findFirst().isPresent() ? zajecieWyklad.stream().findFirst().get().getFormaZaliczenia().toString() : "");
-        addRow(formaPrzedmiotuTable, font12normal, zajecieCwiczenia.stream().findFirst().isPresent() ? zajecieCwiczenia.stream().findFirst().get().getFormaZaliczenia().toString() : "");
-        addRow(formaPrzedmiotuTable, font12normal, zajecieLaboratorium.stream().findFirst().isPresent() ? zajecieLaboratorium.stream().findFirst().get().getFormaZaliczenia().toString() : "");
-        addRow(formaPrzedmiotuTable, font12normal, zajecieProjekt.stream().findFirst().isPresent() ? zajecieProjekt.stream().findFirst().get().getFormaZaliczenia().toString() : "");
-        addRow(formaPrzedmiotuTable, font12normal, zajecieSeminarium.stream().findFirst().isPresent() ? zajecieSeminarium.stream().findFirst().get().getFormaZaliczenia().toString() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieWyklad.stream().findFirst().isPresent() ? zajecieWyklad.stream().findFirst().get().getFormaZaliczenia().getValue() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieCwiczenia.stream().findFirst().isPresent() ? zajecieCwiczenia.stream().findFirst().get().getFormaZaliczenia().getValue() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieLaboratorium.stream().findFirst().isPresent() ? zajecieLaboratorium.stream().findFirst().get().getFormaZaliczenia().getValue() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieProjekt.stream().findFirst().isPresent() ? zajecieProjekt.stream().findFirst().get().getFormaZaliczenia().getValue() : "");
+        addRow(formaPrzedmiotuTable, font12normal, zajecieSeminarium.stream().findFirst().isPresent() ? zajecieSeminarium.stream().findFirst().get().getFormaZaliczenia().getValue() : "");
 
         addRow(formaPrzedmiotuTable, font12normal, "Liczba punktów ECTS");
         addRow(formaPrzedmiotuTable, font12normal, zajecieWyklad.stream().findFirst().isPresent() ? zajecieWyklad.stream().findFirst().get().geteCTS().toString() : "");
