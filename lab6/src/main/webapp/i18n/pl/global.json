@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "App",
+    "title": "Tworzenie i modyfikowanie programów kształcenia",
     "browsehappy": "Używasz <strong>przestarzałej</strong> przeglądarki. Proszę <a href=\"http://browsehappy.com/\">uaktualnij swoją przeglądarkę</a> aby poprawić wrażenia z użytkowania tej aplikacji.",
     "menu": {
       "home": "Strona domowa",
@@ -146,5 +146,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "To jest stopka"
+  "footer": "Hanna Grodzicka & Zofia Łakomiak © 2020"
 }

@@ -5,7 +5,7 @@
         "title": "Przedmiot",
         "createLabel": "Dodaj Przedmiot",
         "createOrEditLabel": "Dodaj lub edytuj: Przedmiot",
-        "notFound": "Nie znaleziono Przedmiotow"
+        "notFound": "Nie znaleziono Przedmiotów"
       },
       "created": "Utworzono nowy obiekt typu Przedmiot z identyfikatorem {{ param }}",
       "updated": "Uaktualniono obiekt typu Przedmiot z identyfikatorem {{ param }}",
@@ -16,7 +16,7 @@
       "detail": {
         "title": "Przedmiot"
       },
-      "nrSemestru": "Nr Semestru",
+      "nrSemestru": "Numer Semestru",
       "nazwa": "Nazwa",
       "kartaPrzedmiotu": "Karta Przedmiotu",
       "opiekunPrzedmiotu": "Opiekun Przedmiotu",

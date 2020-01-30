@@ -44,7 +44,7 @@
                 <td>{{programStudiow.cyklKsztalcenia}}</td>
                 <td>
                     <div *ngIf="programStudiow.typStudiow">
-                        <a [routerLink]="['/typ-studiow', programStudiow.typStudiow?.id, 'view' ]" >{{programStudiow.typStudiow?.id}}</a>
+                        <a [routerLink]="['/typ-studiow', programStudiow.typStudiow?.id, 'view' ]">{{programStudiow.typStudiow?.nazwa}}</a>
                     </div>
                 </td>
                 <td class="text-right">
